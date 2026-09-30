@@ -388,7 +388,7 @@
         </div>
         <a href="https://docs.google.com/spreadsheets/d/11Pe7e1NayNfEnc3Wb4YPjN1dDIChFCUnEd7x0Ieef80/edit?gid=0#gid=0" 
            target="_blank" class="font-bold underline text-blue-600 hover:text-blue-800 flex items-center gap-1">
-            Blood Culture Collection Checklist - Google ชีต (คลิกเพื่อเปิด) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+           Blood Culture Collection Checklist - Google ชีต (คลิกเพื่อเปิด) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
         </a>
         <p class="mt-2 text-[11px] opacity-80">
             ข้อมูลจะถูกบันทึกลงในแท็บ <code class="bg-sky-100 px-1 rounded font-bold">"BloodCulture"</code> อัตโนมัติ (15 รายการ)
@@ -1058,11 +1058,11 @@
         fYes.push(`${stats[i].yes}/${totalEval}`);
         fNo.push(`${stats[i].no}/${totalEval}`);
 
+        // Strip HTML from text for chart labels to prevent rendering issues
         tempDiv.innerHTML = stats[i].text;
         const cleanText = tempDiv.textContent || tempDiv.innerText || "";
 
-        // นำมาคิดหาจุดปรับปรุงเฉพาะข้อที่มีการประเมิน (totalEval > 0) และมีอัตราการปฏิบัติ < 100%
-        if(totalEval > 0 && pYes < 100) {
+        if(totalEval > 0) {
           if(pYes < lowestRate) {
             lowestRate = pYes;
             lowestItems = [{ item: i, text: cleanText }];
@@ -1109,10 +1109,10 @@
         criticalEl.innerHTML = lowestItems
           .map(item => `ข้อ ${item.item}. ${item.text} <span class="whitespace-nowrap">(${Number(lowestRate).toFixed(2)}%)</span>`)
           .join('<br>');
-        criticalEl.className = "text-xs sm:text-sm font-bold text-yellow-600 mt-2 leading-snug";
+      } else if (lowestItems.length > 0) {
+        criticalEl.innerText = "สมบูรณ์ทุกข้อ";
       } else {
-        criticalEl.innerText = "ไม่มี (ปฏิบัติครบถ้วน 100%)";
-        criticalEl.className = "text-xs sm:text-sm font-bold text-emerald-600 mt-2 leading-snug";
+        criticalEl.innerText = "ไม่มีข้อมูล";
       }
       document.getElementById('itemBreakdownContainer').innerHTML = html;
 
