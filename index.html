@@ -27,19 +27,19 @@
 
   <!-- TOP HEADER (Purple/Fuchsia Gradient for new theme) -->
 
-  <header class="bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-lg sticky top-0 z-40">
+  <header class="bg-gradient-to-r from-blue-600 to-sky-600 text-white shadow-lg sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
       <div class="flex items-center space-x-3">
         <!-- New Logo (Uploaded Germ Image) -->
-        <img src="image_4eb93b.jpg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3209/3209255.png'" alt="Blood Culture Logo" class="w-11 h-11 object-cover rounded-full bg-white border-2 border-purple-200 shadow-sm p-0.5">
+        <img src="image_4eb93b.jpg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3209/3209255.png'" alt="Blood Culture Logo" class="w-11 h-11 object-cover rounded-full bg-white border-2 border-blue-200 shadow-sm p-0.5">
         <div>
           <h1 class="text-lg md:text-xl font-bold tracking-wide">Blood Culture Collection Checklist</h1>
-          <p class="text-xs text-purple-100 font-light">โรงพยาบาลพุนพิน จังหวัดสุราษฎร์ธานี</p>
+          <p class="text-xs text-blue-100 font-light">โรงพยาบาลพุนพิน จังหวัดสุราษฎร์ธานี</p>
         </div>
       </div>
       <!-- API Connection Status Badge -->
-      <div id="connectionBadge" class="flex items-center space-x-1 px-3 py-1 bg-purple-900 bg-opacity-40 rounded-full text-xs text-purple-100 border border-purple-400/20">
-        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+      <div id="connectionBadge" class="flex items-center space-x-1 px-3 py-1 bg-blue-900 bg-opacity-40 rounded-full text-xs text-blue-100 border border-blue-400/20">
+        <span class="w-2.5 h-2.5 rounded-full bg-blue-400 animate-pulse"></span>
         <span class="hidden md:inline font-medium">เชื่อมต่อระบบ</span>
       </div>
     </div>
@@ -49,14 +49,14 @@
 
   <nav class="bg-white border-b border-slate-200 sticky top-[60px] z-30 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 flex justify-around">
-      <button onclick="switchTab('form')" id="btn-form" class="tab-btn py-3 px-1 md:px-4 border-b-2 border-purple-600 text-purple-600 font-semibold flex items-center space-x-1.5 focus:outline-none text-sm transition-all">
+      <button onclick="switchTab('form')" id="btn-form" class="tab-btn py-3 px-1 md:px-4 border-b-2 border-blue-600 text-blue-600 font-semibold flex items-center space-x-1.5 focus:outline-none text-sm transition-all">
         <i data-lucide="clipboard-check" class="w-5 h-5"></i>
         <span>แบบประเมิน</span>
       </button>
       <button onclick="switchTab('history')" id="btn-history" class="tab-btn py-3 px-1 md:px-4 border-b-2 border-transparent text-slate-500 font-medium flex items-center space-x-1.5 focus:outline-none text-sm transition-all relative">
         <i data-lucide="history" class="w-5 h-5"></i>
         <span>ประวัติ & การซิงค์</span>
-        <span id="unsyncedCountBadge" class="hidden absolute top-1.5 -right-2 bg-rose-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+        <span id="unsyncedCountBadge" class="hidden absolute top-1.5 -right-2 bg-yellow-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
       </button>
       <button onclick="switchTab('reports')" id="btn-reports" class="tab-btn py-3 px-1 md:px-4 border-b-2 border-transparent text-slate-500 font-medium flex items-center space-x-1.5 focus:outline-none text-sm transition-all">
         <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
@@ -77,58 +77,58 @@
 <div id="tab-form-content" class="tab-content space-y-6">
   
   <!-- Patient & Meta Data Card with Heart Pattern -->
-  <div class="bg-white rounded-2xl p-5 shadow-sm border border-purple-100 relative overflow-hidden">
+  <div class="bg-white rounded-2xl p-5 shadow-sm border border-blue-100 relative overflow-hidden">
     <!-- Heart SVG Background Overlay -->
     <div class="absolute inset-0 z-0 pointer-events-none opacity-40" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23a855f7' fill-opacity='0.15'%3E%3Cg transform='translate(20, 20) scale(1.8)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(75, 5) scale(0.8) rotate(15)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(-5, 65) scale(1) rotate(-15)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(60, 70) scale(0.6) rotate(-5)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;); background-size: 80px 80px;"></div>
     
     <div class="relative z-10">
-      <div class="flex items-center space-x-2 pb-4 mb-4 border-b border-purple-100/60">
-        <i data-lucide="heart" class="w-5 h-5 text-purple-500"></i>
-        <h2 class="font-semibold text-purple-900 text-lg">ข้อมูลการประเมิน</h2>
+      <div class="flex items-center space-x-2 pb-4 mb-4 border-b border-blue-100/60">
+        <i data-lucide="heart" class="w-5 h-5 text-blue-500"></i>
+        <h2 class="font-semibold text-blue-900 text-lg">ข้อมูลการประเมิน</h2>
       </div>
 
       <form id="metaForm" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
         <div>
           <label class="block text-sm font-semibold text-slate-600 mb-1.5">หน่วยงาน</label>
-          <input type="text" id="department" placeholder="ระบุหน่วยงาน" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+          <input type="text" id="department" placeholder="ระบุหน่วยงาน" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
         </div>
         <div>
           <label class="block text-sm font-semibold text-slate-600 mb-1.5">วันที่</label>
-          <input type="date" id="evalDate" required class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+          <input type="date" id="evalDate" required class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
         </div>
         <div>
           <label class="block text-sm font-semibold text-slate-600 mb-1.5">ชื่อผู้ป่วย</label>
-          <input type="text" id="patientName" placeholder="ระบุชื่อผู้ป่วย" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+          <input type="text" id="patientName" placeholder="ระบุชื่อผู้ป่วย" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
         </div>
         <div>
           <label class="block text-sm font-semibold text-slate-600 mb-1.5">ผู้ปฏิบัติ</label>
-          <input type="text" id="practitioner" placeholder="ชื่อผู้ปฏิบัติ" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+          <input type="text" id="practitioner" placeholder="ชื่อผู้ปฏิบัติ" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
         </div>
         <div>
           <label class="block text-sm font-semibold text-slate-600 mb-1.5">ผู้ประเมิน</label>
-          <input type="text" id="evaluator" placeholder="ชื่อผู้ประเมิน" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+          <input type="text" id="evaluator" placeholder="ชื่อผู้ประเมิน" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
         </div>
         <div>
           <label class="block text-sm font-semibold text-slate-600 mb-1.5">เวลา</label>
-          <input type="time" id="evalTime" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+          <input type="time" id="evalTime" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
         </div>
       </form>
     </div>
   </div>
 
   <!-- Checklist Section Header -->
-  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-purple-50 border border-purple-100 p-4 rounded-xl">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-blue-50 border border-blue-100 p-4 rounded-xl">
     <div>
-      <h2 class="font-bold text-purple-900 text-lg">แบบ Checklist การเจาะเลือดเพาะเชื้อ (Blood Culture Collection Checklist)</h2>
-      <p class="text-xs text-purple-700 font-light">กรุณาประเมินการปฏิบัติตามรายการตรวจสอบทั้ง 15 ข้อ</p>
+      <h2 class="font-bold text-blue-900 text-lg">แบบ Checklist การเจาะเลือดเพาะเชื้อ (Blood Culture Collection Checklist)</h2>
+      <p class="text-xs text-blue-700 font-light">กรุณาประเมินการปฏิบัติตามรายการตรวจสอบทั้ง 15 ข้อ</p>
     </div>
     <!-- Live Score Widget -->
-    <div class="bg-purple-600 text-white rounded-2xl px-5 py-3 shadow-md flex items-center space-x-3 w-full md:w-auto justify-center">
+    <div class="bg-blue-600 text-white rounded-2xl px-5 py-3 shadow-md flex items-center space-x-3 w-full md:w-auto justify-center">
       <div class="text-right">
-        <span class="text-[10px] block text-purple-100 uppercase font-bold tracking-wider">อัตราการปฏิบัติ</span>
+        <span class="text-[10px] block text-blue-100 uppercase font-bold tracking-wider">อัตราการปฏิบัติ</span>
         <span class="text-xl md:text-2xl font-black" id="liveScoreText">0.00% (0/15)</span>
       </div>
-      <div class="w-10 h-10 rounded-full border-2 border-purple-400 flex items-center justify-center font-bold text-sm hidden" id="scoreIndicatorRing">
+      <div class="w-10 h-10 rounded-full border-2 border-blue-400 flex items-center justify-center font-bold text-sm hidden" id="scoreIndicatorRing">
         0/15
       </div>
     </div>
@@ -142,7 +142,7 @@
   <!-- Remarks Input Card -->
   <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
     <label class="block text-sm font-semibold text-slate-700 mb-2">ข้อเสนอแนะเพิ่มเติม / หมายเหตุ</label>
-    <textarea id="evalRemarks" rows="3" placeholder="ระบุสิ่งที่พบเห็นเพิ่มเติม เช่น รายละเอียดอุปสรรค, ข้อเสนอแนะอื่นๆ..." class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all resize-none"></textarea>
+    <textarea id="evalRemarks" rows="3" placeholder="ระบุสิ่งที่พบเห็นเพิ่มเติม เช่น รายละเอียดอุปสรรค, ข้อเสนอแนะอื่นๆ..." class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"></textarea>
   </div>
 
   <!-- Action Buttons -->
@@ -151,7 +151,7 @@
       <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
       <span>ล้างข้อมูล</span>
     </button>
-    <button onclick="submitAssessment()" class="w-full sm:w-auto px-10 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow-lg shadow-purple-600/25 hover:shadow-purple-700/30 transition-all flex items-center justify-center space-x-2">
+    <button onclick="submitAssessment()" class="w-full sm:w-auto px-10 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 hover:shadow-blue-700/30 transition-all flex items-center justify-center space-x-2">
       <i data-lucide="save" class="w-5 h-5"></i>
       <span>บันทึกและส่งข้อมูล</span>
     </button>
@@ -165,25 +165,25 @@
   <!-- Statistics Widget inside History -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
-      <div class="p-3 bg-amber-50 text-amber-600 rounded-xl">
+      <div class="p-3 bg-yellow-50 text-yellow-600 rounded-xl">
         <i data-lucide="cloud-off" class="w-6 h-6"></i>
       </div>
       <div>
         <span class="text-xs text-slate-500 block">รอการส่งขึ้น Google Sheets</span>
-        <span id="unsyncedCountTitle" class="text-2xl font-bold text-amber-600">0 รายการ</span>
+        <span id="unsyncedCountTitle" class="text-2xl font-bold text-yellow-600">0 รายการ</span>
       </div>
     </div>
     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
-      <div class="p-3 bg-purple-50 text-purple-600 rounded-xl">
+      <div class="p-3 bg-blue-50 text-blue-600 rounded-xl">
         <i data-lucide="cloud-check" class="w-6 h-6"></i>
       </div>
       <div>
         <span class="text-xs text-slate-500 block">ซิงค์สำเร็จแล้ว</span>
-        <span id="syncedCountTitle" class="text-2xl font-bold text-purple-600">0 รายการ</span>
+        <span id="syncedCountTitle" class="text-2xl font-bold text-blue-600">0 รายการ</span>
       </div>
     </div>
     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
-      <button onclick="syncAllRecords()" id="btnSyncAll" class="w-full h-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
+      <button onclick="syncAllRecords()" id="btnSyncAll" class="w-full h-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
         <i data-lucide="refresh-cw" class="w-5 h-5"></i>
         <span>ซิงค์ขึ้น Google Sheets ทั้งหมด</span>
       </button>
@@ -197,7 +197,7 @@
         <span>รายการประเมินจาก Google Sheets</span>
         <span class="text-xs font-normal text-slate-400">(Google Sheets)</span>
       </h2>
-      <button onclick="confirmClearHistory()" class="text-xs text-rose-600 hover:text-rose-800 font-semibold flex items-center space-x-1">
+      <button onclick="confirmClearHistory()" class="text-xs text-yellow-600 hover:text-yellow-800 font-semibold flex items-center space-x-1">
         <i data-lucide="trash-2" class="w-4 h-4"></i>
         <span>ล้างประวัติทั้งหมด</span>
       </button>
@@ -224,7 +224,7 @@
     <div id="historyEmptyState" class="hidden flex flex-col items-center justify-center py-12 text-slate-400 space-y-3">
       <i data-lucide="inbox" class="w-16 h-16 text-slate-300"></i>
       <span class="text-base font-medium">ยังไม่มีข้อมูลการประเมินใน Google Sheets</span>
-      <button onclick="switchTab('form')" class="px-4 py-2 bg-purple-50 text-purple-700 font-bold rounded-xl text-sm hover:bg-purple-100 transition-all">ประเมินผู้ป่วยรายใหม่</button>
+      <button onclick="switchTab('form')" class="px-4 py-2 bg-blue-50 text-blue-700 font-bold rounded-xl text-sm hover:bg-blue-100 transition-all">ประเมินผู้ป่วยรายใหม่</button>
     </div>
   </div>
 </div>
@@ -236,13 +236,13 @@
   <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
     <div>
       <h2 class="font-bold text-slate-800 text-lg flex items-center space-x-2">
-        <span class="w-3 h-6 bg-purple-600 rounded"></span>
+        <span class="w-3 h-6 bg-blue-600 rounded"></span>
         <span>Dashboard สรุปผลการประเมินการเจาะเลือดเพาะเชื้อ</span>
       </h2>
       <p class="text-xs text-slate-500" id="dashboardLastUpdated">ดึงข้อมูลจาก Google Sheets อัตโนมัติ</p>
     </div>
     <div class="flex items-center space-x-2 w-full sm:w-auto">
-      <button onclick="fetchAndRenderReports()" id="btnRefreshDashboard" class="flex-1 sm:flex-initial px-4 py-2 text-xs font-bold bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-xl transition-all flex items-center justify-center space-x-1">
+      <button onclick="fetchAndRenderReports()" id="btnRefreshDashboard" class="flex-1 sm:flex-initial px-4 py-2 text-xs font-bold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl transition-all flex items-center justify-center space-x-1">
         <i id="refreshIcon" data-lucide="refresh-cw" class="w-4 h-4"></i>
         <span>รีเฟรชข้อมูล</span>
       </button>
@@ -253,11 +253,11 @@
   <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
       <span class="text-sm font-bold text-slate-700 flex items-center space-x-1.5">
-        <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
         <span>กรองการแสดงผลตามช่วงเวลา:</span>
       </span>
       <div class="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-xl">
-        <button onclick="setFilterType('all')" id="filter-btn-all" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-purple-600 text-white shadow-sm">ทั้งหมด</button>
+        <button onclick="setFilterType('all')" id="filter-btn-all" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm">ทั้งหมด</button>
         <button onclick="setFilterType('month')" id="filter-btn-month" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-800">รายเดือน</button>
         <button onclick="setFilterType('year')" id="filter-btn-year" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-800">รายปี</button>
         <button onclick="setFilterType('range')" id="filter-btn-range" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-800">ช่วงวันที่</button>
@@ -268,23 +268,23 @@
       <!-- Month -->
       <div id="filter-input-month" class="filter-input-sub hidden">
         <label class="block text-xs font-semibold text-slate-500 mb-1">เลือกเดือนที่ต้องการประเมิน</label>
-        <input type="month" id="filterMonthVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none text-sm">
+        <input type="month" id="filterMonthVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm">
       </div>
       <!-- Year -->
       <div id="filter-input-year" class="filter-input-sub hidden">
         <label class="block text-xs font-semibold text-slate-500 mb-1">เลือกปีงบประมาณ</label>
-        <select id="filterYearVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none text-sm"></select>
+        <select id="filterYearVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm"></select>
       </div>
       <!-- Custom Range -->
       <div id="filter-input-range" class="filter-input-sub hidden md:col-span-2 flex items-center space-x-2">
         <div class="flex-1">
           <label class="block text-xs font-semibold text-slate-500 mb-1">ตั้งแต่วันที่</label>
-          <input type="date" id="filterStartVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none text-sm">
+          <input type="date" id="filterStartVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm">
         </div>
         <span class="pt-5 text-slate-400 font-bold text-xs">ถึง</span>
         <div class="flex-1">
           <label class="block text-xs font-semibold text-slate-500 mb-1">สิ้นสุดวันที่</label>
-          <input type="date" id="filterEndVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none text-sm">
+          <input type="date" id="filterEndVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm">
         </div>
       </div>
     </div>
@@ -302,14 +302,14 @@
     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
       <span class="text-xs text-slate-400 block font-semibold uppercase tracking-wider">ผ่านเกณฑ์สมบูรณ์ (100%)</span>
       <div class="flex items-baseline space-x-1.5 mt-2">
-        <span id="repFullComplianceCount" class="text-4xl font-black text-purple-600">0</span>
-        <span class="text-sm text-purple-500 font-bold">ครั้ง</span>
+        <span id="repFullComplianceCount" class="text-4xl font-black text-blue-600">0</span>
+        <span class="text-sm text-blue-500 font-bold">ครั้ง</span>
       </div>
       <span id="repFullCompliancePct" class="text-[10px] text-slate-400 block mt-2">0% ของการประเมินทั้งหมด</span>
     </div>
     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
       <span class="text-xs text-slate-400 block font-semibold uppercase tracking-wider">จุดที่ต้องปรับปรุงเร่งด่วน</span>
-      <span id="repCriticalImprovement" class="text-xs sm:text-sm font-bold text-rose-600 line-clamp-4 mt-2 leading-snug">ไม่มีข้อมูล</span>
+      <span id="repCriticalImprovement" class="text-xs sm:text-sm font-bold text-yellow-600 line-clamp-4 mt-2 leading-snug">ไม่มีข้อมูล</span>
       <span class="text-[10px] text-slate-400 block mt-2">รายการที่อัตราการปฏิบัติต่ำที่สุด</span>
     </div>
   </div>
@@ -321,7 +321,7 @@
     <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
       <div class="pb-3 mb-4 border-b border-slate-100 flex justify-between items-center">
         <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center space-x-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
           <span>เปรียบเทียบ ปฏิบัติ/ไม่ปฏิบัติ รายข้อ (%)</span>
         </h3>
         <span class="text-[10px] bg-slate-100 px-2.5 py-1 rounded-full font-bold text-slate-500">เกณฑ์ 15 ข้อ</span>
@@ -339,7 +339,7 @@
     <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
       <div class="pb-3 mb-4 border-b border-slate-100 flex justify-between items-center">
         <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center space-x-2">
-          <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
+          <svg class="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
           <span>สรุปรายการที่ "ไม่ปฏิบัติ" (เรียงจาก % มากไปน้อย)</span>
         </h3>
       </div>
@@ -347,8 +347,8 @@
       <div id="nonComplianceListContainer" class="columns-1 lg:columns-2 gap-3 w-full">
         <!-- Dynamic list goes here -->
       </div>
-      <div id="chart2EmptyState" class="bg-emerald-50/50 rounded-xl p-8 flex flex-col items-center justify-center text-emerald-600 space-y-2 hidden border border-emerald-100 mt-2">
-        <svg class="w-12 h-12 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      <div id="chart2EmptyState" class="bg-blue-50/50 rounded-xl p-8 flex flex-col items-center justify-center text-blue-600 space-y-2 hidden border border-blue-100 mt-2">
+        <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         <p class="text-sm font-bold mt-2">ยอดเยี่ยม! ไม่มีหัวข้อที่ไม่ปฏิบัติในช่วงเวลานี้</p>
       </div>
     </div>
@@ -381,30 +381,30 @@
 
   <div class="space-y-4">
 
-<div class="p-4 bg-blue-50 border border-blue-100 rounded-2xl flex items-start gap-3">
-    <i data-lucide="info" class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0"></i>
-    <div class="text-xs text-blue-800 leading-relaxed w-full">
+<div class="p-4 bg-sky-50 border border-sky-100 rounded-2xl flex items-start gap-3">
+    <i data-lucide="info" class="w-5 h-5 text-sky-600 mt-0.5 flex-shrink-0"></i>
+    <div class="text-xs text-sky-800 leading-relaxed w-full">
         <div class="flex justify-between items-center mb-2">
             <p class="font-extrabold">สเปรดชีตเป้าหมายหลัก:</p>
-            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-bold uppercase">Sync Enabled</span>
+            <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full text-[10px] font-bold uppercase">Sync Enabled</span>
         </div>
         <a href="https://docs.google.com/spreadsheets/d/11Pe7e1NayNfEnc3Wb4YPjN1dDIChFCUnEd7x0Ieef80/edit?gid=0#gid=0" 
-           target="_blank" class="font-bold underline text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+           target="_blank" class="font-bold underline text-blue-600 hover:text-blue-800 flex items-center gap-1">
            Blood Culture Collection Checklist - Google ชีต (คลิกเพื่อเปิด) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
         </a>
         <p class="mt-2 text-[11px] opacity-80">
-            ข้อมูลจะถูกบันทึกลงในแท็บ <code class="bg-blue-100 px-1 rounded font-bold">"BloodCulture"</code> อัตโนมัติ (15 รายการ)
+            ข้อมูลจะถูกบันทึกลงในแท็บ <code class="bg-sky-100 px-1 rounded font-bold">"BloodCulture"</code> อัตโนมัติ (15 รายการ)
         </p>
     </div>
 </div>
 
 <div>
   <label class="block text-sm font-medium text-slate-700 mb-1">Google Apps Script Web App URL</label>
-  <input type="text" id="apiEndpointUrl" placeholder="https://script.google.com/macros/s/.../exec" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none transition-all text-sm font-mono text-slate-600">
+  <input type="text" id="apiEndpointUrl" placeholder="https://script.google.com/macros/s/.../exec" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm font-mono text-slate-600">
 </div>
 
 <div class="flex flex-col sm:flex-row gap-2 pt-2">
-  <button onclick="saveSettings()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 px-6 rounded-xl shadow-md transition-all text-sm">
+  <button onclick="saveSettings()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-xl shadow-md transition-all text-sm">
     บันทึกการตั้งค่า
   </button>
   <button onclick="testApiConnection()" class="border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold py-2.5 px-6 rounded-xl transition-all text-sm flex items-center justify-center space-x-1">
@@ -424,7 +424,7 @@
 
     <div class="space-y-4 text-sm text-slate-600">
       <ol class="list-decimal pl-5 space-y-3">
-        <li>เปิดลิงก์ Google Sheet ที่กำหนด: <a href="https://docs.google.com/spreadsheets/d/1yOPzmyd7ExMELRpwltyPu7onH5dCwpjZUPs5IP2JqQ4/edit?gid=0#gid=0" target="_blank" class="text-pink-600 hover:underline font-medium">Blood Culture Collection Checklist - Google ชีต</a></li>
+        <li>เปิดลิงก์ Google Sheet ที่กำหนด: <a href="https://docs.google.com/spreadsheets/d/1yOPzmyd7ExMELRpwltyPu7onH5dCwpjZUPs5IP2JqQ4/edit?gid=0#gid=0" target="_blank" class="text-sky-600 hover:underline font-medium">Blood Culture Collection Checklist - Google ชีต</a></li>
         <li>ไปที่เมนู <strong>ส่วนขยาย (Extensions)</strong> &gt; เลือก <strong>Apps Script</strong></li>
         <li>ลบโค้ดเริ่มต้นออก แล้วคัดลอกโค้ดจากไฟล์ <code>รหัส.gs</code> ไปวาง</li>
         <li>คลิกปุ่ม <strong>บันทึกโครงการ (Save Project)</strong> (ไอคอนแผ่นดิสก์)</li>
@@ -433,7 +433,7 @@
         <li>ตั้งค่าการตั้งค่าต่อไปนี้:
           <ul class="list-disc pl-5 mt-1 space-y-1">
             <li><strong>เรียกใช้ในฐานะ (Execute as):</strong> "ฉัน (Your Email)"</li>
-            <li><strong>ผู้มีสิทธิ์เข้าถึง (Who has access):</strong> "ทุกคน (Anyone)" <span class="text-xs text-rose-500 font-semibold">(จำเป็นสำหรับการรับส่งข้อมูล)</span></li>
+            <li><strong>ผู้มีสิทธิ์เข้าถึง (Who has access):</strong> "ทุกคน (Anyone)" <span class="text-xs text-yellow-500 font-semibold">(จำเป็นสำหรับการรับส่งข้อมูล)</span></li>
           </ul>
         </li>
         <li>คลิก <strong>ปรับใช้ (Deploy)</strong> และให้สิทธิ์การเข้าถึงข้อมูล (Authorize Access) เมื่อมีป็อปอัปถาม</li>
@@ -457,9 +457,9 @@
   <div id="customModal" class="fixed inset-0 bg-slate-900/60 flex items-center justify-center p-4 z-50 hidden transition-all duration-300">
     <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modalCard">
       <div class="flex flex-col items-center text-center space-y-4">
-        <div id="modalIconSuccess" class="hidden p-3 bg-emerald-100 text-emerald-600 rounded-full"><i data-lucide="check-circle" class="w-10 h-10"></i></div>
-        <div id="modalIconError" class="hidden p-3 bg-rose-100 text-rose-600 rounded-full"><i data-lucide="x-circle" class="w-10 h-10"></i></div>
-        <div id="modalIconInfo" class="hidden p-3 bg-purple-100 text-purple-600 rounded-full"><i data-lucide="info" class="w-10 h-10"></i></div>
+        <div id="modalIconSuccess" class="hidden p-3 bg-blue-100 text-blue-600 rounded-full"><i data-lucide="check-circle" class="w-10 h-10"></i></div>
+        <div id="modalIconError" class="hidden p-3 bg-yellow-100 text-yellow-600 rounded-full"><i data-lucide="x-circle" class="w-10 h-10"></i></div>
+        <div id="modalIconInfo" class="hidden p-3 bg-blue-100 text-blue-600 rounded-full"><i data-lucide="info" class="w-10 h-10"></i></div>
 
     <div class="space-y-1">
       <h3 class="text-lg font-bold text-slate-800" id="modalTitle">หัวข้อ</h3>
@@ -476,14 +476,14 @@
   <div id="customConfirmModal" class="fixed inset-0 bg-slate-900/60 flex items-center justify-center p-4 z-50 hidden transition-all duration-300">
     <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="confirmModalCard">
       <div class="flex flex-col items-center text-center space-y-4">
-        <div class="p-3 bg-amber-100 text-amber-600 rounded-full"><i data-lucide="alert-triangle" class="w-10 h-10"></i></div>
+        <div class="p-3 bg-yellow-100 text-yellow-600 rounded-full"><i data-lucide="alert-triangle" class="w-10 h-10"></i></div>
         <div class="space-y-1">
           <h3 class="text-lg font-bold text-slate-800" id="confirmModalTitle">ยืนยัน?</h3>
           <p class="text-sm text-slate-500" id="confirmModalMessage">คำเตือน...</p>
         </div>
         <div class="grid grid-cols-2 gap-3 w-full">
           <button id="confirmCancelBtn" onclick="closeConfirmModal()" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition-all">ยกเลิก</button>
-          <button id="confirmProceedBtn" class="py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md">ยืนยัน</button>
+          <button id="confirmProceedBtn" class="py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md">ยืนยัน</button>
         </div>
       </div>
     </div>
@@ -538,10 +538,10 @@
       let html = '';
       for (let i = 1; i <= TOTAL_ITEMS; i++) {
         html += `
-          <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 hover:border-purple-300 transition-all card-bundle-item" data-index="${i}">
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 hover:border-blue-300 transition-all card-bundle-item" data-index="${i}">
             <div class="flex flex-col md:flex-row md:items-start justify-between gap-3">
               <div class="flex items-start space-x-3 w-full md:w-2/3">
-                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-purple-100 text-purple-800 font-bold text-xs flex-shrink-0 mt-0.5">${i}</span>
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-100 text-blue-800 font-bold text-xs flex-shrink-0 mt-0.5">${i}</span>
                 <div class="font-medium text-slate-800 text-sm leading-relaxed w-full pt-1.5 md:pt-1">${checkListData[i]}</div>
               </div>
               <div class="flex items-center space-x-2 pl-10 md:pl-0 w-full md:w-auto justify-start md:justify-end mt-2 md:mt-0">
@@ -568,8 +568,8 @@
       const noBtn = card.querySelector('.btn-check-no');
 
       if (value === 'ปฏิบัติ') {
-        yesBtn.className = "btn-check-yes flex-1 md:w-24 py-2 rounded-xl border-2 border-emerald-500 bg-emerald-50 font-bold text-emerald-700 transition-all text-xs flex items-center justify-center space-x-1 shadow-sm";
-        yesBtn.querySelector('.icon-dot').className = "icon-dot w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse";
+        yesBtn.className = "btn-check-yes flex-1 md:w-24 py-2 rounded-xl border-2 border-blue-500 bg-blue-50 font-bold text-blue-700 transition-all text-xs flex items-center justify-center space-x-1 shadow-sm";
+        yesBtn.querySelector('.icon-dot').className = "icon-dot w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse";
         
         noBtn.className = "btn-check-no flex-1 md:w-28 py-2 rounded-xl border border-slate-200 font-semibold text-slate-500 hover:bg-slate-50 transition-all text-xs flex items-center justify-center space-x-1";
         noBtn.querySelector('.icon-dot').className = "icon-dot w-2 h-2 rounded-full bg-slate-300";
@@ -577,8 +577,8 @@
         yesBtn.className = "btn-check-yes flex-1 md:w-24 py-2 rounded-xl border border-slate-200 font-semibold text-slate-400 hover:bg-slate-50 transition-all text-xs flex items-center justify-center space-x-1";
         yesBtn.querySelector('.icon-dot').className = "icon-dot w-2 h-2 rounded-full bg-slate-300";
         
-        noBtn.className = "btn-check-no flex-1 md:w-28 py-2 rounded-xl border-2 border-rose-500 bg-rose-50 font-bold text-rose-700 transition-all text-xs flex items-center justify-center space-x-1 shadow-sm";
-        noBtn.querySelector('.icon-dot').className = "icon-dot w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse";
+        noBtn.className = "btn-check-no flex-1 md:w-28 py-2 rounded-xl border-2 border-yellow-500 bg-yellow-50 font-bold text-yellow-700 transition-all text-xs flex items-center justify-center space-x-1 shadow-sm";
+        noBtn.querySelector('.icon-dot').className = "icon-dot w-2.5 h-2.5 rounded-full bg-yellow-500 animate-pulse";
       }
 
       calculateLiveScore();
@@ -599,11 +599,11 @@
       ring.innerText = `${totalYes}/${TOTAL_ITEMS}`;
 
       if (score === 100) {
-        ring.className = "w-10 h-10 rounded-full border-2 border-purple-300 bg-purple-700 flex items-center justify-center font-bold text-xs text-white shadow-md hidden";
+        ring.className = "w-10 h-10 rounded-full border-2 border-blue-300 bg-blue-700 flex items-center justify-center font-bold text-xs text-white shadow-md hidden";
       } else if (score >= 80) {
-        ring.className = "w-10 h-10 rounded-full border-2 border-emerald-400 bg-emerald-500 flex items-center justify-center font-bold text-xs text-white hidden";
+        ring.className = "w-10 h-10 rounded-full border-2 border-blue-400 bg-blue-500 flex items-center justify-center font-bold text-xs text-white hidden";
       } else if (score > 0) {
-        ring.className = "w-10 h-10 rounded-full border-2 border-amber-400 bg-amber-500 flex items-center justify-center font-bold text-xs text-white hidden";
+        ring.className = "w-10 h-10 rounded-full border-2 border-yellow-400 bg-yellow-500 flex items-center justify-center font-bold text-xs text-white hidden";
       } else {
         ring.className = "w-10 h-10 rounded-full border-2 border-slate-300 flex items-center justify-center font-bold text-xs hidden";
       }
@@ -689,9 +689,9 @@
       const lastUpdatedEl = document.getElementById('dashboardLastUpdated');
 
       if (success) {
-        if (lastUpdatedEl) lastUpdatedEl.innerHTML = `<span class="text-emerald-600 font-semibold">✓ อัปเดตล่าสุด: ${timeStr}</span>`;
+        if (lastUpdatedEl) lastUpdatedEl.innerHTML = `<span class="text-blue-600 font-semibold">✓ อัปเดตล่าสุด: ${timeStr}</span>`;
       } else {
-        if (lastUpdatedEl) lastUpdatedEl.innerHTML = `<span class="text-amber-600 font-semibold">⚠ ทำงานแบบออฟไลน์</span>`;
+        if (lastUpdatedEl) lastUpdatedEl.innerHTML = `<span class="text-yellow-600 font-semibold">⚠ ทำงานแบบออฟไลน์</span>`;
       }
     }
 
@@ -718,12 +718,12 @@
 
     function switchTab(tabName) {
       document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('border-purple-600', 'text-purple-600', 'font-semibold');
+        btn.classList.remove('border-blue-600', 'text-blue-600', 'font-semibold');
         btn.classList.add('border-transparent', 'text-slate-500');
       });
       document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
 
-      document.getElementById(`btn-${tabName}`).classList.add('border-purple-600', 'text-purple-600', 'font-semibold');
+      document.getElementById(`btn-${tabName}`).classList.add('border-blue-600', 'text-blue-600', 'font-semibold');
       document.getElementById(`btn-${tabName}`).classList.remove('border-transparent', 'text-slate-500');
       document.getElementById(`tab-${tabName}-content`).classList.remove('hidden');
 
@@ -759,7 +759,7 @@
       const proceedBtn = document.getElementById('confirmProceedBtn');
       document.getElementById('confirmModalTitle').innerText = title;
       document.getElementById('confirmModalMessage').innerText = msg;
-      proceedBtn.className = isDangerous ? "py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md" : "py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md";
+      proceedBtn.className = isDangerous ? "py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md" : "py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md";
       activeConfirmCallback = onConfirm;
       modal.classList.remove('hidden');
       setTimeout(() => { card.classList.remove('scale-95', 'opacity-0'); card.classList.add('scale-100', 'opacity-100'); }, 50);
@@ -779,11 +779,11 @@
     function updateStatusBadge() {
       const badge = document.getElementById('connectionBadge');
       if (db.apiUrl) {
-        badge.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span class="hidden md:inline font-medium">พร้อมซิงค์คลาวด์</span>`;
-        badge.className = "flex items-center space-x-1 px-3 py-1 bg-emerald-900 bg-opacity-40 rounded-full text-xs text-emerald-100";
+        badge.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span><span class="hidden md:inline font-medium">พร้อมซิงค์คลาวด์</span>`;
+        badge.className = "flex items-center space-x-1 px-3 py-1 bg-blue-900 bg-opacity-40 rounded-full text-xs text-blue-100";
       } else {
-        badge.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span><span class="hidden md:inline font-medium">ออฟไลน์</span>`;
-        badge.className = "flex items-center space-x-1 px-3 py-1 bg-amber-900 bg-opacity-40 rounded-full text-xs text-amber-100";
+        badge.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span><span class="hidden md:inline font-medium">ออฟไลน์</span>`;
+        badge.className = "flex items-center space-x-1 px-3 py-1 bg-yellow-900 bg-opacity-40 rounded-full text-xs text-yellow-100";
       }
     }
 
@@ -941,14 +941,14 @@
       document.getElementById('historyEmptyState').classList.add('hidden');
       
       body.innerHTML = db.records.map(r => {
-        const syncBadge = r.synced ? `<span class="px-2 py-1 rounded bg-purple-50 text-purple-700 text-xs font-bold border border-purple-100">ซิงค์แล้ว</span>` : `<span class="px-2 py-1 rounded bg-amber-50 text-amber-700 text-xs font-bold border border-amber-100">รอซิงค์</span>`;
-        let color = r.complianceRate === 100 ? "text-emerald-700 bg-emerald-50 border-emerald-200" : (r.complianceRate >= 80 ? "text-purple-700 bg-purple-50 border-purple-200" : "text-rose-700 bg-rose-50 border-rose-200");
+        const syncBadge = r.synced ? `<span class="px-2 py-1 rounded bg-blue-50 text-blue-700 text-xs font-bold border border-blue-100">ซิงค์แล้ว</span>` : `<span class="px-2 py-1 rounded bg-yellow-50 text-yellow-700 text-xs font-bold border border-yellow-100">รอซิงค์</span>`;
+        let color = r.complianceRate === 100 ? "text-blue-700 bg-blue-50 border-blue-200" : (r.complianceRate >= 80 ? "text-blue-700 bg-blue-50 border-blue-200" : "text-yellow-700 bg-yellow-50 border-yellow-200");
         const parts = r.date.split('-'); const thDate = parts.length===3 ? `${parts[2]}/${parts[1]}/${parseInt(parts[0])+543}` : r.date;
         
         let totalYes = 0;
         const boxes = Object.keys(r.items).map(k => {
             if (r.items[k] === 'ปฏิบัติ') totalYes++;
-            let bg = r.items[k] === 'ปฏิบัติ' ? 'bg-emerald-500' : (r.items[k] === 'ไม่ปฏิบัติ' ? 'bg-rose-500' : 'bg-slate-200');
+            let bg = r.items[k] === 'ปฏิบัติ' ? 'bg-blue-500' : (r.items[k] === 'ไม่ปฏิบัติ' ? 'bg-yellow-500' : 'bg-slate-200');
             return `<div class="w-3.5 h-3.5 rounded-sm ${bg} flex items-center justify-center text-[8px] text-white font-bold m-[1px]" title="ข้อ ${k}: ${r.items[k]||'ว่าง'}">${k}</div>`;
         }).join('');
 
@@ -960,8 +960,8 @@
             <td class="py-3 px-4 text-center">${syncBadge}</td>
             <td class="py-3 px-4 text-center">
               <div class="flex justify-center space-x-1">
-                ${!r.synced ? `<button onclick="syncSingleRecord('${r.id}')" class="p-1 text-purple-600 hover:bg-purple-100 rounded"><i data-lucide="upload-cloud" class="w-4 h-4"></i></button>` : ''}
-                <button onclick="deleteRecord('${r.id}')" class="p-1 text-rose-500 hover:bg-rose-100 rounded"><i data-lucide="trash" class="w-4 h-4"></i></button>
+                ${!r.synced ? `<button onclick="syncSingleRecord('${r.id}')" class="p-1 text-blue-600 hover:bg-blue-100 rounded"><i data-lucide="upload-cloud" class="w-4 h-4"></i></button>` : ''}
+                <button onclick="deleteRecord('${r.id}')" class="p-1 text-yellow-500 hover:bg-yellow-100 rounded"><i data-lucide="trash" class="w-4 h-4"></i></button>
               </div>
             </td>
           </tr>
@@ -974,7 +974,7 @@
     function setFilterType(type) {
       currentFilterType = type;
       document.querySelectorAll('.filter-tab-btn').forEach(btn => btn.className = "filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:bg-slate-50");
-      document.getElementById(`filter-btn-${type}`).className = "filter-tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-purple-600 text-white shadow-sm";
+      document.getElementById(`filter-btn-${type}`).className = "filter-tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm";
       
       document.querySelectorAll('.filter-input-sub').forEach(el => el.classList.add('hidden'));
       if(type !== 'all') {
@@ -1082,21 +1082,21 @@
         }
 
         // เช็คเงื่อนไขถ้ามีการไม่ปฏิบัติ > 0 ค่อยแสดงข้อความสีแดง
-        const noTextLabel = stats[i].no > 0 ? `<span class="font-bold text-rose-500">ไม่ปฏิบัติ: ${pNo.toFixed(2)}% (${stats[i].no}/${totalEval})</span>` : ``;
+        const noTextLabel = stats[i].no > 0 ? `<span class="font-bold text-yellow-500">ไม่ปฏิบัติ: ${pNo.toFixed(2)}% (${stats[i].no}/${totalEval})</span>` : ``;
 
         html += `
-          <div class="break-inside-avoid mb-4 flex flex-col justify-between bg-slate-50/80 p-4 rounded-xl border border-slate-100 hover:border-purple-200 transition-all shadow-sm">
+          <div class="break-inside-avoid mb-4 flex flex-col justify-between bg-slate-50/80 p-4 rounded-xl border border-slate-100 hover:border-blue-200 transition-all shadow-sm">
             <div class="font-semibold text-slate-800 text-[13px] leading-relaxed mb-3">
-              <span class="text-purple-600 font-bold mr-1">ข้อ ${i}.</span>${stats[i].text}
+              <span class="text-blue-600 font-bold mr-1">ข้อ ${i}.</span>${stats[i].text}
             </div>
             <div class="w-full">
               <div class="flex justify-between items-end text-xs mb-1.5 px-0.5">
-                <span class="font-bold text-emerald-600">ปฏิบัติ: ${pYes.toFixed(2)}% (${stats[i].yes}/${totalEval})</span>
+                <span class="font-bold text-blue-600">ปฏิบัติ: ${pYes.toFixed(2)}% (${stats[i].yes}/${totalEval})</span>
                 ${noTextLabel}
               </div>
               <div class="w-full bg-slate-200 rounded-full h-2.5 flex overflow-hidden shadow-inner">
-                <div class="bg-purple-500 h-full transition-all duration-1000" style="width: ${pYes}%"></div>
-                <div class="bg-rose-400 h-full transition-all duration-1000" style="width: ${pNo}%"></div>
+                <div class="bg-blue-500 h-full transition-all duration-1000" style="width: ${pYes}%"></div>
+                <div class="bg-yellow-400 h-full transition-all duration-1000" style="width: ${pNo}%"></div>
               </div>
             </div>
           </div>`;
@@ -1115,8 +1115,8 @@
         data: {
           labels: lbls,
           datasets: [
-            { label: 'ปฏิบัติ (%)', data: dYes, frac: fYes, backgroundColor: '#9333ea', borderRadius: 4 }, // purple-600
-            { label: 'ไม่ปฏิบัติ (%)', data: dNo, frac: fNo, backgroundColor: '#fb7185', borderRadius: 4 } // rose-400
+            { label: 'ปฏิบัติ (%)', data: dYes, frac: fYes, backgroundColor: '#2563EB', borderRadius: 4 }, // blue-600
+            { label: 'ไม่ปฏิบัติ (%)', data: dNo, frac: fNo, backgroundColor: '#FACC15', borderRadius: 4 } // yellow-400
           ]
         },
         options: {
@@ -1161,27 +1161,27 @@
                 
                 // เปลี่ยนสีตัวเลขลำดับให้แตกต่างกัน
                 let rankBadge = "";
-                if (rank === 1) rankBadge = "bg-amber-500 text-white shadow-md border-amber-600";
+                if (rank === 1) rankBadge = "bg-yellow-500 text-white shadow-md border-yellow-600";
                 else if (rank === 2) rankBadge = "bg-slate-400 text-white shadow-sm border-slate-500";
-                else if (rank === 3) rankBadge = "bg-amber-700 text-white shadow-sm border-amber-800";
-                else rankBadge = "bg-indigo-500 text-white shadow-sm border-indigo-600";
+                else if (rank === 3) rankBadge = "bg-yellow-700 text-white shadow-sm border-yellow-800";
+                else rankBadge = "bg-blue-500 text-white shadow-sm border-blue-600";
 
                 listHtml += `
-                  <div class="break-inside-avoid mb-3 bg-white p-2.5 rounded-lg border border-blue-100 shadow-sm hover:shadow-md transition-all">
+                  <div class="break-inside-avoid mb-3 bg-white p-2.5 rounded-lg border border-sky-100 shadow-sm hover:shadow-md transition-all">
                     <div class="flex justify-between items-start gap-2">
                       <div class="flex items-start gap-2 w-full">
                          <div class="w-5 h-5 rounded-full ${rankBadge} border flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">${rank}</div>
                          <div class="text-[11px] font-medium text-slate-700 leading-snug">
-                           <span class="font-bold text-rose-600">ข้อ ${d.item}.</span> ${d.fullText}
+                           <span class="font-bold text-yellow-600">ข้อ ${d.item}.</span> ${d.fullText}
                          </div>
                       </div>
                       <div class="shrink-0 text-right flex flex-col items-end">
-                         <div class="text-rose-600 font-bold text-[12px] leading-none mb-1">${d.noCount} <span class="text-[8px] font-medium text-rose-400">ครั้ง</span></div>
+                         <div class="text-yellow-600 font-bold text-[12px] leading-none mb-1">${d.noCount} <span class="text-[8px] font-medium text-yellow-400">ครั้ง</span></div>
                          <div class="text-[9px] font-semibold text-slate-500 bg-slate-50 px-1 py-0.5 rounded leading-none">${Number(d.pct).toFixed(2)}% <span class="font-normal">(${d.noCount}/${d.totalEval})</span></div>
                       </div>
                     </div>
                     <div class="w-full bg-slate-100 rounded-full h-1 mt-2 ml-[28px]" style="width: calc(100% - 28px);">
-                       <div class="bg-rose-500 h-full rounded-full transition-all duration-1000" style="width: ${d.pct}%"></div>
+                       <div class="bg-yellow-500 h-full rounded-full transition-all duration-1000" style="width: ${d.pct}%"></div>
                     </div>
                   </div>
                 `;
