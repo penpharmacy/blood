@@ -190,8 +190,8 @@
       <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
         <div class="flex justify-between items-center pb-4 mb-4 border-b border-slate-100">
           <h2 class="font-bold text-slate-800 text-lg flex items-center space-x-2">
-            <span>รายการประเมินทั้งหมดในเครื่องนี้</span>
-            <span class="text-xs font-normal text-slate-400">(Offline Storage)</span>
+            <span>รายการประเมินจาก Google Sheets</span>
+            <span class="text-xs font-normal text-slate-400">(Google Sheets)</span>
           </h2>
           <button onclick="confirmClearHistory()" class="text-xs text-rose-600 hover:text-rose-800 font-semibold flex items-center space-x-1">
             <i data-lucide="trash-2" class="w-4 h-4"></i>
@@ -219,7 +219,7 @@
         <!-- Empty State -->
         <div id="historyEmptyState" class="hidden flex flex-col items-center justify-center py-12 text-slate-400 space-y-3">
           <i data-lucide="inbox" class="w-16 h-16 text-slate-300"></i>
-          <span class="text-base font-medium">ไม่มีประวัติการประเมินในเครื่องนี้</span>
+          <span class="text-base font-medium">ยังไม่มีข้อมูลการประเมินใน Google Sheets</span>
           <button onclick="switchTab('form')" class="px-4 py-2 bg-purple-50 text-purple-700 font-bold rounded-xl text-sm hover:bg-purple-100 transition-all">ประเมินผู้ป่วยรายใหม่</button>
         </div>
       </div>
@@ -513,7 +513,7 @@
 
     let db = {
       records: JSON.parse(localStorage.getItem('bloodculture_records')) || [],
-      apiUrl: localStorage.getItem('bloodculture_api_url') || GLOBAL_DEFAULT_API_URL
+      apiUrl: GLOBAL_DEFAULT_API_URL
     };
 
     let comparisonChartInstance = null;
@@ -846,8 +846,14 @@
       if (!db.apiUrl) return;
 
       const payload = {
-        date: record.date, ward: "", shift: "", hn: "", patientName: "", evaluator: "",
-        complianceRate: record.complianceRate, remarks: record.remarks
+        date: record.date,
+        department: record.department || "",
+        patientName: record.patientName || "",
+        practitioner: record.practitioner || "",
+        evaluator: record.evaluator || "",
+        evalTime: record.evalTime || "",
+        complianceRate: record.complianceRate,
+        remarks: record.remarks || ""
       };
       // Dynamically add items 1 to 15
       for(let i=1; i<=TOTAL_ITEMS; i++) payload['item'+i] = record.items[i] || "";
