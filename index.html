@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -1105,12 +1107,15 @@
       }
 
       const criticalEl = document.getElementById('repCriticalImprovement');
-      if (lowestItems.length > 0 && lowestRate <= 100) {
+      const evaluatedItemsCount = stats.filter((item, index) => index > 0 && (item.yes + item.no) > 0).length;
+      if (lowestItems.length > 0 && lowestRate < 100) {
         criticalEl.innerHTML = lowestItems
           .map(item => `ข้อ ${item.item}. ${item.text} <span class="whitespace-nowrap">(${Number(lowestRate).toFixed(2)}%)</span>`)
           .join('<br>');
+      } else if (evaluatedItemsCount > 0) {
+        criticalEl.innerHTML = `ยังไม่มีรายการที่ต้องปรับปรุง<br><span class="font-normal text-[10px] sm:text-xs">(ประเมินแล้ว ${evaluatedItemsCount} รายการ และได้ 100%)</span>`;
       } else {
-        criticalEl.innerText = "สมบูรณ์ทุกข้อ";
+        criticalEl.innerText = "ไม่มีข้อมูล";
       }
       document.getElementById('itemBreakdownContainer').innerHTML = html;
 
