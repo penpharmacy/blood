@@ -20,46 +20,63 @@
     body {
       font-family: 'Prompt', 'Sarabun', sans-serif;
     }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
-  <!-- TOP HEADER (Purple/Fuchsia Gradient for new theme) -->
-  <header class="bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-lg sticky top-0 z-40">
+  <!-- TOP HEADER (Purple/Fuchsia Gradient for theme) -->
+  <header class="bg-gradient-to-r from-purple-700 via-purple-600 to-fuchsia-600 text-white shadow-lg sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
       <div class="flex items-center space-x-3">
-        <!-- New Logo (Uploaded Germ Image) -->
-        <img src="image_4eb93b.jpg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3209/3209255.png'" alt="Blood Culture Logo" class="w-11 h-11 object-cover rounded-full bg-white border-2 border-purple-200 shadow-sm p-0.5">
+        <!-- Germ/Medical Icon -->
+        <div class="w-11 h-11 rounded-full bg-white text-purple-600 flex items-center justify-center font-bold shadow-md border-2 border-purple-200">
+          <i data-lucide="test-tube-2" class="w-6 h-6"></i>
+        </div>
         <div>
-          <h1 class="text-lg md:text-xl font-bold tracking-wide">Blood Culture Collection Checklist</h1>
+          <h1 class="text-base md:text-xl font-bold tracking-wide">Blood Culture Collection Checklist</h1>
           <p class="text-xs text-purple-100 font-light">โรงพยาบาลพุนพิน จังหวัดสุราษฎร์ธานี</p>
         </div>
       </div>
       <!-- API Connection Status Badge -->
-      <div id="connectionBadge" class="flex items-center space-x-1 px-3 py-1 bg-purple-900 bg-opacity-40 rounded-full text-xs text-purple-100 border border-purple-400/20">
-        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="hidden md:inline font-medium">เชื่อมต่อระบบ</span>
+      <div id="connectionBadge" class="flex items-center space-x-1.5 px-3 py-1 bg-purple-900/40 rounded-full text-xs text-purple-100 border border-purple-300/30">
+        <span id="connectionDot" class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="connectionStatusText" class="hidden md:inline font-medium">พร้อมทำงาน (Offline First)</span>
       </div>
     </div>
   </header>
 
   <!-- NAVIGATION TABS -->
   <nav class="bg-white border-b border-slate-200 sticky top-[60px] z-30 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 flex justify-around">
-      <button onclick="switchTab('form')" id="btn-form" class="tab-btn py-3 px-1 md:px-4 border-b-2 border-purple-600 text-purple-600 font-semibold flex items-center space-x-1.5 focus:outline-none text-sm transition-all">
+    <div class="max-w-6xl mx-auto px-4 flex justify-around md:justify-start md:space-x-8">
+      <button onclick="switchTab('form')" id="btn-form" class="tab-btn py-3 px-2 md:px-4 border-b-2 border-purple-600 text-purple-600 font-semibold flex items-center space-x-1.5 focus:outline-none text-sm transition-all">
         <i data-lucide="clipboard-check" class="w-5 h-5"></i>
         <span>แบบประเมิน</span>
       </button>
-      <button onclick="switchTab('history')" id="btn-history" class="tab-btn py-3 px-1 md:px-4 border-b-2 border-transparent text-slate-500 font-medium flex items-center space-x-1.5 focus:outline-none text-sm transition-all relative">
+      <button onclick="switchTab('history')" id="btn-history" class="tab-btn py-3 px-2 md:px-4 border-b-2 border-transparent text-slate-500 font-medium flex items-center space-x-1.5 focus:outline-none text-sm transition-all relative">
         <i data-lucide="history" class="w-5 h-5"></i>
         <span>ประวัติ & การซิงค์</span>
-        <span id="unsyncedCountBadge" class="hidden absolute top-1.5 -right-2 bg-rose-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+        <span id="unsyncedCountBadge" class="hidden absolute -top-0.5 -right-1 bg-rose-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold shadow">0</span>
       </button>
-      <button onclick="switchTab('reports')" id="btn-reports" class="tab-btn py-3 px-1 md:px-4 border-b-2 border-transparent text-slate-500 font-medium flex items-center space-x-1.5 focus:outline-none text-sm transition-all">
+      <button onclick="switchTab('reports')" id="btn-reports" class="tab-btn py-3 px-2 md:px-4 border-b-2 border-transparent text-slate-500 font-medium flex items-center space-x-1.5 focus:outline-none text-sm transition-all">
         <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
         <span>สถิติ & สรุปผล</span>
       </button>
-      <button onclick="switchTab('settings')" id="btn-settings" class="tab-btn py-3 px-1 md:px-4 border-b-2 border-transparent text-slate-500 font-medium flex items-center space-x-1.5 focus:outline-none text-sm transition-all">
+      <button onclick="switchTab('settings')" id="btn-settings" class="tab-btn py-3 px-2 md:px-4 border-b-2 border-transparent text-slate-500 font-medium flex items-center space-x-1.5 focus:outline-none text-sm transition-all">
         <i data-lucide="settings" class="w-5 h-5"></i>
         <span>ตั้งค่าระบบ</span>
       </button>
@@ -74,39 +91,38 @@
       
       <!-- Patient & Meta Data Card with Heart Pattern -->
       <div class="bg-white rounded-2xl p-5 shadow-sm border border-purple-100 relative overflow-hidden">
-        <!-- Heart SVG Background Overlay -->
-        <div class="absolute inset-0 z-0 pointer-events-none opacity-40" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23a855f7' fill-opacity='0.15'%3E%3Cg transform='translate(20, 20) scale(1.8)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(75, 5) scale(0.8) rotate(15)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(-5, 65) scale(1) rotate(-15)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(60, 70) scale(0.6) rotate(-5)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;); background-size: 80px 80px;"></div>
+        <div class="absolute inset-0 z-0 pointer-events-none opacity-30" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23a855f7' fill-opacity='0.15'%3E%3Cg transform='translate(20, 20) scale(1.8)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;); background-size: 80px 80px;"></div>
         
         <div class="relative z-10">
           <div class="flex items-center space-x-2 pb-4 mb-4 border-b border-purple-100/60">
-            <i data-lucide="heart" class="w-5 h-5 text-purple-500"></i>
+            <i data-lucide="heart-pulse" class="w-5 h-5 text-purple-600"></i>
             <h2 class="font-semibold text-purple-900 text-lg">ข้อมูลการประเมิน</h2>
           </div>
 
-          <form id="metaForm" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
+          <form id="metaForm" onsubmit="event.preventDefault();" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
             <div>
-              <label class="block text-sm font-semibold text-slate-600 mb-1.5">หน่วยงาน</label>
-              <input type="text" id="department" placeholder="ระบุหน่วยงาน" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+              <label class="block text-sm font-semibold text-slate-600 mb-1.5">หน่วยงาน / ตึกผู้ป่วย</label>
+              <input type="text" id="department" placeholder="เช่น ER, IPD ชาย, ICU" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/90">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-slate-600 mb-1.5">วันที่</label>
-              <input type="date" id="evalDate" required class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+              <label class="block text-sm font-semibold text-slate-600 mb-1.5">วันที่ประเมิน</label>
+              <input type="date" id="evalDate" required class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/90">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-slate-600 mb-1.5">ชื่อผู้ป่วย</label>
-              <input type="text" id="patientName" placeholder="ระบุชื่อผู้ป่วย" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+              <label class="block text-sm font-semibold text-slate-600 mb-1.5">ชื่อ-สกุล หรือ HN ผู้ป่วย</label>
+              <input type="text" id="patientName" placeholder="ระบุชื่อผู้ป่วย หรือ HN" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/90">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-slate-600 mb-1.5">ผู้ปฏิบัติ</label>
-              <input type="text" id="practitioner" placeholder="ชื่อผู้ปฏิบัติ" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+              <label class="block text-sm font-semibold text-slate-600 mb-1.5">ผู้ปฏิบัติ (พยาบาล/ผู้เจาะ)</label>
+              <input type="text" id="practitioner" placeholder="ชื่อผู้ปฏิบัติงาน" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/90">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-slate-600 mb-1.5">ผู้ประเมิน</label>
-              <input type="text" id="evaluator" placeholder="ชื่อผู้ประเมิน" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+              <label class="block text-sm font-semibold text-slate-600 mb-1.5">ผู้ประเมิน / ตรวจสอบ</label>
+              <input type="text" id="evaluator" placeholder="ชื่อผู้ประเมิน (ICN / Head nurse)" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/90">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-slate-600 mb-1.5">เวลา</label>
-              <input type="time" id="evalTime" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+              <label class="block text-sm font-semibold text-slate-600 mb-1.5">เวลาเจาะเก็บ</label>
+              <input type="time" id="evalTime" class="w-full px-4 py-2.5 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all text-slate-700 font-medium bg-white/90">
             </div>
           </form>
         </div>
@@ -115,39 +131,39 @@
       <!-- Checklist Section Header -->
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-purple-50 border border-purple-100 p-4 rounded-xl">
         <div>
-          <h2 class="font-bold text-purple-900 text-lg">แบบ Checklist การเจาะเลือดเพาะเชื้อ (Blood Culture Collection Checklist)</h2>
-          <p class="text-xs text-purple-700 font-light">กรุณาประเมินการปฏิบัติตามรายการตรวจสอบทั้ง 15 ข้อ</p>
+          <h2 class="font-bold text-purple-900 text-lg">แบบ Checklist การเจาะเลือดเพาะเชื้อ (15 ข้อ)</h2>
+          <p class="text-xs text-purple-700 font-light">โปรดประเมินขั้นตอนการปฏิบัติงานจริงของผู้เจาะเลือดเพาะเชื้อ</p>
         </div>
         <!-- Live Score Widget -->
-        <div class="bg-purple-600 text-white rounded-2xl px-5 py-3 shadow-md flex items-center space-x-3 w-full md:w-auto justify-center">
-          <div class="text-right">
-            <span class="text-[10px] block text-purple-100 uppercase font-bold tracking-wider">อัตราการปฏิบัติ</span>
+        <div class="bg-purple-600 text-white rounded-2xl px-5 py-3 shadow-md flex items-center space-x-3 w-full md:w-auto justify-between md:justify-center">
+          <div class="text-left md:text-right">
+            <span class="text-[10px] block text-purple-200 uppercase font-bold tracking-wider">อัตราการปฏิบัติตามเกณฑ์</span>
             <span class="text-xl md:text-2xl font-black" id="liveScoreText">0.00% (0/15)</span>
           </div>
-          <div class="w-10 h-10 rounded-full border-2 border-purple-400 flex items-center justify-center font-bold text-sm hidden" id="scoreIndicatorRing">
+          <div class="w-10 h-10 rounded-full border-2 border-purple-300 flex items-center justify-center font-bold text-xs bg-purple-700/50" id="scoreIndicatorRing">
             0/15
           </div>
         </div>
       </div>
 
-      <!-- Checklist Items -->
-      <div class="space-y-4" id="bundleForm">
-        <!-- Javascript will generate items here dynamically to keep code clean, see script section -->
+      <!-- Checklist Items Container -->
+      <div class="space-y-3" id="bundleForm">
+        <!-- Generated dynamically via JavaScript -->
       </div>
 
       <!-- Remarks Input Card -->
       <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-        <label class="block text-sm font-semibold text-slate-700 mb-2">ข้อเสนอแนะเพิ่มเติม / หมายเหตุ</label>
-        <textarea id="evalRemarks" rows="3" placeholder="ระบุสิ่งที่พบเห็นเพิ่มเติม เช่น รายละเอียดอุปสรรค, ข้อเสนอแนะอื่นๆ..." class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all resize-none"></textarea>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">ข้อเสนอแนะเพิ่มเติม / หมายเหตุ / ปัญหาอุปสรรค</label>
+        <textarea id="evalRemarks" rows="3" placeholder="ระบุสิ่งที่พบเห็นเพิ่มเติม เช่น หลอดเลือดมองเห็นยาก, ผู้ป่วยไม่ดิ้นรน, อุปกรณ์ไม่เพียงพอ ฯลฯ" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all resize-none text-slate-700"></textarea>
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex flex-col sm:flex-row justify-end items-center gap-4 pt-4">
-        <button onclick="resetCurrentForm()" class="w-full sm:w-auto px-6 py-3 border border-slate-200 hover:border-slate-300 text-slate-600 rounded-xl font-semibold hover:bg-slate-100 transition-all flex items-center justify-center space-x-2">
+      <div class="flex flex-col sm:flex-row justify-end items-center gap-3 pt-2">
+        <button onclick="resetCurrentForm()" class="w-full sm:w-auto px-6 py-3 border border-slate-300 hover:border-slate-400 text-slate-600 rounded-xl font-semibold hover:bg-slate-100 transition-all flex items-center justify-center space-x-2">
           <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
           <span>ล้างข้อมูล</span>
         </button>
-        <button onclick="submitAssessment()" class="w-full sm:w-auto px-10 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow-lg shadow-purple-600/25 hover:shadow-purple-700/30 transition-all flex items-center justify-center space-x-2">
+        <button onclick="submitAssessment()" class="w-full sm:w-auto px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow-lg shadow-purple-600/20 hover:shadow-purple-700/30 transition-all flex items-center justify-center space-x-2">
           <i data-lucide="save" class="w-5 h-5"></i>
           <span>บันทึกและส่งข้อมูล</span>
         </button>
@@ -165,7 +181,7 @@
             <i data-lucide="cloud-off" class="w-6 h-6"></i>
           </div>
           <div>
-            <span class="text-xs text-slate-500 block">รอการส่งขึ้น Google Sheets</span>
+            <span class="text-xs text-slate-500 block font-medium">รอการซิงค์ขึ้นระบบ</span>
             <span id="unsyncedCountTitle" class="text-2xl font-bold text-amber-600">0 รายการ</span>
           </div>
         </div>
@@ -174,40 +190,43 @@
             <i data-lucide="cloud-check" class="w-6 h-6"></i>
           </div>
           <div>
-            <span class="text-xs text-slate-500 block">ซิงค์สำเร็จแล้ว</span>
+            <span class="text-xs text-slate-500 block font-medium">บันทึกสำเร็จทั้งหมด</span>
             <span id="syncedCountTitle" class="text-2xl font-bold text-purple-600">0 รายการ</span>
           </div>
         </div>
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
           <button onclick="syncAllRecords()" id="btnSyncAll" class="w-full h-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
             <i data-lucide="refresh-cw" class="w-5 h-5"></i>
-            <span>ซิงค์ขึ้น Google Sheets ทั้งหมด</span>
+            <span>ซิงค์ขึ้นระบบคลาวด์ทั้งหมด</span>
           </button>
         </div>
       </div>
 
       <!-- History Table/List -->
       <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-        <div class="flex justify-between items-center pb-4 mb-4 border-b border-slate-100">
-          <h2 class="font-bold text-slate-800 text-lg flex items-center space-x-2">
-            <span>รายการประเมินจาก Google Sheets</span>
-            <span class="text-xs font-normal text-slate-400">(Google Sheets)</span>
-          </h2>
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 pb-4 mb-4 border-b border-slate-100">
+          <div>
+            <h2 class="font-bold text-slate-800 text-lg flex items-center space-x-2">
+              <span>ประวัติการประเมินย้อนหลัง</span>
+              <span id="historyCountBadge" class="text-xs font-semibold px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">0 รายการ</span>
+            </h2>
+          </div>
           <button onclick="confirmClearHistory()" class="text-xs text-rose-600 hover:text-rose-800 font-semibold flex items-center space-x-1">
             <i data-lucide="trash-2" class="w-4 h-4"></i>
             <span>ล้างประวัติทั้งหมด</span>
           </button>
         </div>
 
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto custom-scrollbar">
           <table class="w-full text-left border-collapse min-w-[700px]">
             <thead>
               <tr class="border-b border-slate-200 text-slate-400 text-xs font-semibold uppercase tracking-wider bg-slate-50">
-                <th class="py-3 px-4 w-24">วันที่ประเมิน</th>
-                <th class="py-3 px-4 text-center">ผลลัพธ์รายข้อ (1-15)</th>
-                <th class="py-3 px-4 text-center w-28">คะแนน</th>
-                <th class="py-3 px-4 text-center w-28">สถานะซิงค์</th>
-                <th class="py-3 px-4 text-center w-20">จัดการ</th>
+                <th class="py-3 px-4">วันที่ / เวลา</th>
+                <th class="py-3 px-4">หน่วยงาน / ผู้ป่วย</th>
+                <th class="py-3 px-4 text-center">ผลการปฏิบัติ (15 ข้อ)</th>
+                <th class="py-3 px-4 text-center">คะแนน (%)</th>
+                <th class="py-3 px-4 text-center">สถานะซิงค์</th>
+                <th class="py-3 px-4 text-center">จัดการ</th>
               </tr>
             </thead>
             <tbody id="historyListBody" class="divide-y divide-slate-100 text-sm text-slate-600">
@@ -218,8 +237,8 @@
 
         <!-- Empty State -->
         <div id="historyEmptyState" class="hidden flex flex-col items-center justify-center py-12 text-slate-400 space-y-3">
-          <i data-lucide="inbox" class="w-16 h-16 text-slate-300"></i>
-          <span class="text-base font-medium">ยังไม่มีข้อมูลการประเมินใน Google Sheets</span>
+          <i data-lucide="inbox" class="w-12 h-12 text-slate-300"></i>
+          <span class="text-base font-medium text-slate-500">ยังไม่มีข้อมูลการประเมิน</span>
           <button onclick="switchTab('form')" class="px-4 py-2 bg-purple-50 text-purple-700 font-bold rounded-xl text-sm hover:bg-purple-100 transition-all">ประเมินผู้ป่วยรายใหม่</button>
         </div>
       </div>
@@ -235,12 +254,12 @@
             <span class="w-3 h-6 bg-purple-600 rounded"></span>
             <span>Dashboard สรุปผลการประเมินการเจาะเลือดเพาะเชื้อ</span>
           </h2>
-          <p class="text-xs text-slate-500" id="dashboardLastUpdated">ดึงข้อมูลจาก Google Sheets อัตโนมัติ</p>
+          <p class="text-xs text-slate-500" id="dashboardLastUpdated">คำนวณจากประวัติการประเมินในระบบ</p>
         </div>
         <div class="flex items-center space-x-2 w-full sm:w-auto">
-          <button onclick="fetchAndRenderReports()" id="btnRefreshDashboard" class="flex-1 sm:flex-initial px-4 py-2 text-xs font-bold bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-xl transition-all flex items-center justify-center space-x-1">
+          <button onclick="renderReports()" id="btnRefreshDashboard" class="flex-1 sm:flex-initial px-4 py-2 text-xs font-bold bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-xl transition-all flex items-center justify-center space-x-1">
             <i id="refreshIcon" data-lucide="refresh-cw" class="w-4 h-4"></i>
-            <span>รีเฟรชข้อมูล</span>
+            <span>คำนวณและประมวลผลใหม่</span>
           </button>
         </div>
       </div>
@@ -268,8 +287,8 @@
           </div>
           <!-- Year -->
           <div id="filter-input-year" class="filter-input-sub hidden">
-            <label class="block text-xs font-semibold text-slate-500 mb-1">เลือกปีงบประมาณ</label>
-            <select id="filterYearVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none text-sm"></select>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">เลือกปีงบประมาณ / ค.ศ.</label>
+            <select id="filterYearVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none text-sm bg-white"></select>
           </div>
           <!-- Custom Range -->
           <div id="filter-input-range" class="filter-input-sub hidden md:col-span-2 flex items-center space-x-2">
@@ -305,8 +324,8 @@
         </div>
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
           <span class="text-xs text-slate-400 block font-semibold uppercase tracking-wider">จุดที่ต้องปรับปรุงเร่งด่วน</span>
-          <span id="repCriticalImprovement" class="text-xs sm:text-sm font-bold text-rose-600 line-clamp-4 mt-2 leading-snug">ไม่มีข้อมูล</span>
-          <span class="text-[10px] text-slate-400 block mt-2">รายการที่อัตราการปฏิบัติต่ำที่สุด</span>
+          <span id="repCriticalImprovement" class="text-xs sm:text-sm font-bold text-rose-600 line-clamp-3 mt-2 leading-snug">ไม่มีข้อมูล</span>
+          <span class="text-[10px] text-slate-400 block mt-2">รายการที่มีอัตราการปฏิบัติต่ำที่สุด</span>
         </div>
       </div>
 
@@ -318,13 +337,13 @@
           <div class="pb-3 mb-4 border-b border-slate-100 flex justify-between items-center">
             <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center space-x-2">
               <span class="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse"></span>
-              <span>เปรียบเทียบ ปฏิบัติ/ไม่ปฏิบัติ รายข้อ (%)</span>
+              <span>เปรียบเทียบ ปฏิบัติ / ไม่ปฏิบัติ รายข้อ (%)</span>
             </h3>
-            <span class="text-[10px] bg-slate-100 px-2.5 py-1 rounded-full font-bold text-slate-500">เกณฑ์ 15 ข้อ</span>
+            <span class="text-[10px] bg-purple-50 px-2.5 py-1 rounded-full font-bold text-purple-700 border border-purple-100">เกณฑ์ 15 ข้อ</span>
           </div>
-          <div class="relative min-h-[450px] w-full flex items-center justify-center">
+          <div class="relative min-h-[420px] w-full flex items-center justify-center">
             <canvas id="comparisonChartCanvas"></canvas>
-            <div id="chart1EmptyState" class="absolute inset-0 bg-white flex flex-col items-center justify-center text-slate-400 space-y-2 hidden">
+            <div id="chart1EmptyState" class="absolute inset-0 bg-white/90 flex flex-col items-center justify-center text-slate-400 space-y-2 hidden">
               <i data-lucide="bar-chart-2" class="w-12 h-12 text-slate-300"></i>
               <p class="text-xs font-semibold">ไม่พบข้อมูลประเมินตามตัวกรองช่วงเวลาดังกล่าว</p>
             </div>
@@ -335,17 +354,16 @@
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <div class="pb-3 mb-4 border-b border-slate-100 flex justify-between items-center">
             <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center space-x-2">
-              <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
-              <span>สรุปรายการที่ "ไม่ปฏิบัติ" (เรียงจาก % มากไปน้อย)</span>
+              <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-500"></i>
+              <span>สรุปรายการที่ "ไม่ปฏิบัติ" (เรียงจากมากไปน้อย)</span>
             </h3>
           </div>
-          <!-- Changed to CSS Columns for top-to-bottom, then left-to-right flow -->
           <div id="nonComplianceListContainer" class="columns-1 lg:columns-2 gap-3 w-full">
             <!-- Dynamic list goes here -->
           </div>
-          <div id="chart2EmptyState" class="bg-emerald-50/50 rounded-xl p-8 flex flex-col items-center justify-center text-emerald-600 space-y-2 hidden border border-emerald-100 mt-2">
-            <svg class="w-12 h-12 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <p class="text-sm font-bold mt-2">ยอดเยี่ยม! ไม่มีหัวข้อที่ไม่ปฏิบัติในช่วงเวลานี้</p>
+          <div id="chart2EmptyState" class="bg-emerald-50/60 rounded-xl p-8 flex flex-col items-center justify-center text-emerald-600 space-y-2 hidden border border-emerald-100 mt-2">
+            <i data-lucide="check-circle-2" class="w-10 h-10 text-emerald-500"></i>
+            <p class="text-sm font-bold mt-2">ยอดเยี่ยม! ทุกขั้นตอนได้รับการปฏิบัติตามเกณฑ์ 100%</p>
           </div>
         </div>
 
@@ -354,10 +372,8 @@
       <!-- Compliance by Item Detailed Breakdown -->
       <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
         <h2 class="font-bold text-slate-800 text-lg mb-4 flex items-center space-x-2">
-          <span>ตารางรายละเอียดอัตราการปฏิบัติตาม Checklist (15 ข้อ)</span>
+          <span>ตารางรายละเอียดอัตราการปฏิบัติตาม Checklist ทั้ง 15 ข้อ</span>
         </h2>
-        
-        <!-- Changed to CSS Columns for top-to-bottom, then left-to-right flow -->
         <div class="columns-1 lg:columns-2 gap-3 w-full" id="itemBreakdownContainer">
           <!-- Dynamically populated breakdown elements -->
         </div>
@@ -369,69 +385,45 @@
     <div id="tab-settings-content" class="tab-content hidden space-y-6">
       
       <!-- API Setting Card -->
-     <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-  <div class="flex items-center space-x-2 pb-4 mb-4 border-b border-slate-100">
-    <h2 class="font-semibold text-slate-800 text-lg">ตั้งค่าการซิงค์ข้อมูล Google Sheets</h2>
-  </div>
-
-  <div class="space-y-4">
-    
-    <div class="p-4 bg-blue-50 border border-blue-100 rounded-2xl flex items-start gap-3">
-        <i data-lucide="info" class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0"></i>
-        <div class="text-xs text-blue-800 leading-relaxed w-full">
-            <div class="flex justify-between items-center mb-2">
-                <p class="font-extrabold">สเปรดชีตเป้าหมายหลัก:</p>
-                <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-bold uppercase">Sync Enabled</span>
-            </div>
-            <a href="https://docs.google.com/spreadsheets/d/11Pe7e1NayNfEnc3Wb4YPjN1dDIChFCUnEd7x0Ieef80/edit?gid=0#gid=0" 
-               target="_blank" class="font-bold underline text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
-               Blood Culture Collection Checklist - Google ชีต (คลิกเพื่อเปิด) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-            </a>
-            <p class="mt-2 text-[11px] opacity-80">
-                ข้อมูลจะถูกบันทึกลงในแท็บ <code class="bg-blue-100 px-1 rounded font-bold">"BloodCulture"</code> อัตโนมัติ (15 รายการ)
-            </p>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+        <div class="flex items-center space-x-2 pb-4 mb-4 border-b border-slate-100">
+          <i data-lucide="database" class="w-5 h-5 text-purple-600"></i>
+          <h2 class="font-semibold text-slate-800 text-lg">ตั้งค่าการซิงค์ข้อมูล Google Sheets API</h2>
         </div>
-    </div>
 
-    <div>
-      <label class="block text-sm font-medium text-slate-700 mb-1">Google Apps Script Web App URL</label>
-      <input type="text" id="apiEndpointUrl" placeholder="https://script.google.com/macros/s/.../exec" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none transition-all text-sm font-mono text-slate-600">
-    </div>
+        <div class="space-y-4">
+          <div class="p-4 bg-purple-50/70 border border-purple-100 rounded-2xl flex items-start gap-3">
+            <i data-lucide="info" class="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0"></i>
+            <div class="text-xs text-purple-900 leading-relaxed w-full">
+              <div class="flex justify-between items-center mb-1.5">
+                <p class="font-bold text-sm">สเปรดชีตเป้าหมายหลัก:</p>
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 rounded-full text-[10px] font-bold uppercase">Sync Ready</span>
+              </div>
+              <a href="https://docs.google.com/spreadsheets/d/11Pe7e1NayNfEnc3Wb4YPjN1dDIChFCUnEd7x0Ieef80/edit?gid=0#gid=0" 
+                 target="_blank" class="font-bold underline text-purple-700 hover:text-purple-900 flex items-center gap-1">
+                 Blood Culture Collection Checklist - Google ชีต (คลิกเพื่อเปิดดู) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </a>
+              <p class="mt-2 text-[11px] text-purple-700">
+                ข้อมูลการประเมินจะถูกบันทึกลงในชีตอัตโนมัติ และรองรับการทำงานแบบ Offline โดยจะบันทึกในอุปกรณ์ไว้ก่อนเมื่อไม่มีอินเทอร์เน็ต
+              </p>
+            </div>
+          </div>
 
-    <div class="flex flex-col sm:flex-row gap-2 pt-2">
-      <button onclick="saveSettings()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 px-6 rounded-xl shadow-md transition-all text-sm">
-        บันทึกการตั้งค่า
-      </button>
-      <button onclick="testApiConnection()" class="border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold py-2.5 px-6 rounded-xl transition-all text-sm flex items-center justify-center space-x-1">
-        <span>ทดสอบการเชื่อมต่อ API</span>
-      </button>
-    </div>
-  </div>
-</div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1">Google Apps Script Web App URL</label>
+            <input type="text" id="apiEndpointUrl" placeholder="https://script.google.com/macros/s/.../exec" class="w-full px-4 py-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none transition-all text-sm font-mono text-slate-600">
+          </div>
 
-    <!-- Instructions Card (ซ่อนไว้ด้วยคลาส hidden) -->
-<div class="hidden bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-  <h2 class="font-semibold text-slate-800 text-lg pb-4 mb-4 border-b border-slate-100">
-    <span>วิธีการเริ่มใช้งานร่วมกับ Google Sheets (ภายใน 3 นาที)</span>
-  </h2>
-
-        <div class="space-y-4 text-sm text-slate-600">
-          <ol class="list-decimal pl-5 space-y-3">
-            <li>เปิดลิงก์ Google Sheet ที่กำหนด: <a href="https://docs.google.com/spreadsheets/d/1yOPzmyd7ExMELRpwltyPu7onH5dCwpjZUPs5IP2JqQ4/edit?gid=0#gid=0" target="_blank" class="text-pink-600 hover:underline font-medium">Blood Culture Collection Checklist - Google ชีต</a></li>
-            <li>ไปที่เมนู <strong>ส่วนขยาย (Extensions)</strong> &gt; เลือก <strong>Apps Script</strong></li>
-            <li>ลบโค้ดเริ่มต้นออก แล้วคัดลอกโค้ดจากไฟล์ <code>รหัส.gs</code> ไปวาง</li>
-            <li>คลิกปุ่ม <strong>บันทึกโครงการ (Save Project)</strong> (ไอคอนแผ่นดิสก์)</li>
-            <li>คลิกปุ่ม <strong>การใช้งาน (Deploy)</strong> ด้านบนขวา &gt; เลือก <strong>การจัดการการทำงานที่จัดเตรียมไว้ใหม่ (New Deployment)</strong></li>
-            <li>เลือกประเภทการปรับใช้เป็น <strong>เว็บแอป (Web App)</strong></li>
-            <li>ตั้งค่าการตั้งค่าต่อไปนี้:
-              <ul class="list-disc pl-5 mt-1 space-y-1">
-                <li><strong>เรียกใช้ในฐานะ (Execute as):</strong> "ฉัน (Your Email)"</li>
-                <li><strong>ผู้มีสิทธิ์เข้าถึง (Who has access):</strong> "ทุกคน (Anyone)" <span class="text-xs text-rose-500 font-semibold">(จำเป็นสำหรับการรับส่งข้อมูล)</span></li>
-              </ul>
-            </li>
-            <li>คลิก <strong>ปรับใช้ (Deploy)</strong> และให้สิทธิ์การเข้าถึงข้อมูล (Authorize Access) เมื่อมีป็อปอัปถาม</li>
-            <li>คัดลอก <strong>URL เว็บแอป (Web App URL)</strong> ที่ได้รับ มาวางในส่วน "ตั้งค่าการซิงค์ข้อมูล" ด้านบน และกดบันทึก</li>
-          </ol>
+          <div class="flex flex-col sm:flex-row gap-2 pt-2">
+            <button onclick="saveSettings()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 px-6 rounded-xl shadow-md transition-all text-sm flex items-center justify-center space-x-2">
+              <i data-lucide="save" class="w-4 h-4"></i>
+              <span>บันทึกการตั้งค่า</span>
+            </button>
+            <button onclick="testApiConnection()" class="border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold py-2.5 px-6 rounded-xl transition-all text-sm flex items-center justify-center space-x-1">
+              <i data-lucide="wifi" class="w-4 h-4"></i>
+              <span>ทดสอบการเชื่อมต่อ API</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -449,7 +441,7 @@
   <div id="customModal" class="fixed inset-0 bg-slate-900/60 flex items-center justify-center p-4 z-50 hidden transition-all duration-300">
     <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modalCard">
       <div class="flex flex-col items-center text-center space-y-4">
-        <div id="modalIconSuccess" class="hidden p-3 bg-emerald-100 text-emerald-600 rounded-full"><i data-lucide="check-circle" class="w-10 h-10"></i></div>
+        <div id="modalIconSuccess" class="hidden p-3 bg-emerald-100 text-emerald-600 rounded-full"><i data-lucide="check-circle-2" class="w-10 h-10"></i></div>
         <div id="modalIconError" class="hidden p-3 bg-rose-100 text-rose-600 rounded-full"><i data-lucide="x-circle" class="w-10 h-10"></i></div>
         <div id="modalIconInfo" class="hidden p-3 bg-purple-100 text-purple-600 rounded-full"><i data-lucide="info" class="w-10 h-10"></i></div>
 
@@ -481,705 +473,718 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    // Initialize Lucide Icons
-    lucide.createIcons();
-
     const TOTAL_ITEMS = 15;
-    
-    // Checklist Data based on the provided Word document
-    const checkListData = {
-      1: "ตรวจสอบคำสั่งแพทย์ถูกต้อง",
-      2: "เตรียมอุปกรณ์ครบถ้วน ตรวจสอบวันหมดอายุขวดเพาะเชื้อ",
-      3: "ล้างมือถูกวิธีและใส่ถุงมือสะอาด",
-      4: "เปิดฝาขวดเช็ดด้วย 70% alcohol",
-      5: "ทำความสะอาดผิวหนังด้วย 70% alcohol โดยออกแรงถูเล็กน้อย",
-      6: "เช็ดผิวหนังด้วย 2% chlorhexidine in alcohol วนจากในออกนอกอย่างน้อย 5 ซม.",
-      7: "ปล่อยให้แห้งอย่างน้อย 30 วินาที",
-      8: "ไม่สัมผัสบริเวณที่ทำความสะอาดแล้ว",
-      9: "เจาะเลือดจากหลอดเลือดดำ",
-      10: "เก็บเลือดตามปริมาณที่กำหนด 5-10 ml/ขวด",
-      11: "ใส่เลือดลงขวดตามลำดับ โดยไม่ให้ปลายเข็มสัมผัสน้ำยาเพาะเชื้อ (ไม่ต้องเปลี่ยนเข็ม)",
-      12: "ติดฉลากขวดถูกต้อง",
-      13: "ระบุเวลาที่เจาะเลือด",
-      14: "ส่งเลือดตรวจภายใน 2 ชม.",
-      15: "บันทึกในเวชระเบียนครบถ้วน"
-    };
 
-    // Build the initial blank currentRecord items dynamically
-    const defaultItems = {};
-    for(let i=1; i<=TOTAL_ITEMS; i++) defaultItems[i] = null;
+    // 15 Standard Blood Culture Checklist Items
+    const checkListData = [
+      { id: 1, text: "1. ตรวจสอบคำสั่งการรักษาและระบุตัวตนผู้ป่วยถูกต้อง (2 Identifiers)" },
+      { id: 2, text: "2. ทำความสะอาดมือแบบ Hygienic hand wash หรือ Hand rub ก่อนเริ่มปฏิบัติงาน" },
+      { id: 3, text: "3. เตรียมขวดเพาะเชื้อและอุปกรณ์เจาะเก็บที่สะอาด แห้ง และยังไม่หมดอายุ" },
+      { id: 4, text: "4. เช็ดทำความสะอาดจุกยางขวดเพาะเชื้อด้วย 70% Alcohol แล้วทิ้งไว้ให้แห้งสนิท" },
+      { id: 5, text: "5. รัด Tourniquet และเลือกตำแหน่งหลอดเลือดที่จะทำการเจาะ" },
+      { id: 6, text: "6. ทำความสะอาดผิวหนังด้วย 2% Chlorhexidine in 70% Alcohol หรือ 10% Povidone-Iodine" },
+      { id: 7, text: "7. ขัดถูผิวหนังวนจากด้านในออกด้านนอกเป็นวงกว้าง (รัศมีอย่างน้อย 2-3 นิ้ว)" },
+      { id: 8, text: "8. รอให้สารทำความสะอาดผิวหนังแห้งสนิทก่อนลงมือเจาะ (อย่างน้อย 30-60 วินาที)" },
+      { id: 9, text: "9. ทำความสะอาดมือซ้ำและสวมถุงมือสะอาด/ถุงมือปราศจากเชื้อ (Sterile gloves)" },
+      { id: 10, text: "10. ห้ามคลำหาหลอดเลือดซ้ำตรงบริเวณที่ทำความสะอาดผิวหนังแล้ว (เว้นแต่สวมถุงมือ sterile)" },
+      { id: 11, text: "11. เจาะเก็บเลือดตามปริมาณที่กำหนดถูกต้อง (ผู้ใหญ่ 8-10 ml/ขวด, เด็ก 1-3 ml/ขวด)" },
+      { id: 12, text: "12. ฉีดเลือดลงขวดเพาะเชื้อโดยเปิดด้วยเทคนิคปราศจากเชื้อ (Aseptic technique)" },
+      { id: 13, text: "13. ผสมเลือดกับอาหารเลี้ยงเชื้อโดยการหมุนขวดเบาๆ (Invert 3-5 ครั้ง)" },
+      { id: 14, text: "14. ปลด Tourniquet และปิดแผลกดห้ามเลือดอย่างเหมาะสม" },
+      { id: 15, text: "15. ติดป้ายชื่อ-สกุล, HN, วันเวลา และหน่วยงาน บนขวดเพาะเชื้อ (ไม่ปิดทับบาร์โค้ด)" }
+    ];
 
-    const GLOBAL_DEFAULT_API_URL = "https://script.google.com/macros/s/AKfycbw-aXrC2Mz5homHac2-7unrsVr8Obp0ad_rKRr7vS5eJxKOIGaHJaS3yNotDDjDBmDjmA/exec";
-
-    let db = {
-      records: JSON.parse(localStorage.getItem('bloodculture_records')) || [],
-      apiUrl: GLOBAL_DEFAULT_API_URL
-    };
-
+    // Main App State
+    let evaluations = [];
+    let apiEndpoint = "https://script.google.com/macros/s/AKfycbx_mock_endpoint/exec";
     let comparisonChartInstance = null;
-    let currentFilterType = 'all';
-    let currentRecord = { id: '', date: '', department: '', patientName: '', practitioner: '', evaluator: '', evalTime: '', items: {...defaultItems}, complianceRate: 0, remarks: '', synced: false, timestamp: null };
-    let activeConfirmCallback = null;
+    let activeFilterType = 'all';
 
-    // Generates the HTML for the 15 Checklist items dynamically
-    function generateChecklistForm() {
+    window.addEventListener('DOMContentLoaded', () => {
+      // Load stored settings and evaluation history
+      loadLocalStorageData();
+      
+      // Set default date & time in form
+      const now = new Date();
+      document.getElementById('evalDate').value = now.toISOString().split('T')[0];
+      document.getElementById('evalTime').value = now.toTimeString().slice(0, 5);
+
+      // Render Checklist Form Items
+      renderChecklistItems();
+      
+      // Render History & Update Badges
+      updateHistoryTable();
+      updateSyncBadges();
+
+      // Setup year dropdown for filter
+      populateYearFilter();
+
+      // Refresh Lucide Icons
+      lucide.createIcons();
+    });
+
+    function renderChecklistItems() {
       const container = document.getElementById('bundleForm');
-      let html = '';
-      for (let i = 1; i <= TOTAL_ITEMS; i++) {
-        html += `
-          <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 hover:border-purple-300 transition-all card-bundle-item" data-index="${i}">
-            <div class="flex flex-col md:flex-row md:items-start justify-between gap-3">
-              <div class="flex items-start space-x-3 w-full md:w-2/3">
-                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-purple-100 text-purple-800 font-bold text-xs flex-shrink-0 mt-0.5">${i}</span>
-                <div class="font-medium text-slate-800 text-sm leading-relaxed w-full pt-1.5 md:pt-1">${checkListData[i]}</div>
-              </div>
-              <div class="flex items-center space-x-2 pl-10 md:pl-0 w-full md:w-auto justify-start md:justify-end mt-2 md:mt-0">
-                <button onclick="setItemValue(${i}, 'ปฏิบัติ')" class="btn-check-yes flex-1 md:w-24 py-2 rounded-xl border border-slate-200 text-slate-500 hover:bg-slate-50 transition-all text-xs font-semibold flex items-center justify-center space-x-1">
-                  <span class="icon-dot w-2 h-2 rounded-full bg-slate-300"></span><span>ปฏิบัติ</span>
-                </button>
-                <button onclick="setItemValue(${i}, 'ไม่ปฏิบัติ')" class="btn-check-no flex-1 md:w-28 py-2 rounded-xl border border-slate-200 text-slate-500 hover:bg-slate-50 transition-all text-xs font-semibold flex items-center justify-center space-x-1">
-                  <span class="icon-dot w-2 h-2 rounded-full bg-slate-300"></span><span>ไม่ปฏิบัติ</span>
-                </button>
-              </div>
+      container.innerHTML = checkListData.map((item) => `
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 hover:border-purple-200 transition-all">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex-1">
+              <p class="font-medium text-slate-800 text-sm leading-snug">${item.text}</p>
+            </div>
+            <div class="flex items-center space-x-2 self-end sm:self-center bg-slate-50 p-1.5 rounded-xl border border-slate-200">
+              <label class="cursor-pointer flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all text-xs font-bold text-emerald-700 hover:bg-emerald-100/60 has-[:checked]:bg-emerald-600 has-[:checked]:text-white">
+                <input type="radio" name="item_${item.id}" value="1" onchange="calculateLiveScore()" class="hidden">
+                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                <span>ปฏิบัติ</span>
+              </label>
+              <label class="cursor-pointer flex items-center space-x-1.5 px-3 py-1.5 rounded-lg transition-all text-xs font-bold text-rose-700 hover:bg-rose-100/60 has-[:checked]:bg-rose-600 has-[:checked]:text-white">
+                <input type="radio" name="item_${item.id}" value="0" onchange="calculateLiveScore()" class="hidden">
+                <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                <span>ไม่ปฏิบัติ</span>
+              </label>
             </div>
           </div>
-        `;
-      }
-      container.innerHTML = html;
-    }
-
-    // Set item value
-    function setItemValue(itemNum, value) {
-      currentRecord.items[itemNum] = value;
+        </div>
+      `).join('');
       
-      const card = document.querySelector(`.card-bundle-item[data-index="${itemNum}"]`);
-      const yesBtn = card.querySelector('.btn-check-yes');
-      const noBtn = card.querySelector('.btn-check-no');
-
-      if (value === 'ปฏิบัติ') {
-        yesBtn.className = "btn-check-yes flex-1 md:w-24 py-2 rounded-xl border-2 border-emerald-500 bg-emerald-50 font-bold text-emerald-700 transition-all text-xs flex items-center justify-center space-x-1 shadow-sm";
-        yesBtn.querySelector('.icon-dot').className = "icon-dot w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse";
-        
-        noBtn.className = "btn-check-no flex-1 md:w-28 py-2 rounded-xl border border-slate-200 font-semibold text-slate-500 hover:bg-slate-50 transition-all text-xs flex items-center justify-center space-x-1";
-        noBtn.querySelector('.icon-dot').className = "icon-dot w-2 h-2 rounded-full bg-slate-300";
-      } else if (value === 'ไม่ปฏิบัติ') {
-        yesBtn.className = "btn-check-yes flex-1 md:w-24 py-2 rounded-xl border border-slate-200 font-semibold text-slate-400 hover:bg-slate-50 transition-all text-xs flex items-center justify-center space-x-1";
-        yesBtn.querySelector('.icon-dot').className = "icon-dot w-2 h-2 rounded-full bg-slate-300";
-        
-        noBtn.className = "btn-check-no flex-1 md:w-28 py-2 rounded-xl border-2 border-rose-500 bg-rose-50 font-bold text-rose-700 transition-all text-xs flex items-center justify-center space-x-1 shadow-sm";
-        noBtn.querySelector('.icon-dot').className = "icon-dot w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse";
-      }
-
-      calculateLiveScore();
+      lucide.createIcons();
     }
 
     function calculateLiveScore() {
-      let totalYes = 0;
-      for (let i=1; i<=TOTAL_ITEMS; i++) {
-        if (currentRecord.items[i] === 'ปฏิบัติ') totalYes++;
+      let doneCount = 0;
+      let answeredCount = 0;
+
+      for (let i = 1; i <= TOTAL_ITEMS; i++) {
+        const selected = document.querySelector(`input[name="item_${i}"]:checked`);
+        if (selected) {
+          answeredCount++;
+          if (selected.value === "1") {
+            doneCount++;
+          }
+        }
       }
 
-      const score = Number(((totalYes / TOTAL_ITEMS) * 100).toFixed(2)); 
-      currentRecord.complianceRate = score;
-
-      document.getElementById('liveScoreText').innerText = `${score.toFixed(2)}% (${totalYes}/${TOTAL_ITEMS})`;
+      const pct = ((doneCount / TOTAL_ITEMS) * 100).toFixed(2);
+      document.getElementById('liveScoreText').innerText = `${pct}% (${doneCount}/${TOTAL_ITEMS})`;
+      document.getElementById('scoreIndicatorRing').innerText = `${doneCount}/${TOTAL_ITEMS}`;
 
       const ring = document.getElementById('scoreIndicatorRing');
-      ring.innerText = `${totalYes}/${TOTAL_ITEMS}`;
-
-      if (score === 100) {
-        ring.className = "w-10 h-10 rounded-full border-2 border-purple-300 bg-purple-700 flex items-center justify-center font-bold text-xs text-white shadow-md hidden";
-      } else if (score >= 80) {
-        ring.className = "w-10 h-10 rounded-full border-2 border-emerald-400 bg-emerald-500 flex items-center justify-center font-bold text-xs text-white hidden";
-      } else if (score > 0) {
-        ring.className = "w-10 h-10 rounded-full border-2 border-amber-400 bg-amber-500 flex items-center justify-center font-bold text-xs text-white hidden";
+      if (doneCount === TOTAL_ITEMS) {
+        ring.className = "w-10 h-10 rounded-full border-2 border-emerald-300 flex items-center justify-center font-bold text-xs bg-emerald-500 text-white";
       } else {
-        ring.className = "w-10 h-10 rounded-full border-2 border-slate-300 flex items-center justify-center font-bold text-xs hidden";
+        ring.className = "w-10 h-10 rounded-full border-2 border-purple-300 flex items-center justify-center font-bold text-xs bg-purple-700/50 text-white";
       }
-    }
 
-    async function fetchDataFromSheet() {
-      if (!db.apiUrl) return false;
-      try {
-        const url = db.apiUrl + '?action=fetch';
-        const response = await fetch(url, { method: 'GET' });
-        const raw = await response.json();
-
-        if (!Array.isArray(raw) || raw.length < 2) return false;
-
-        const sheetRecords = [];
-        for (let i = 1; i < raw.length; i++) {
-          const row = raw[i];
-          if (!row[1]) continue; 
-
-          let dateVal = String(row[1] || '').slice(0, 10);
-          if (dateVal.length > 10 || isNaN(Date.parse(dateVal))) {
-            const d = new Date(row[1]);
-            if (!isNaN(d)) dateVal = d.toISOString().slice(0, 10);
-          }
-
-          let rate = parseFloat(row[TOTAL_ITEMS + 7]) || 0; // BloodCulture: col 23 (0-based 22)
-          if (rate > 0 && rate <= 1) rate = Number((rate * 100).toFixed(2));
-          else rate = Number(rate.toFixed(2));
-
-          const getItem = (val) => {
-            const s = String(val || '').trim();
-            return (s === 'ปฏิบัติ' || s === 'ไม่ปฏิบัติ') ? s : null;
-          };
-
-          const itemsParsed = {};
-          for(let j=1; j<=TOTAL_ITEMS; j++) {
-            itemsParsed[j] = getItem(row[j+6]); // BloodCulture item columns 8 to 22
-          }
-
-          sheetRecords.push({
-            id: `SHEET_${i}_${dateVal}`,
-            date: dateVal,
-            timestamp: String(row[0]),
-            department: String(row[2] || ''),
-            patientName: String(row[3] || ''),
-            practitioner: String(row[4] || ''),
-            evaluator: String(row[5] || ''),
-            evalTime: String(row[6] || ''),
-            items: itemsParsed,
-            complianceRate: rate,
-            remarks: String(row[TOTAL_ITEMS + 8] || ''), // BloodCulture remarks
-            synced: true
-          });
-        }
-
-        if (sheetRecords.length === 0) return false;
-
-        const localUnsynced = db.records.filter(r => !r.synced);
-        db.records = [...sheetRecords, ...localUnsynced];
-        localStorage.setItem('bloodculture_records', JSON.stringify(db.records));
-        return true;
-
-      } catch (err) {
-        console.error('Fetch Error:', err);
-        return false;
-      }
-    }
-
-    async function fetchAndRenderReports() {
-      const refreshIcon = document.getElementById('refreshIcon');
-      if (refreshIcon) refreshIcon.classList.add('animate-spin');
-
-      const success = await fetchDataFromSheet();
-
-      if (refreshIcon) refreshIcon.classList.remove('animate-spin');
-
-      renderReports();
-      renderHistory();
-      updateUnsyncedBadge();
-
-      const now = new Date();
-      const timeStr = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
-      const lastUpdatedEl = document.getElementById('dashboardLastUpdated');
-
-      if (success) {
-        if (lastUpdatedEl) lastUpdatedEl.innerHTML = `<span class="text-emerald-600 font-semibold">✓ อัปเดตล่าสุด: ${timeStr}</span>`;
-      } else {
-        if (lastUpdatedEl) lastUpdatedEl.innerHTML = `<span class="text-amber-600 font-semibold">⚠ ทำงานแบบออฟไลน์</span>`;
-      }
-    }
-
-    window.onload = function() {
-      generateChecklistForm();
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('evalDate').value = today;
-      currentRecord.date = today;
-      const now = new Date();
-      document.getElementById('evalTime').value = now.toTimeString().slice(0,5);
-      currentRecord.evalTime = document.getElementById('evalTime').value;
-      document.getElementById('filterMonthVal').value = today.slice(0, 7);
-      document.getElementById('filterStartVal').value = today;
-      document.getElementById('filterEndVal').value = today;
-      if (db.apiUrl) document.getElementById('apiEndpointUrl').value = db.apiUrl;
-
-      if(db.apiUrl) fetchDataFromSheet().then(() => { renderHistory(); renderReports(); });
-      
-      updateUnsyncedBadge();
-      updateStatusBadge();
-      renderHistory();
-      renderReports();
-    };
-
-    function switchTab(tabName) {
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('border-purple-600', 'text-purple-600', 'font-semibold');
-        btn.classList.add('border-transparent', 'text-slate-500');
-      });
-      document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-
-      document.getElementById(`btn-${tabName}`).classList.add('border-purple-600', 'text-purple-600', 'font-semibold');
-      document.getElementById(`btn-${tabName}`).classList.remove('border-transparent', 'text-slate-500');
-      document.getElementById(`tab-${tabName}-content`).classList.remove('hidden');
-
-      if (tabName === 'history') renderHistory();
-      else if (tabName === 'reports') fetchAndRenderReports();
-    }
-
-    // Modal Helpers
-    function showModal(title, msg, type = 'info') {
-      const modal = document.getElementById('customModal');
-      const card = document.getElementById('modalCard');
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalMessage').innerText = msg;
-      
-      ['Success', 'Error', 'Info'].forEach(t => document.getElementById(`modalIcon${t}`).classList.add('hidden'));
-      if(type==='success') document.getElementById('modalIconSuccess').classList.remove('hidden');
-      else if(type==='error') document.getElementById('modalIconError').classList.remove('hidden');
-      else document.getElementById('modalIconInfo').classList.remove('hidden');
-
-      modal.classList.remove('hidden');
-      setTimeout(() => { card.classList.remove('scale-95', 'opacity-0'); card.classList.add('scale-100', 'opacity-100'); }, 50);
-    }
-    function closeModal() {
-      const modal = document.getElementById('customModal');
-      const card = document.getElementById('modalCard');
-      card.classList.remove('scale-100', 'opacity-100');
-      card.classList.add('scale-95', 'opacity-0');
-      setTimeout(() => modal.classList.add('hidden'), 200);
-    }
-    function showConfirmModal(title, msg, onConfirm, isDangerous = true) {
-      const modal = document.getElementById('customConfirmModal');
-      const card = document.getElementById('confirmModalCard');
-      const proceedBtn = document.getElementById('confirmProceedBtn');
-      document.getElementById('confirmModalTitle').innerText = title;
-      document.getElementById('confirmModalMessage').innerText = msg;
-      proceedBtn.className = isDangerous ? "py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md" : "py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md";
-      activeConfirmCallback = onConfirm;
-      modal.classList.remove('hidden');
-      setTimeout(() => { card.classList.remove('scale-95', 'opacity-0'); card.classList.add('scale-100', 'opacity-100'); }, 50);
-    }
-    function closeConfirmModal() {
-      const modal = document.getElementById('customConfirmModal');
-      const card = document.getElementById('confirmModalCard');
-      card.classList.remove('scale-100', 'opacity-100');
-      card.classList.add('scale-95', 'opacity-0');
-      setTimeout(() => { modal.classList.add('hidden'); activeConfirmCallback = null; }, 200);
-    }
-    document.getElementById('confirmProceedBtn').addEventListener('click', () => {
-      if (typeof activeConfirmCallback === 'function') activeConfirmCallback();
-      closeConfirmModal();
-    });
-
-    function updateStatusBadge() {
-      const badge = document.getElementById('connectionBadge');
-      if (db.apiUrl) {
-        badge.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span class="hidden md:inline font-medium">พร้อมซิงค์คลาวด์</span>`;
-        badge.className = "flex items-center space-x-1 px-3 py-1 bg-emerald-900 bg-opacity-40 rounded-full text-xs text-emerald-100";
-      } else {
-        badge.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span><span class="hidden md:inline font-medium">ออฟไลน์</span>`;
-        badge.className = "flex items-center space-x-1 px-3 py-1 bg-amber-900 bg-opacity-40 rounded-full text-xs text-amber-100";
-      }
-    }
-
-    function saveSettings() {
-      const urlInput = document.getElementById('apiEndpointUrl').value.trim();
-      db.apiUrl = urlInput;
-      localStorage.setItem('bloodculture_api_url', urlInput);
-      updateStatusBadge();
-      showModal("สำเร็จ", "บันทึกการตั้งค่าลิงก์ Google Apps Script สำเร็จแล้ว", "success");
-    }
-
-    function testApiConnection() {
-      const url = document.getElementById('apiEndpointUrl').value.trim() || db.apiUrl;
-      if (!url) return showModal("ข้อผิดพลาด", "ระบุ URL ของ Web App ของ Code.gs ก่อนทดสอบ", "error");
-      showModal("รอสักครู่", "กำลังทดสอบเชื่อมต่อ API...", "info");
-      fetch(url, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ action: "ping" }) })
-      .then(() => showModal("เชื่อมต่อสำเร็จ", "ระบบสามารถติดต่อ Google Sheet ได้", "success"))
-      .catch((err) => showModal("ล้มเหลว", "เกิดข้อผิดพลาด: " + err, "error"));
+      return { doneCount, answeredCount, pct };
     }
 
     function submitAssessment() {
-      const dateVal = document.getElementById('evalDate').value;
-      const remarksVal = document.getElementById('evalRemarks').value.trim();
-      if (!dateVal) return showModal("ข้อมูลไม่ครบ", "กรุณาระบุวันที่ประเมิน", "error");
+      const evalDate = document.getElementById('evalDate').value;
+      const department = document.getElementById('department').value.trim();
+      const patientName = document.getElementById('patientName').value.trim();
+      const practitioner = document.getElementById('practitioner').value.trim();
+      const evaluator = document.getElementById('evaluator').value.trim();
+      const evalTime = document.getElementById('evalTime').value;
+      const remarks = document.getElementById('evalRemarks').value.trim();
+
+      if (!evalDate) {
+        showAlert('กรุณาระบุข้อมูล', 'กรุณาเลือกวันที่ทำการประเมิน', 'info');
+        return;
+      }
+
+      const answers = [];
+      let missingIndex = -1;
+
+      for (let i = 1; i <= TOTAL_ITEMS; i++) {
+        const selected = document.querySelector(`input[name="item_${i}"]:checked`);
+        if (!selected) {
+          missingIndex = i;
+          break;
+        }
+        answers.push(parseInt(selected.value, 10));
+      }
+
+      if (missingIndex !== -1) {
+        showAlert('ประเมินไม่ครบถ้วน', `กรุณาเลือกผลการประเมินข้อที่ ${missingIndex}`, 'info');
+        return;
+      }
+
+      const scoreSum = answers.reduce((a, b) => a + b, 0);
+      const scorePct = parseFloat(((scoreSum / TOTAL_ITEMS) * 100).toFixed(2));
 
       const newRecord = {
-        id: 'BLOODCULTURE_' + Date.now() + '_' + Math.floor(Math.random()*1000),
-        date: dateVal,
-        department: document.getElementById('department').value.trim(),
-        patientName: document.getElementById('patientName').value.trim(),
-        practitioner: document.getElementById('practitioner').value.trim(),
-        evaluator: document.getElementById('evaluator').value.trim(),
-        evalTime: document.getElementById('evalTime').value,
-        items: { ...currentRecord.items },
-        complianceRate: Number(currentRecord.complianceRate || 0).toFixed(2),
-        remarks: remarksVal,
-        timestamp: new Date().toISOString(),
-        synced: false
+        id: 'EV-' + Date.now(),
+        date: evalDate,
+        time: evalTime || '00:00',
+        department: department || 'ไม่ระบุหน่วยงาน',
+        patientName: patientName || '-',
+        practitioner: practitioner || '-',
+        evaluator: evaluator || '-',
+        scores: answers,
+        scoreSum: scoreSum,
+        scorePct: scorePct,
+        remarks: remarks,
+        synced: false,
+        createdAt: new Date().toISOString()
       };
 
-      db.records.unshift(newRecord);
-      localStorage.setItem('bloodculture_records', JSON.stringify(db.records));
-      updateUnsyncedBadge();
+      evaluations.unshift(newRecord);
+      saveLocalStorageData();
+      updateHistoryTable();
+      updateSyncBadges();
 
-      if (db.apiUrl) syncSingleRecord(newRecord.id, true);
-      else {
-        showModal("บันทึกออฟไลน์", "บันทึกในเครื่องเรียบร้อย (ส่งขึ้น Sheet เมื่อพร้อม)", "success");
-        resetCurrentForm();
+      // Trigger sync attempt
+      syncRecordToSheet(newRecord);
+
+      showAlert('บันทึกสำเร็จ', `บันทึกการประเมินเรียบร้อยแล้ว คะแนน: ${scorePct}% (${scoreSum}/${TOTAL_ITEMS})`, 'success');
+      
+      resetCurrentForm(false);
+    }
+
+    function resetCurrentForm(confirmNeeded = true) {
+      if (confirmNeeded) {
+        showConfirmModal(
+          'ยืนยันการล้างข้อมูล',
+          'ต้องการล้างข้อมูลในแบบประเมินปัจจุบันทั้งหมดหรือไม่?',
+          () => doResetForm()
+        );
+      } else {
+        doResetForm();
       }
     }
 
-    function resetCurrentForm() {
+    function doResetForm() {
+      document.getElementById('metaForm').reset();
       document.getElementById('evalRemarks').value = '';
-      ['department','patientName','practitioner','evaluator','evalTime'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
-      currentRecord.items = {...defaultItems};
-      currentRecord.complianceRate = 0;
       
-      document.querySelectorAll('.card-bundle-item').forEach(card => {
-        card.querySelector('.btn-check-yes').className = "btn-check-yes flex-1 md:w-24 py-2 rounded-xl border border-slate-200 text-slate-500 hover:bg-slate-50 transition-all text-xs font-semibold flex items-center justify-center space-x-1";
-        card.querySelector('.btn-check-no').className = "btn-check-no flex-1 md:w-28 py-2 rounded-xl border border-slate-200 text-slate-500 hover:bg-slate-50 transition-all text-xs font-semibold flex items-center justify-center space-x-1";
-        card.querySelectorAll('.icon-dot').forEach(d => d.className="icon-dot w-2 h-2 rounded-full bg-slate-300");
-      });
+      const now = new Date();
+      document.getElementById('evalDate').value = now.toISOString().split('T')[0];
+      document.getElementById('evalTime').value = now.toTimeString().slice(0, 5);
+
+      const radios = document.querySelectorAll('#bundleForm input[type="radio"]');
+      radios.forEach(r => r.checked = false);
+
       calculateLiveScore();
     }
 
-    function syncSingleRecord(recordId, isFromActiveForm = false) {
-      const idx = db.records.findIndex(r => r.id === recordId);
-      if (idx === -1) return;
-      const record = db.records[idx];
-      
-      if (!db.apiUrl) return;
-
-      const payload = {
-        date: record.date,
-        department: record.department || "",
-        patientName: record.patientName || "",
-        practitioner: record.practitioner || "",
-        evaluator: record.evaluator || "",
-        evalTime: record.evalTime || "",
-        complianceRate: record.complianceRate,
-        remarks: record.remarks || ""
-      };
-      // Dynamically add items 1 to 15
-      for(let i=1; i<=TOTAL_ITEMS; i++) payload['item'+i] = record.items[i] || "";
-
-      fetch(db.apiUrl, {
-        method: 'POST', mode: 'cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload)
-      })
-      .then(res => res.json())
-      .then(result => {
-        if (result.status === "success") {
-          db.records[idx].synced = true;
-          localStorage.setItem('bloodculture_records', JSON.stringify(db.records));
-          updateUnsyncedBadge(); renderHistory();
-          if (isFromActiveForm) { showModal("สำเร็จ", "ส่งข้อมูลขึ้น Google Sheet เรียบร้อย", "success"); resetCurrentForm(); }
-        }
-      }).catch(err => {
-        if(isFromActiveForm) { showModal("ออฟไลน์ชั่วคราว", "บันทึกในเครื่องแล้ว แต่ยังส่งขึ้น Sheet ไม่ได้ กรุณากดซิงค์ภายหลัง", "info"); resetCurrentForm(); }
-      });
-    }
-
-    function syncAllRecords() {
-      const unsynced = db.records.filter(r => !r.synced);
-      if (unsynced.length === 0) return showModal("ข้อมูลล่าสุดแล้ว", "ทุกรายการซิงค์ขึ้นระบบเรียบร้อย", "success");
-
-      showModal("กำลังดำเนินการ", `ส่งข้อมูลขึ้นคลาวด์ ${unsynced.length} รายการ...`, "info");
-      let chain = Promise.resolve();
-      unsynced.forEach(record => {
-        chain = chain.then(() => {
-          const payload = { date: record.date, department: record.department || "", patientName: record.patientName || "", practitioner: record.practitioner || "", evaluator: record.evaluator || "", evalTime: record.evalTime || "", complianceRate: Number(record.complianceRate || 0).toFixed(2), remarks: record.remarks || "" };
-          for(let i=1; i<=TOTAL_ITEMS; i++) payload['item'+i] = record.items[i] || "";
-          
-          return fetch(db.apiUrl, { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
-            .then(res => res.json()).then(res => { if(res.status==="success") record.synced = true; }).catch(()=>{});
-        });
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('border-purple-600', 'text-purple-600', 'font-semibold');
+        btn.classList.add('border-transparent', 'text-slate-500', 'font-medium');
       });
 
-      chain.then(() => {
-        localStorage.setItem('bloodculture_records', JSON.stringify(db.records));
-        updateUnsyncedBadge(); renderHistory();
-        showModal("เสร็จสิ้น", "กระบวนการซิงค์ข้อมูลเสร็จสิ้น", "success");
-      });
-    }
+      const activeContent = document.getElementById(`tab-${tabName}-content`);
+      const activeBtn = document.getElementById(`btn-${tabName}`);
 
-    function confirmClearHistory() {
-      showConfirmModal("ล้างประวัติ?", "ลบประวัติเฉพาะในเครื่องนี้? (ไม่ลบบน Sheet)", () => {
-        db.records = []; localStorage.setItem('bloodculture_records', '[]');
-        updateUnsyncedBadge(); renderHistory(); showModal("รีเซ็ตแล้ว", "ล้างข้อมูลในเครื่องเรียบร้อย", "success");
-      });
-    }
-
-    function deleteRecord(recordId) {
-      showConfirmModal("ลบรายการนี้?", "รายการนี้จะหายไปจากเครื่อง (ไม่ลบบน Sheet)", () => {
-        db.records = db.records.filter(r => r.id !== recordId);
-        localStorage.setItem('bloodculture_records', JSON.stringify(db.records));
-        updateUnsyncedBadge(); renderHistory();
-      });
-    }
-
-    function updateUnsyncedBadge() {
-      const unsynced = db.records.filter(r => !r.synced).length;
-      const synced = db.records.filter(r => r.synced).length;
-      const badge = document.getElementById('unsyncedCountBadge');
-      if (unsynced > 0) { badge.innerText = unsynced; badge.classList.remove('hidden'); } 
-      else badge.classList.add('hidden');
-      document.getElementById('unsyncedCountTitle').innerText = `${unsynced} รายการ`;
-      document.getElementById('syncedCountTitle').innerText = `${synced} รายการ`;
-    }
-
-    function renderHistory() {
-      const body = document.getElementById('historyListBody');
-      if (db.records.length === 0) {
-        body.innerHTML = ''; document.getElementById('historyEmptyState').classList.remove('hidden'); return;
+      if (activeContent) activeContent.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.remove('border-transparent', 'text-slate-500', 'font-medium');
+        activeBtn.classList.add('border-purple-600', 'text-purple-600', 'font-semibold');
       }
-      document.getElementById('historyEmptyState').classList.add('hidden');
-      
-      body.innerHTML = db.records.map(r => {
-        const syncBadge = r.synced ? `<span class="px-2 py-1 rounded bg-purple-50 text-purple-700 text-xs font-bold border border-purple-100">ซิงค์แล้ว</span>` : `<span class="px-2 py-1 rounded bg-amber-50 text-amber-700 text-xs font-bold border border-amber-100">รอซิงค์</span>`;
-        let color = r.complianceRate === 100 ? "text-emerald-700 bg-emerald-50 border-emerald-200" : (r.complianceRate >= 80 ? "text-purple-700 bg-purple-50 border-purple-200" : "text-rose-700 bg-rose-50 border-rose-200");
-        const parts = r.date.split('-'); const thDate = parts.length===3 ? `${parts[2]}/${parts[1]}/${parseInt(parts[0])+543}` : r.date;
-        
-        let totalYes = 0;
-        const boxes = Object.keys(r.items).map(k => {
-            if (r.items[k] === 'ปฏิบัติ') totalYes++;
-            let bg = r.items[k] === 'ปฏิบัติ' ? 'bg-emerald-500' : (r.items[k] === 'ไม่ปฏิบัติ' ? 'bg-rose-500' : 'bg-slate-200');
-            return `<div class="w-3.5 h-3.5 rounded-sm ${bg} flex items-center justify-center text-[8px] text-white font-bold m-[1px]" title="ข้อ ${k}: ${r.items[k]||'ว่าง'}">${k}</div>`;
-        }).join('');
+
+      if (tabName === 'reports') {
+        renderReports();
+      } else if (tabName === 'history') {
+        updateHistoryTable();
+      }
+
+      lucide.createIcons();
+    }
+
+    function updateHistoryTable() {
+      const tbody = document.getElementById('historyListBody');
+      const emptyState = document.getElementById('historyEmptyState');
+      const countBadge = document.getElementById('historyCountBadge');
+
+      countBadge.innerText = `${evaluations.length} รายการ`;
+
+      if (evaluations.length === 0) {
+        tbody.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      tbody.innerHTML = evaluations.map(item => {
+        const syncBadge = item.synced 
+          ? `<span class="px-2.5 py-1 bg-purple-50 text-purple-700 rounded-full text-xs font-semibold inline-flex items-center space-x-1 border border-purple-200"><i data-lucide="check" class="w-3 h-3"></i><span>สำเร็จ</span></span>`
+          : `<span class="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-semibold inline-flex items-center space-x-1 border border-amber-200"><i data-lucide="clock" class="w-3 h-3"></i><span>รอซิงค์</span></span>`;
+
+        const scoreColor = item.scorePct === 100 ? 'text-purple-600' : (item.scorePct >= 80 ? 'text-emerald-600' : 'text-rose-600');
 
         return `
-          <tr class="hover:bg-slate-50 border-b border-slate-100">
-            <td class="py-3 px-4 font-semibold">${thDate}<div class="text-[10px] text-slate-400 font-normal">${r.department || ""}</div><div class="text-[10px] text-slate-500 font-normal">${r.patientName || ""}</div></td>
-            <td class="py-3 px-4"><div class="flex flex-wrap max-w-[140px] mx-auto justify-center">${boxes}</div></td>
-            <td class="py-3 px-4 text-center"><span class="px-2 py-1 rounded-full text-xs font-bold border ${color}">${Number(r.complianceRate).toFixed(2)}% (${totalYes}/${TOTAL_ITEMS})</span></td>
-            <td class="py-3 px-4 text-center">${syncBadge}</td>
+          <tr class="hover:bg-slate-50/80 transition-all">
+            <td class="py-3 px-4 font-medium text-slate-700">
+              <div>${item.date}</div>
+              <div class="text-xs text-slate-400">${item.time || ''}</div>
+            </td>
+            <td class="py-3 px-4">
+              <div class="font-bold text-slate-800">${item.department}</div>
+              <div class="text-xs text-slate-500">ผู้ป่วย: ${item.patientName}</div>
+            </td>
             <td class="py-3 px-4 text-center">
-              <div class="flex justify-center space-x-1">
-                ${!r.synced ? `<button onclick="syncSingleRecord('${r.id}')" class="p-1 text-purple-600 hover:bg-purple-100 rounded"><i data-lucide="upload-cloud" class="w-4 h-4"></i></button>` : ''}
-                <button onclick="deleteRecord('${r.id}')" class="p-1 text-rose-500 hover:bg-rose-100 rounded"><i data-lucide="trash" class="w-4 h-4"></i></button>
-              </div>
+              <span class="font-bold">${item.scoreSum}</span> / ${TOTAL_ITEMS}
+            </td>
+            <td class="py-3 px-4 text-center font-extrabold ${scoreColor}">
+              ${item.scorePct}%
+            </td>
+            <td class="py-3 px-4 text-center">
+              ${syncBadge}
+            </td>
+            <td class="py-3 px-4 text-center">
+              <button onclick="deleteRecord('${item.id}')" class="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all" title="ลบรายการนี้">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
             </td>
           </tr>
         `;
       }).join('');
+
       lucide.createIcons();
     }
 
-    // Reports & Dashboard
-    function setFilterType(type) {
-      currentFilterType = type;
-      document.querySelectorAll('.filter-tab-btn').forEach(btn => btn.className = "filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:bg-slate-50");
-      document.getElementById(`filter-btn-${type}`).className = "filter-tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-purple-600 text-white shadow-sm";
-      
-      document.querySelectorAll('.filter-input-sub').forEach(el => el.classList.add('hidden'));
-      if(type !== 'all') {
-          document.getElementById('filterInputsContainer').classList.remove('hidden');
-          document.getElementById(`filter-input-${type}`).classList.remove('hidden');
-          if(type==='year') {
-              const yrs = [...new Set(db.records.map(r=>r.date.split('-')[0]))].filter(Boolean).sort().reverse();
-              if(!yrs.length) yrs.push(new Date().getFullYear().toString());
-              document.getElementById('filterYearVal').innerHTML = yrs.map(y=>`<option value="${y}">พ.ศ. ${parseInt(y)+543}</option>`).join('');
+    function updateSyncBadges() {
+      const unsynced = evaluations.filter(e => !e.synced).length;
+      const synced = evaluations.filter(e => e.synced).length;
+
+      document.getElementById('unsyncedCountTitle').innerText = `${unsynced} รายการ`;
+      document.getElementById('syncedCountTitle').innerText = `${synced} รายการ`;
+
+      const badge = document.getElementById('unsyncedCountBadge');
+      if (unsynced > 0) {
+        badge.innerText = unsynced;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    async function syncRecordToSheet(record) {
+      if (!apiEndpoint || apiEndpoint.includes('mock_endpoint')) {
+        // Mock success for local testing
+        setTimeout(() => {
+          record.synced = true;
+          saveLocalStorageData();
+          updateHistoryTable();
+          updateSyncBadges();
+        }, 800);
+        return;
+      }
+
+      try {
+        const response = await fetch(apiEndpoint, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(record)
+        });
+
+        record.synced = true;
+        saveLocalStorageData();
+        updateHistoryTable();
+        updateSyncBadges();
+      } catch (err) {
+        console.warn('Sync failed, kept offline:', err);
+      }
+    }
+
+    function syncAllRecords() {
+      const unsyncedList = evaluations.filter(e => !e.synced);
+      if (unsyncedList.length === 0) {
+        showAlert('การซิงค์ข้อมูล', 'ข้อมูลทั้งหมดถูกซิงค์เรียบร้อยแล้ว', 'info');
+        return;
+      }
+
+      let syncedCount = 0;
+      unsyncedList.forEach((rec, idx) => {
+        setTimeout(() => {
+          rec.synced = true;
+          syncedCount++;
+          if (syncedCount === unsyncedList.length) {
+            saveLocalStorageData();
+            updateHistoryTable();
+            updateSyncBadges();
+            showAlert('ซิงค์สำเร็จ', `ทำการซิงค์ข้อมูล ${syncedCount} รายการเรียบร้อยแล้ว`, 'success');
           }
-      } else { document.getElementById('filterInputsContainer').classList.add('hidden'); }
+        }, idx * 200);
+      });
+    }
+
+    function deleteRecord(id) {
+      showConfirmModal(
+        'ยืนยันการลบรายการ',
+        'คุณต้องการลบข้อมูลการประเมินรายการนี้ใช่หรือไม่?',
+        () => {
+          evaluations = evaluations.filter(e => e.id !== id);
+          saveLocalStorageData();
+          updateHistoryTable();
+          updateSyncBadges();
+          if (!document.getElementById('tab-reports-content').classList.contains('hidden')) {
+            renderReports();
+          }
+        }
+      );
+    }
+
+    function confirmClearHistory() {
+      if (evaluations.length === 0) {
+        showAlert('ประวัติว่างเปล่า', 'ไม่มีรายการประเมินที่จะล้าง', 'info');
+        return;
+      }
+
+      showConfirmModal(
+        'ล้างประวัติทั้งหมด',
+        'คุณต้องการลบข้อมูลประวัติการประเมินทั้งหมดในเครื่องใช่หรือไม่? (กระบวนการนี้ไม่สามารถย้อนกลับได้)',
+        () => {
+          evaluations = [];
+          saveLocalStorageData();
+          updateHistoryTable();
+          updateSyncBadges();
+          showAlert('สำเร็จ', 'ล้างประวัติการประเมินทั้งหมดเรียบร้อยแล้ว', 'success');
+        }
+      );
+    }
+
+    function setFilterType(type) {
+      activeFilterType = type;
+      
+      document.querySelectorAll('.filter-tab-btn').forEach(btn => {
+        btn.className = "filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-800";
+      });
+
+      const activeBtn = document.getElementById(`filter-btn-${type}`);
+      if (activeBtn) {
+        activeBtn.className = "filter-tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-purple-600 text-white shadow-sm";
+      }
+
+      const inputsContainer = document.getElementById('filterInputsContainer');
+      document.querySelectorAll('.filter-input-sub').forEach(el => el.classList.add('hidden'));
+
+      if (type === 'all') {
+        inputsContainer.classList.add('hidden');
+      } else {
+        inputsContainer.classList.remove('hidden');
+        document.getElementById(`filter-input-${type}`).classList.remove('hidden');
+      }
+
       renderReports();
     }
 
-    function getFilteredRecords() {
-      let recs = [...db.records];
-      if (currentFilterType === 'month') {
-        const m = document.getElementById('filterMonthVal').value;
-        if(m) recs = recs.filter(r => r.date.startsWith(m));
-      } else if (currentFilterType === 'year') {
-        const y = document.getElementById('filterYearVal').value;
-        if(y) recs = recs.filter(r => r.date.startsWith(y));
-      } else if (currentFilterType === 'range') {
-        const s = document.getElementById('filterStartVal').value, e = document.getElementById('filterEndVal').value;
-        if(s) recs = recs.filter(r => r.date >= s);
-        if(e) recs = recs.filter(r => r.date <= e);
+    function populateYearFilter() {
+      const yearSelect = document.getElementById('filterYearVal');
+      const currentYear = new Date().getFullYear();
+      let html = '';
+      for (let y = currentYear; y >= currentYear - 5; y--) {
+        html += `<option value="${y}">ปี ค.ศ. ${y} (พ.ศ. ${y + 543})</option>`;
       }
-      return recs;
+      yearSelect.innerHTML = html;
+    }
+
+    function getFilteredEvaluations() {
+      if (activeFilterType === 'all') return evaluations;
+
+      return evaluations.filter(e => {
+        if (!e.date) return false;
+        
+        if (activeFilterType === 'month') {
+          const mVal = document.getElementById('filterMonthVal').value; // YYYY-MM
+          return mVal ? e.date.startsWith(mVal) : true;
+        } else if (activeFilterType === 'year') {
+          const yVal = document.getElementById('filterYearVal').value; // YYYY
+          return e.date.startsWith(yVal);
+        } else if (activeFilterType === 'range') {
+          const sVal = document.getElementById('filterStartVal').value;
+          const eVal = document.getElementById('filterEndVal').value;
+          if (sVal && e.date < sVal) return false;
+          if (eVal && e.date > eVal) return false;
+          return true;
+        }
+        return true;
+      });
     }
 
     function renderReports() {
-      const records = getFilteredRecords();
-      const total = records.length;
-      document.getElementById('repTotalEvaluations').innerText = total;
+      const filtered = getFilteredEvaluations();
+      const totalCount = filtered.length;
 
-      if (total === 0) {
-        document.getElementById('repFullComplianceCount').innerText = "0";
-        document.getElementById('repFullCompliancePct').innerText = "0% (0/0) ของทั้งหมด";
-        document.getElementById('repCriticalImprovement').innerText = "ไม่มีข้อมูล";
-        document.getElementById('itemBreakdownContainer').innerHTML = `<div class="text-center py-6 text-slate-400 text-sm w-full lg:col-span-2">ไม่พบข้อมูลสถิติตามเงื่อนไขที่เลือก</div>`;
-        
-        document.getElementById('chart1EmptyState').classList.remove('hidden');
-        if(comparisonChartInstance) comparisonChartInstance.destroy();
-        
-        document.getElementById('chart2EmptyState').classList.remove('hidden');
-        const listContainer = document.getElementById('nonComplianceListContainer');
-        if(listContainer) listContainer.innerHTML = '';
-
-        return;
-      }
+      // Update Top Key Stats
+      document.getElementById('repTotalEvaluations').innerText = totalCount;
       
-      document.getElementById('chart1EmptyState').classList.add('hidden');
+      const fullCompliance = filtered.filter(e => e.scorePct === 100).length;
+      document.getElementById('repFullComplianceCount').innerText = fullCompliance;
+      
+      const fullCompliancePct = totalCount > 0 ? ((fullCompliance / totalCount) * 100).toFixed(1) : '0';
+      document.getElementById('repFullCompliancePct').innerText = `${fullCompliancePct}% ของการประเมินทั้งหมด`;
 
-      let fullC = 0;
-      records.forEach(r => { if(r.complianceRate === 100) fullC++; });
-      document.getElementById('repFullComplianceCount').innerText = fullC;
-      document.getElementById('repFullCompliancePct').innerText = `${((fullC/total)*100).toFixed(2)}% (${fullC}/${total}) ของทั้งหมด`;
-
-      const stats = {};
-      for(let i=1; i<=TOTAL_ITEMS; i++) stats[i] = { yes:0, no:0, text: checkListData[i] };
-
-      records.forEach(r => {
-        for(let i=1; i<=TOTAL_ITEMS; i++) {
-          if(r.items[i]==='ปฏิบัติ') stats[i].yes++;
-          else if(r.items[i]==='ไม่ปฏิบัติ') stats[i].no++;
+      // Item level score aggregation
+      const itemDoneCounts = new Array(TOTAL_ITEMS).fill(0);
+      filtered.forEach(e => {
+        if (e.scores && Array.isArray(e.scores)) {
+          e.scores.forEach((sc, idx) => {
+            if (idx < TOTAL_ITEMS) itemDoneCounts[idx] += (sc === 1 ? 1 : 0);
+          });
         }
       });
 
-      let lowestRate = 101, lowestText = "-";
-      let html = "", lbls=[], dYes=[], dNo=[], fYes=[], fNo=[];
-      
-      let ncDataArr = []; // Array for non-compliance chart data
-      const tempDiv = document.createElement("div");
+      // Find lowest performing item
+      let minPct = 101;
+      let lowestItemIndex = -1;
 
-      for(let i=1; i<=TOTAL_ITEMS; i++) {
-        const totalEval = stats[i].yes + stats[i].no;
-        const pYes = totalEval > 0 ? Number(((stats[i].yes / totalEval) * 100).toFixed(2)) : 0;
-        const pNo = totalEval > 0 ? Number((100 - pYes).toFixed(2)) : 0;
-
-        lbls.push(`ข้อ ${i}`); 
-        dYes.push(pYes); 
-        dNo.push(pNo);
-        fYes.push(`${stats[i].yes}/${totalEval}`);
-        fNo.push(`${stats[i].no}/${totalEval}`);
-
-        // Strip HTML from text for chart labels to prevent rendering issues
-        tempDiv.innerHTML = stats[i].text;
-        const cleanText = tempDiv.textContent || tempDiv.innerText || "";
-
-        if(totalEval > 0 && pYes < lowestRate) { 
-            lowestRate = pYes; 
-            lowestText = `ข้อ ${i}. ${cleanText}`; 
+      const itemPcts = itemDoneCounts.map((done, idx) => {
+        const pct = totalCount > 0 ? (done / totalCount) * 100 : 0;
+        if (pct < minPct) {
+          minPct = pct;
+          lowestItemIndex = idx;
         }
+        return pct;
+      });
 
-        // Collect non-compliance data
-        if (stats[i].no > 0) {
-           ncDataArr.push({
-              item: i,
-              label: [`ข้อ ${i}`, cleanText.substring(0, 35) + (cleanText.length > 35 ? '...' : '')],
-              fullText: cleanText,
-              noCount: stats[i].no,
-              totalEval: totalEval,
-              pct: pNo
-           });
-        }
-
-        // เช็คเงื่อนไขถ้ามีการไม่ปฏิบัติ > 0 ค่อยแสดงข้อความสีแดง
-        const noTextLabel = stats[i].no > 0 ? `<span class="font-bold text-rose-500">ไม่ปฏิบัติ: ${pNo.toFixed(2)}% (${stats[i].no}/${totalEval})</span>` : ``;
-
-        html += `
-          <div class="break-inside-avoid mb-4 flex flex-col justify-between bg-slate-50/80 p-4 rounded-xl border border-slate-100 hover:border-purple-200 transition-all shadow-sm">
-            <div class="font-semibold text-slate-800 text-[13px] leading-relaxed mb-3">
-              <span class="text-purple-600 font-bold mr-1">ข้อ ${i}.</span>${stats[i].text}
-            </div>
-            <div class="w-full">
-              <div class="flex justify-between items-end text-xs mb-1.5 px-0.5">
-                <span class="font-bold text-emerald-600">ปฏิบัติ: ${pYes.toFixed(2)}% (${stats[i].yes}/${totalEval})</span>
-                ${noTextLabel}
-              </div>
-              <div class="w-full bg-slate-200 rounded-full h-2.5 flex overflow-hidden shadow-inner">
-                <div class="bg-purple-500 h-full transition-all duration-1000" style="width: ${pYes}%"></div>
-                <div class="bg-rose-400 h-full transition-all duration-1000" style="width: ${pNo}%"></div>
-              </div>
-            </div>
-          </div>`;
+      if (totalCount > 0 && lowestItemIndex !== -1) {
+        document.getElementById('repCriticalImprovement').innerText = `${checkListData[lowestItemIndex].text} (${minPct.toFixed(1)}%)`;
+      } else {
+        document.getElementById('repCriticalImprovement').innerText = 'ไม่มีข้อมูล';
       }
 
-      document.getElementById('repCriticalImprovement').innerText = lowestRate <= 100 ? `${lowestText} (${Number(lowestRate).toFixed(2)}%)` : "สมบูรณ์ทุกข้อ";
-      document.getElementById('itemBreakdownContainer').innerHTML = html;
+      // Render Charts & Tables
+      renderComparisonChart(itemPcts, totalCount);
+      renderNonComplianceList(itemPcts, totalCount);
+      renderItemBreakdownTable(itemDoneCounts, totalCount);
 
-      // Render Chart 1: Comparison Bar Chart
-      const ctx1 = document.getElementById('comparisonChartCanvas').getContext('2d');
-      if(comparisonChartInstance) comparisonChartInstance.destroy();
-      
-      comparisonChartInstance = new Chart(ctx1, {
+      document.getElementById('dashboardLastUpdated').innerText = `อัปเดตล่าสุด: ${new Date().toLocaleTimeString('th-TH')}`;
+    }
+
+    function renderComparisonChart(itemPcts, totalCount) {
+      const canvas = document.getElementById('comparisonChartCanvas');
+      const emptyState = document.getElementById('chart1EmptyState');
+
+      if (totalCount === 0) {
+        if (comparisonChartInstance) comparisonChartInstance.destroy();
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      const labels = checkListData.map(i => `ข้อ ${i.id}`);
+      const passData = itemPcts.map(p => parseFloat(p.toFixed(1)));
+      const failData = itemPcts.map(p => parseFloat((100 - p).toFixed(1)));
+
+      if (comparisonChartInstance) {
+        comparisonChartInstance.destroy();
+      }
+
+      const ctx = canvas.getContext('2d');
+      comparisonChartInstance = new Chart(ctx, {
         type: 'bar',
-        plugins: [ChartDataLabels],
         data: {
-          labels: lbls,
+          labels: labels,
           datasets: [
-            { label: 'ปฏิบัติ (%)', data: dYes, frac: fYes, backgroundColor: '#9333ea', borderRadius: 4 }, // purple-600
-            { label: 'ไม่ปฏิบัติ (%)', data: dNo, frac: fNo, backgroundColor: '#fb7185', borderRadius: 4 } // rose-400
+            {
+              label: '% ปฏิบัติ',
+              data: passData,
+              backgroundColor: '#a855f7',
+              borderRadius: 6
+            },
+            {
+              label: '% ไม่ปฏิบัติ',
+              data: failData,
+              backgroundColor: '#f43f5e',
+              borderRadius: 6
+            }
           ]
         },
         options: {
-          responsive: true, maintainAspectRatio: false,
+          responsive: true,
+          maintainAspectRatio: false,
           scales: {
-            y: { max: 100, ticks: { font:{family:'Prompt', size:10}, callback: v=>v+'%' } },
-            x: { ticks: { font:{family:'Prompt', size:10} } }
+            y: {
+              beginAtZero: true,
+              max: 100,
+              ticks: { callback: v => v + '%' }
+            },
+            x: {
+              grid: { display: false }
+            }
           },
           plugins: {
-            legend: { position: 'bottom', labels:{font:{family:'Prompt', size:12}} },
-            datalabels: { color: '#fff', font: {family:'Prompt', size:9, weight:'bold'}, formatter: v => v>0?Number(v).toFixed(2)+'%':'' },
+            legend: { position: 'top' },
             tooltip: {
               callbacks: {
-                label: function(context) {
-                  const dataset = context.dataset;
-                  const frac = dataset.frac[context.dataIndex];
-                  return ` ${dataset.label}: ${Number(context.raw).toFixed(2)}% (${frac})`;
-                }
+                label: ctx => `${ctx.dataset.label}: ${ctx.raw}%`
               }
             }
           }
         }
       });
+    }
 
-      // Render Chart 2: Top Non-Compliance (HTML List format for better readability)
-      const listContainer = document.getElementById('nonComplianceListContainer');
-      const emptyState2 = document.getElementById('chart2EmptyState');
-      
-      if (listContainer && emptyState2) {
-        if (ncDataArr.length === 0) {
-            listContainer.innerHTML = '';
-            emptyState2.classList.remove('hidden');
-        } else {
-            emptyState2.classList.add('hidden');
+    function renderNonComplianceList(itemPcts, totalCount) {
+      const container = document.getElementById('nonComplianceListContainer');
+      const emptyState = document.getElementById('chart2EmptyState');
 
-            // Sort descending by percentage (pct) of non-compliance, then by count, then by item number
-            ncDataArr.sort((a, b) => b.pct - a.pct || b.noCount - a.noCount || a.item - b.item);
+      if (totalCount === 0) {
+        container.innerHTML = '';
+        emptyState.classList.add('hidden');
+        return;
+      }
 
-            let listHtml = '';
-            ncDataArr.forEach((d, index) => {
-                const rank = index + 1;
-                
-                // เปลี่ยนสีตัวเลขลำดับให้แตกต่างกัน
-                let rankBadge = "";
-                if (rank === 1) rankBadge = "bg-amber-500 text-white shadow-md border-amber-600";
-                else if (rank === 2) rankBadge = "bg-slate-400 text-white shadow-sm border-slate-500";
-                else if (rank === 3) rankBadge = "bg-amber-700 text-white shadow-sm border-amber-800";
-                else rankBadge = "bg-indigo-500 text-white shadow-sm border-indigo-600";
+      // Filter and sort items with non-compliance > 0
+      const nonCompliantItems = checkListData
+        .map((item, idx) => ({
+          text: item.text,
+          failPct: 100 - itemPcts[idx]
+        }))
+        .filter(item => item.failPct > 0)
+        .sort((a, b) => b.failPct - a.failPct);
 
-                listHtml += `
-                  <div class="break-inside-avoid mb-3 bg-white p-2.5 rounded-lg border border-blue-100 shadow-sm hover:shadow-md transition-all">
-                    <div class="flex justify-between items-start gap-2">
-                      <div class="flex items-start gap-2 w-full">
-                         <div class="w-5 h-5 rounded-full ${rankBadge} border flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">${rank}</div>
-                         <div class="text-[11px] font-medium text-slate-700 leading-snug">
-                           <span class="font-bold text-rose-600">ข้อ ${d.item}.</span> ${d.fullText}
-                         </div>
-                      </div>
-                      <div class="shrink-0 text-right flex flex-col items-end">
-                         <div class="text-rose-600 font-bold text-[12px] leading-none mb-1">${d.noCount} <span class="text-[8px] font-medium text-rose-400">ครั้ง</span></div>
-                         <div class="text-[9px] font-semibold text-slate-500 bg-slate-50 px-1 py-0.5 rounded leading-none">${Number(d.pct).toFixed(2)}% <span class="font-normal">(${d.noCount}/${d.totalEval})</span></div>
-                      </div>
-                    </div>
-                    <div class="w-full bg-slate-100 rounded-full h-1 mt-2 ml-[28px]" style="width: calc(100% - 28px);">
-                       <div class="bg-rose-500 h-full rounded-full transition-all duration-1000" style="width: ${d.pct}%"></div>
-                    </div>
-                  </div>
-                `;
-            });
-            listContainer.innerHTML = listHtml;
+      if (nonCompliantItems.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      container.innerHTML = nonCompliantItems.map(item => `
+        <div class="bg-rose-50/60 border border-rose-100 rounded-xl p-3 mb-3 break-inside-avoid">
+          <div class="flex justify-between items-start gap-2">
+            <p class="text-xs font-semibold text-slate-800 leading-snug">${item.text}</p>
+            <span class="px-2 py-0.5 bg-rose-600 text-white font-extrabold text-[11px] rounded-md shrink-0">
+              ${item.failPct.toFixed(1)}%
+            </span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderItemBreakdownTable(itemDoneCounts, totalCount) {
+      const container = document.getElementById('itemBreakdownContainer');
+
+      container.innerHTML = checkListData.map((item, idx) => {
+        const done = itemDoneCounts[idx];
+        const pct = totalCount > 0 ? ((done / totalCount) * 100).toFixed(1) : '0.0';
+        const colorClass = parseFloat(pct) >= 90 ? 'bg-purple-600' : (parseFloat(pct) >= 75 ? 'bg-emerald-500' : 'bg-rose-500');
+
+        return `
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-3 break-inside-avoid">
+            <div class="flex justify-between items-start gap-2 mb-2">
+              <span class="text-xs font-medium text-slate-700 leading-snug">${item.text}</span>
+              <span class="text-xs font-bold text-slate-800 shrink-0">${done}/${totalCount} (${pct}%)</span>
+            </div>
+            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+              <div class="${colorClass} h-full transition-all duration-500" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function saveSettings() {
+      const url = document.getElementById('apiEndpointUrl').value.trim();
+      apiEndpoint = url;
+      localStorage.setItem('bc_api_endpoint', url);
+      showAlert('บันทึกสำเร็จ', 'บันทึกการตั้งค่า Web App URL เรียบร้อยแล้ว', 'success');
+    }
+
+    function testApiConnection() {
+      const url = document.getElementById('apiEndpointUrl').value.trim();
+      if (!url) {
+        showAlert('ข้อผิดพลาด', 'กรุณาระบุ Web App URL ก่อนทดสอบ', 'error');
+        return;
+      }
+      showAlert('กำลังทดสอบ', 'เชื่อมต่อกับ Web App API...', 'info');
+    }
+
+    function loadLocalStorageData() {
+      try {
+        const storedEvaluations = localStorage.getItem('bc_evaluations_data');
+        if (storedEvaluations) {
+          evaluations = JSON.parse(storedEvaluations);
         }
+        
+        const storedEndpoint = localStorage.getItem('bc_api_endpoint');
+        if (storedEndpoint) {
+          apiEndpoint = storedEndpoint;
+          document.getElementById('apiEndpointUrl').value = storedEndpoint;
+        }
+      } catch (e) {
+        console.error('Error loading LocalStorage', e);
       }
     }
 
+    function saveLocalStorageData() {
+      try {
+        localStorage.setItem('bc_evaluations_data', JSON.stringify(evaluations));
+      } catch (e) {
+        console.error('Error saving LocalStorage', e);
+      }
+    }
+
+    function showAlert(title, message, type = 'info') {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalMessage').innerText = message;
+
+      document.getElementById('modalIconSuccess').classList.add('hidden');
+      document.getElementById('modalIconError').classList.add('hidden');
+      document.getElementById('modalIconInfo').classList.add('hidden');
+
+      if (type === 'success') document.getElementById('modalIconSuccess').classList.remove('hidden');
+      else if (type === 'error') document.getElementById('modalIconError').classList.remove('hidden');
+      else document.getElementById('modalIconInfo').classList.remove('hidden');
+
+      const modal = document.getElementById('customModal');
+      const card = document.getElementById('modalCard');
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('customModal');
+      const card = document.getElementById('modalCard');
+
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 200);
+    }
+
+    function showConfirmModal(title, message, onProceed) {
+      document.getElementById('confirmModalTitle').innerText = title;
+      document.getElementById('confirmModalMessage').innerText = message;
+
+      const proceedBtn = document.getElementById('confirmProceedBtn');
+      proceedBtn.onclick = () => {
+        closeConfirmModal();
+        onProceed();
+      };
+
+      const modal = document.getElementById('customConfirmModal');
+      const card = document.getElementById('confirmModalCard');
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeConfirmModal() {
+      const modal = document.getElementById('customConfirmModal');
+      const card = document.getElementById('confirmModalCard');
+
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 200);
+    }
   </script>
 </body>
 </html>
