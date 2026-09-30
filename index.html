@@ -388,7 +388,7 @@
         </div>
         <a href="https://docs.google.com/spreadsheets/d/11Pe7e1NayNfEnc3Wb4YPjN1dDIChFCUnEd7x0Ieef80/edit?gid=0#gid=0" 
            target="_blank" class="font-bold underline text-blue-600 hover:text-blue-800 flex items-center gap-1">
-           Blood Culture Collection Checklist - Google ชีต (คลิกเพื่อเปิด) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            Blood Culture Collection Checklist - Google ชีต (คลิกเพื่อเปิด) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
         </a>
         <p class="mt-2 text-[11px] opacity-80">
             ข้อมูลจะถูกบันทึกลงในแท็บ <code class="bg-sky-100 px-1 rounded font-bold">"BloodCulture"</code> อัตโนมัติ (15 รายการ)
@@ -947,7 +947,7 @@
         const boxes = Object.keys(r.items).map(k => {
             if (r.items[k] === 'ปฏิบัติ') totalYes++;
             let bg = r.items[k] === 'ปฏิบัติ' ? 'bg-blue-500' : (r.items[k] === 'ไม่ปฏิบัติ' ? 'bg-yellow-500' : 'bg-slate-200');
-            return `<div class="w-3.5 h-3.5 rounded-sm ${bg} flex items-center justify-center text-[8px] text-white font-bold m-[1px]" title="ข้อ ${k}: ${r.items[k]||'ว่าง'}">${k}</div>`;
+            return `<div class="w-3.5 h-3.5 rounded-sm ${bg} flex items-center justify-center text-[8px] text-white font-bold m-[1px]" title="ข้อ ${k}: ${r.items[k]\vert{}\vert{}'ว่าง'}">${k}</div>`;
         }).join('');
 
         return `
@@ -1062,7 +1062,8 @@
         tempDiv.innerHTML = stats[i].text;
         const cleanText = tempDiv.textContent || tempDiv.innerText || "";
 
-        if(totalEval > 0) {
+        // คำนวณหาจุดปรับปรุงเฉพาะข้อที่มีการประเมินแล้ว และมีอัตราการปฏิบัติน้อยกว่า 100%
+        if(totalEval > 0 && pYes < 100) {
           if(pYes < lowestRate) {
             lowestRate = pYes;
             lowestItems = [{ item: i, text: cleanText }];
@@ -1104,13 +1105,16 @@
           </div>`;
       }
 
+      // แสดงจุดที่ต้องปรับปรุงเฉพาะเมื่อมีข้อที่ปฏิบัติได้ต่ำกว่า 100%
       const criticalEl = document.getElementById('repCriticalImprovement');
-      if (lowestItems.length > 0 && lowestRate <= 100) {
+      if (lowestItems.length > 0 && lowestRate < 100) {
+        criticalEl.className = "text-xs sm:text-sm font-bold text-yellow-600 mt-2 leading-snug";
         criticalEl.innerHTML = lowestItems
           .map(item => `ข้อ ${item.item}. ${item.text} <span class="whitespace-nowrap">(${Number(lowestRate).toFixed(2)}%)</span>`)
           .join('<br>');
       } else {
-        criticalEl.innerText = "สมบูรณ์ทุกข้อ";
+        criticalEl.className = "text-xs sm:text-sm font-bold text-emerald-600 mt-2 leading-snug";
+        criticalEl.innerText = "ไม่มี (ปฏิบัติครบถ้วน 100%)";
       }
       document.getElementById('itemBreakdownContainer').innerHTML = html;
 
