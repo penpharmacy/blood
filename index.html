@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -309,7 +307,7 @@
     </div>
     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
       <span class="text-xs text-slate-400 block font-semibold uppercase tracking-wider">จุดที่ต้องปรับปรุงเร่งด่วน</span>
-      <span id="repCriticalImprovement" class="text-xs sm:text-sm font-bold text-yellow-600 line-clamp-4 mt-2 leading-snug">ไม่มีข้อมูล</span>
+      <span id="repCriticalImprovement" class="text-xs sm:text-sm font-bold text-yellow-600 mt-2 leading-snug">ไม่มีข้อมูล</span>
       <span class="text-[10px] text-slate-400 block mt-2">รายการที่อัตราการปฏิบัติต่ำที่สุด</span>
     </div>
   </div>
@@ -1043,7 +1041,7 @@
         }
       });
 
-      let lowestRate = 101, lowestText = "-";
+      let lowestRate = 101, lowestItems = [];
       let html = "", lbls=[], dYes=[], dNo=[], fYes=[], fNo=[];
       
       let ncDataArr = []; // Array for non-compliance chart data
@@ -1064,9 +1062,13 @@
         tempDiv.innerHTML = stats[i].text;
         const cleanText = tempDiv.textContent || tempDiv.innerText || "";
 
-        if(totalEval > 0 && pYes < lowestRate) { 
-            lowestRate = pYes; 
-            lowestText = `ข้อ ${i}. ${cleanText}`; 
+        if(totalEval > 0) {
+          if(pYes < lowestRate) {
+            lowestRate = pYes;
+            lowestItems = [{ item: i, text: cleanText }];
+          } else if(pYes === lowestRate) {
+            lowestItems.push({ item: i, text: cleanText });
+          }
         }
 
         // Collect non-compliance data
@@ -1102,7 +1104,14 @@
           </div>`;
       }
 
-      document.getElementById('repCriticalImprovement').innerText = lowestRate <= 100 ? `${lowestText} (${Number(lowestRate).toFixed(2)}%)` : "สมบูรณ์ทุกข้อ";
+      const criticalEl = document.getElementById('repCriticalImprovement');
+      if (lowestItems.length > 0 && lowestRate <= 100) {
+        criticalEl.innerHTML = lowestItems
+          .map(item => `ข้อ ${item.item}. ${item.text} <span class="whitespace-nowrap">(${Number(lowestRate).toFixed(2)}%)</span>`)
+          .join('<br>');
+      } else {
+        criticalEl.innerText = "สมบูรณ์ทุกข้อ";
+      }
       document.getElementById('itemBreakdownContainer').innerHTML = html;
 
       // Render Chart 1: Comparison Bar Chart
