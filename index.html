@@ -848,7 +848,7 @@ function getDepartmentValue() {
       const newRecord = {
         id: 'BLOODCULTURE_' + Date.now() + '_' + Math.floor(Math.random()*1000),
         date: dateVal,
-        department: document.getElementById('department').value.trim(),
+        department: getDepartmentValue(),
         patientName: document.getElementById('patientName').value.trim(),
         practitioner: document.getElementById('practitioner').value.trim(),
         evaluator: document.getElementById('evaluator').value.trim(),
