@@ -96,9 +96,17 @@
 
       <form id="metaForm" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
         <div>
-          <label class="block text-sm font-semibold text-slate-600 mb-1.5">หน่วยงาน</label>
-          <input type="text" id="department" placeholder="ระบุหน่วยงาน" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
-        </div>
+  <label class="block text-sm font-semibold text-slate-600 mb-1.5">หน่วยงาน</label>
+  <select id="department" onchange="toggleDepartmentOther()" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+    <option value="">-- เลือกหน่วยงาน --</option>
+    <option value="OPD">OPD</option>
+    <option value="IPD">IPD</option>
+    <option value="LR">LR</option>
+    <option value="ER">ER</option>
+    <option value="อื่นๆ">อื่นๆ</option>
+  </select>
+  <input type="text" id="departmentOther" placeholder="ระบุหน่วยงานอื่นๆ" class="hidden mt-2 w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+</div>
         <div>
           <label class="block text-sm font-semibold text-slate-600 mb-1.5">วันที่</label>
           <input type="date" id="evalDate" required class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
@@ -810,7 +818,25 @@
       .then(() => showModal("เชื่อมต่อสำเร็จ", "ระบบสามารถติดต่อ Google Sheet ได้", "success"))
       .catch((err) => showModal("ล้มเหลว", "เกิดข้อผิดพลาด: " + err, "error"));
     }
+function toggleDepartmentOther() {
+  const sel = document.getElementById('department').value;
+  const other = document.getElementById('departmentOther');
+  if (sel === 'อื่นๆ') {
+    other.classList.remove('hidden');
+    other.focus();
+  } else {
+    other.classList.add('hidden');
+    other.value = '';
+  }
+}
 
+function getDepartmentValue() {
+  const sel = document.getElementById('department').value;
+  if (sel === 'อื่นๆ') {
+    return document.getElementById('departmentOther').value.trim();
+  }
+  return sel;
+}
     function submitAssessment() {
       const dateVal = document.getElementById('evalDate').value;
       const remarksVal = document.getElementById('evalRemarks').value.trim();
