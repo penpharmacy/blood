@@ -841,6 +841,9 @@ function getDepartmentValue() {
       const dateVal = document.getElementById('evalDate').value;
       const remarksVal = document.getElementById('evalRemarks').value.trim();
       if (!dateVal) return showModal("ข้อมูลไม่ครบ", "กรุณาระบุวันที่ประเมิน", "error");
+      if (document.getElementById('department').value === 'อื่นๆ' && !document.getElementById('departmentOther').value.trim()) {
+  return showModal("ข้อมูลไม่ครบ", "กรุณาระบุชื่อหน่วยงาน (อื่นๆ)", "error");
+}
 
       const newRecord = {
         id: 'BLOODCULTURE_' + Date.now() + '_' + Math.floor(Math.random()*1000),
