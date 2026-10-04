@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -24,21 +25,20 @@
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
   <!-- TOP HEADER (Purple/Fuchsia Gradient for new theme) -->
-
   <header class="bg-gradient-to-r from-blue-600 to-sky-600 text-white shadow-lg sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
       <div class="flex items-center space-x-3">
         <!-- New Logo (Uploaded Germ Image) -->
-       <div class="w-11 h-11 rounded-full bg-white border-2 border-blue-200 shadow-sm flex items-center justify-center flex-shrink-0">
-  <svg viewBox="0 0 32 32" class="w-7 h-7" xmlns="http://www.w3.org/2000/svg">
-    <!-- ฝาจุก -->
-    <rect x="11" y="2" width="10" height="5" rx="1.5" fill="#dc2626"/>
-    <!-- ตัวหลอด -->
-    <path d="M12 7 H20 V24 A4 4 0 0 1 12 24 Z" fill="#e0f2fe" stroke="#475569" stroke-width="1.2"/>
-    <!-- เลือดในหลอด -->
-    <path d="M12.6 16 H19.4 V24 A3.4 3.4 0 0 1 12.6 24 Z" fill="#dc2626"/>
-  </svg>
-</div>
+        <div class="w-11 h-11 rounded-full bg-white border-2 border-blue-200 shadow-sm flex items-center justify-center flex-shrink-0">
+          <svg viewBox="0 0 32 32" class="w-7 h-7" xmlns="http://www.w3.org/2000/svg">
+            <!-- ฝาจุก -->
+            <rect x="11" y="2" width="10" height="5" rx="1.5" fill="#dc2626"/>
+            <!-- ตัวหลอด -->
+            <path d="M12 7 H20 V24 A4 4 0 0 1 12 24 Z" fill="#e0f2fe" stroke="#475569" stroke-width="1.2"/>
+            <!-- เลือดในหลอด -->
+            <path d="M12.6 16 H19.4 V24 A3.4 3.4 0 0 1 12.6 24 Z" fill="#dc2626"/>
+          </svg>
+        </div>
         <div>
           <h1 class="text-lg md:text-xl font-bold tracking-wide">Blood Culture Collection Checklist</h1>
           <p class="text-xs text-blue-100 font-light">โรงพยาบาลพุนพิน จังหวัดสุราษฎร์ธานี</p>
@@ -53,7 +53,6 @@
   </header>
 
   <!-- NAVIGATION TABS -->
-
   <nav class="bg-white border-b border-slate-200 sticky top-[60px] z-30 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 flex justify-around">
       <button onclick="switchTab('form')" id="btn-form" class="tab-btn py-3 px-1 md:px-4 border-b-2 border-blue-600 text-blue-600 font-semibold flex items-center space-x-1.5 focus:outline-none text-sm transition-all">
@@ -77,405 +76,437 @@
   </nav>
 
   <!-- MAIN CONTAINER -->
-
   <main class="flex-grow max-w-6xl w-full mx-auto p-4 md:py-6">
 
-<!-- TAB 1: FORM VIEW -->
-<div id="tab-form-content" class="tab-content space-y-6">
-  
-  <!-- Patient & Meta Data Card with Heart Pattern -->
-  <div class="bg-white rounded-2xl p-5 shadow-sm border border-blue-100 relative overflow-hidden">
-    <!-- Heart SVG Background Overlay -->
-    <div class="absolute inset-0 z-0 pointer-events-none opacity-40" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23a855f7' fill-opacity='0.15'%3E%3Cg transform='translate(20, 20) scale(1.8)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(75, 5) scale(0.8) rotate(15)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(-5, 65) scale(1) rotate(-15)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(60, 70) scale(0.6) rotate(-5)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;); background-size: 80px 80px;"></div>
-    
-    <div class="relative z-10">
-      <div class="flex items-center space-x-2 pb-4 mb-4 border-b border-blue-100/60">
-        <i data-lucide="heart" class="w-5 h-5 text-blue-500"></i>
-        <h2 class="font-semibold text-blue-900 text-lg">ข้อมูลการประเมิน</h2>
-      </div>
+    <!-- TAB 1: FORM VIEW -->
+    <div id="tab-form-content" class="tab-content space-y-6">
+      
+      <!-- Patient & Meta Data Card with Heart Pattern -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-blue-100 relative overflow-hidden">
+        <div class="absolute inset-0 z-0 pointer-events-none opacity-40" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23a855f7' fill-opacity='0.15'%3E%3Cg transform='translate(20, 20) scale(1.8)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(75, 5) scale(0.8) rotate(15)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(-5, 65) scale(1) rotate(-15)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3Cg transform='translate(60, 70) scale(0.6) rotate(-5)'%3E%3Cpath d='M16,28 C16,28 4,18 4,10 C4,5.5 8,3 12,3 C14.5,3 16,5 16,5 C16,5 17.5,3 20,3 C24,3 28,5.5 28,10 C28,18 16,28 16,28 Z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;); background-size: 80px 80px;"></div>
+        
+        <div class="relative z-10">
+          <div class="flex items-center space-x-2 pb-4 mb-4 border-b border-blue-100/60">
+            <i data-lucide="heart" class="w-5 h-5 text-blue-500"></i>
+            <h2 class="font-semibold text-blue-900 text-lg">ข้อมูลการประเมิน</h2>
+          </div>
 
-     <form id="metaForm" class="space-y-6">
+          <form id="metaForm" class="space-y-6">
+            <!-- กลุ่มที่ 1: หน่วยงาน -->
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2.5">หน่วยงาน</label>
+              <select id="department" onchange="toggleDepartmentOther()" class="w-full md:max-w-sm px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+                <option value="">-- เลือกหน่วยงาน --</option>
+                <option value="OPD">OPD</option>
+                <option value="W4">W4</option>
+                <option value="W5">W5</option>
+                <option value="LR">LR</option>
+                <option value="ER">ER</option>
+                <option value="อื่นๆ">อื่นๆ</option>
+              </select>
+              <input type="text" id="departmentOther" placeholder="ระบุหน่วยงานอื่นๆ" class="hidden mt-2 w-full md:max-w-sm px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+            </div>
 
-  <!-- กลุ่มที่ 1: หน่วยงาน -->
-  <div>
-    <label class="block text-sm font-semibold text-slate-700 mb-2.5">หน่วยงาน</label>
-    <select id="department" onchange="toggleDepartmentOther()" class="w-full md:max-w-sm px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
-      <option value="">-- เลือกหน่วยงาน --</option>
-      <option value="OPD">OPD</option>
-      <option value="W4">W4</option>
-      <option value="W5">W5</option>
-      <option value="LR">LR</option>
-      <option value="ER">ER</option>
-      <option value="อื่นๆ">อื่นๆ</option>
-    </select>
-    <input type="text" id="departmentOther" placeholder="ระบุหน่วยงานอื่นๆ" class="hidden mt-2 w-full md:max-w-sm px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
-  </div>
+            <!-- กลุ่มที่ 2: วันที่ + เวลา -->
+            <div class="pt-5 border-t border-blue-100/60">
+              <p class="text-xs font-bold text-blue-500 uppercase tracking-wider mb-3">วัน-เวลาที่ประเมิน</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-semibold text-slate-600 mb-1.5">วันที่</label>
+                  <input type="date" id="evalDate" required class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-slate-600 mb-1.5">เวลา</label>
+                  <input type="time" id="evalTime" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+                </div>
+              </div>
+            </div>
 
-  <!-- กลุ่มที่ 2: วันที่ + เวลา -->
-  <div class="pt-5 border-t border-blue-100/60">
-    <p class="text-xs font-bold text-blue-500 uppercase tracking-wider mb-3">วัน-เวลาที่ประเมิน</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div>
-        <label class="block text-sm font-semibold text-slate-600 mb-1.5">วันที่</label>
-        <input type="date" id="evalDate" required class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
-      </div>
-      <div>
-        <label class="block text-sm font-semibold text-slate-600 mb-1.5">เวลา</label>
-        <input type="time" id="evalTime" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
-      </div>
-    </div>
-  </div>
-
-  <!-- กลุ่มที่ 3: ผู้ที่เกี่ยวข้อง -->
-  <div class="pt-5 border-t border-blue-100/60">
-    <p class="text-xs font-bold text-blue-500 uppercase tracking-wider mb-3">ผู้ที่เกี่ยวข้อง</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div>
-        <label class="block text-sm font-semibold text-slate-600 mb-1.5">ชื่อผู้ป่วย</label>
-        <input type="text" id="patientName" placeholder="ระบุชื่อผู้ป่วย" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
-      </div>
-      <div>
-        <label class="block text-sm font-semibold text-slate-600 mb-1.5">ผู้ปฏิบัติ</label>
-        <input type="text" id="practitioner" placeholder="ชื่อผู้ปฏิบัติ" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
-      </div>
-      <div>
-        <label class="block text-sm font-semibold text-slate-600 mb-1.5">ผู้ประเมิน</label>
-        <input type="text" id="evaluator" placeholder="ชื่อผู้ประเมิน" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
-      </div>
-    </div>
-  </div>
-
-</form>
-    </div>
-  </div>
-
-  <!-- Checklist Section Header -->
-  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-blue-50 border border-blue-100 p-4 rounded-xl">
-    <div>
-      <h2 class="font-bold text-blue-900 text-lg">แบบ Checklist การเจาะเลือดเพาะเชื้อ (Blood Culture Collection Checklist)</h2>
-      <p class="text-xs text-blue-700 font-light">กรุณาประเมินการปฏิบัติตามรายการตรวจสอบทั้ง 15 ข้อ</p>
-    </div>
-    <!-- Live Score Widget -->
-    <div class="bg-blue-600 text-white rounded-2xl px-5 py-3 shadow-md flex items-center space-x-3 w-full md:w-auto justify-center">
-      <div class="text-right">
-        <span class="text-[10px] block text-blue-100 uppercase font-bold tracking-wider">อัตราการปฏิบัติ</span>
-        <span class="text-xl md:text-2xl font-black" id="liveScoreText">0.00% (0/15)</span>
-      </div>
-      <div class="w-10 h-10 rounded-full border-2 border-blue-400 flex items-center justify-center font-bold text-sm hidden" id="scoreIndicatorRing">
-        0/15
-      </div>
-    </div>
-  </div>
-
-  <!-- Checklist Items -->
-  <div class="space-y-4" id="bundleForm">
-    <!-- Javascript will generate items here dynamically to keep code clean, see script section -->
-  </div>
-
-  <!-- Remarks Input Card -->
-  <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-    <label class="block text-sm font-semibold text-slate-700 mb-2">ข้อเสนอแนะเพิ่มเติม / หมายเหตุ</label>
-    <textarea id="evalRemarks" rows="3" placeholder="ระบุสิ่งที่พบเห็นเพิ่มเติม เช่น รายละเอียดอุปสรรค, ข้อเสนอแนะอื่นๆ..." class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"></textarea>
-  </div>
-
-  <!-- Action Buttons -->
-  <div class="flex flex-col sm:flex-row justify-end items-center gap-4 pt-4">
-    <button onclick="resetCurrentForm()" class="w-full sm:w-auto px-6 py-3 border border-slate-200 hover:border-slate-300 text-slate-600 rounded-xl font-semibold hover:bg-slate-100 transition-all flex items-center justify-center space-x-2">
-      <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
-      <span>ล้างข้อมูล</span>
-    </button>
-    <button onclick="submitAssessment()" class="w-full sm:w-auto px-10 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 hover:shadow-blue-700/30 transition-all flex items-center justify-center space-x-2">
-      <i data-lucide="save" class="w-5 h-5"></i>
-      <span>บันทึกและส่งข้อมูล</span>
-    </button>
-  </div>
-
-</div>
-
-<!-- TAB 2: HISTORY VIEW -->
-<div id="tab-history-content" class="tab-content hidden space-y-6">
-  
-  <!-- Statistics Widget inside History -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
-      <div class="p-3 bg-yellow-50 text-yellow-600 rounded-xl">
-        <i data-lucide="cloud-off" class="w-6 h-6"></i>
-      </div>
-      <div>
-        <span class="text-xs text-slate-500 block">รอการส่งขึ้น Google Sheets</span>
-        <span id="unsyncedCountTitle" class="text-2xl font-bold text-yellow-600">0 รายการ</span>
-      </div>
-    </div>
-    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
-      <div class="p-3 bg-blue-50 text-blue-600 rounded-xl">
-        <i data-lucide="cloud-check" class="w-6 h-6"></i>
-      </div>
-      <div>
-        <span class="text-xs text-slate-500 block">ซิงค์สำเร็จแล้ว</span>
-        <span id="syncedCountTitle" class="text-2xl font-bold text-blue-600">0 รายการ</span>
-      </div>
-    </div>
-    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
-      <button onclick="syncAllRecords()" id="btnSyncAll" class="w-full h-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
-        <i data-lucide="refresh-cw" class="w-5 h-5"></i>
-        <span>ซิงค์ขึ้น Google Sheets ทั้งหมด</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- History Table/List -->
-  <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-    <div class="flex justify-between items-center pb-4 mb-4 border-b border-slate-100">
-      <h2 class="font-bold text-slate-800 text-lg flex items-center space-x-2">
-        <span>รายการประเมินจาก Google Sheets</span>
-        <span class="text-xs font-normal text-slate-400">(Google Sheets)</span>
-      </h2>
-      <button onclick="confirmClearHistory()" class="text-xs text-yellow-600 hover:text-yellow-800 font-semibold flex items-center space-x-1">
-        <i data-lucide="trash-2" class="w-4 h-4"></i>
-        <span>ล้างประวัติทั้งหมด</span>
-      </button>
-    </div>
-
-    <div class="overflow-x-auto">
-      <table class="w-full text-left border-collapse min-w-[700px]">
-        <thead>
-          <tr class="border-b border-slate-200 text-slate-400 text-xs font-semibold uppercase tracking-wider bg-slate-50">
-            <th class="py-3 px-4 w-24">วันที่ประเมิน</th>
-            <th class="py-3 px-4 text-center">ผลลัพธ์รายข้อ (1-15)</th>
-            <th class="py-3 px-4 text-center w-28">คะแนน</th>
-            <th class="py-3 px-4 text-center w-28">สถานะซิงค์</th>
-            <th class="py-3 px-4 text-center w-20">จัดการ</th>
-          </tr>
-        </thead>
-        <tbody id="historyListBody" class="divide-y divide-slate-100 text-sm text-slate-600">
-          <!-- Dynamically populated rows -->
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Empty State -->
-    <div id="historyEmptyState" class="hidden flex flex-col items-center justify-center py-12 text-slate-400 space-y-3">
-      <i data-lucide="inbox" class="w-16 h-16 text-slate-300"></i>
-      <span class="text-base font-medium">ยังไม่มีข้อมูลการประเมินใน Google Sheets</span>
-      <button onclick="switchTab('form')" class="px-4 py-2 bg-blue-50 text-blue-700 font-bold rounded-xl text-sm hover:bg-blue-100 transition-all">ประเมินผู้ป่วยรายใหม่</button>
-    </div>
-  </div>
-</div>
-
-<!-- TAB 3: REPORTS & DASHBOARD VIEW -->
-<div id="tab-reports-content" class="tab-content hidden space-y-6">
-  
-  <!-- Dashboard Top Controls -->
-  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-    <div>
-      <h2 class="font-bold text-slate-800 text-lg flex items-center space-x-2">
-        <span class="w-3 h-6 bg-blue-600 rounded"></span>
-        <span>Dashboard สรุปผลการประเมินการเจาะเลือดเพาะเชื้อ</span>
-      </h2>
-      <p class="text-xs text-slate-500" id="dashboardLastUpdated">ดึงข้อมูลจาก Google Sheets อัตโนมัติ</p>
-    </div>
-    <div class="flex items-center space-x-2 w-full sm:w-auto">
-      <button onclick="fetchAndRenderReports()" id="btnRefreshDashboard" class="flex-1 sm:flex-initial px-4 py-2 text-xs font-bold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl transition-all flex items-center justify-center space-x-1">
-        <i id="refreshIcon" data-lucide="refresh-cw" class="w-4 h-4"></i>
-        <span>รีเฟรชข้อมูล</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- TIME-PERIOD FILTER PANEL -->
-  <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-      <span class="text-sm font-bold text-slate-700 flex items-center space-x-1.5">
-        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-        <span>กรองการแสดงผลตามช่วงเวลา:</span>
-      </span>
-      <div class="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-xl">
-        <button onclick="setFilterType('all')" id="filter-btn-all" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm">ทั้งหมด</button>
-        <button onclick="setFilterType('month')" id="filter-btn-month" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-800">รายเดือน</button>
-        <button onclick="setFilterType('year')" id="filter-btn-year" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-800">รายปี</button>
-        <button onclick="setFilterType('range')" id="filter-btn-range" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-800">ช่วงวันที่</button>
-      </div>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-3 border-t border-slate-100 hidden" id="filterInputsContainer">
-      <!-- Month -->
-      <div id="filter-input-month" class="filter-input-sub hidden">
-        <label class="block text-xs font-semibold text-slate-500 mb-1">เลือกเดือนที่ต้องการประเมิน</label>
-        <input type="month" id="filterMonthVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm">
-      </div>
-      <!-- Year -->
-      <div id="filter-input-year" class="filter-input-sub hidden">
-        <label class="block text-xs font-semibold text-slate-500 mb-1">เลือกปีงบประมาณ</label>
-        <select id="filterYearVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm"></select>
-      </div>
-      <!-- Custom Range -->
-      <div id="filter-input-range" class="filter-input-sub hidden md:col-span-2 flex items-center space-x-2">
-        <div class="flex-1">
-          <label class="block text-xs font-semibold text-slate-500 mb-1">ตั้งแต่วันที่</label>
-          <input type="date" id="filterStartVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm">
-        </div>
-        <span class="pt-5 text-slate-400 font-bold text-xs">ถึง</span>
-        <div class="flex-1">
-          <label class="block text-xs font-semibold text-slate-500 mb-1">สิ้นสุดวันที่</label>
-          <input type="date" id="filterEndVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm">
+            <!-- กลุ่มที่ 3: ผู้ที่เกี่ยวข้อง -->
+            <div class="pt-5 border-t border-blue-100/60">
+              <p class="text-xs font-bold text-blue-500 uppercase tracking-wider mb-3">ผู้ที่เกี่ยวข้อง</p>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <label class="block text-sm font-semibold text-slate-600 mb-1.5">ชื่อผู้ป่วย</label>
+                  <input type="text" id="patientName" placeholder="ระบุชื่อผู้ป่วย" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-slate-600 mb-1.5">ผู้ปฏิบัติ</label>
+                  <input type="text" id="practitioner" placeholder="ชื่อผู้ปฏิบัติ" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-slate-600 mb-1.5">ผู้ประเมิน</label>
+                  <input type="text" id="evaluator" placeholder="ชื่อผู้ประเมิน" class="w-full px-4 py-2.5 border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-700 font-medium bg-white/80">
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Key Stats Overview Card -->
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-      <span class="text-xs text-slate-400 block font-semibold uppercase tracking-wider">ประเมินสะสมในช่วงนี้</span>
-      <div class="flex items-baseline space-x-1.5 mt-2">
-        <span id="repTotalEvaluations" class="text-4xl font-black text-slate-800">0</span>
-        <span class="text-sm text-slate-500 font-bold">ครั้ง</span>
+      <!-- Checklist Section Header -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-blue-50 border border-blue-100 p-4 rounded-xl">
+        <div>
+          <h2 class="font-bold text-blue-900 text-lg">แบบ Checklist การเจาะเลือดเพาะเชื้อ (Blood Culture Collection Checklist)</h2>
+          <p class="text-xs text-blue-700 font-light">กรุณาประเมินการปฏิบัติตามรายการตรวจสอบทั้ง 15 ข้อ</p>
+        </div>
+        <!-- Live Score Widget -->
+        <div class="bg-blue-600 text-white rounded-2xl px-5 py-3 shadow-md flex items-center space-x-3 w-full md:w-auto justify-center">
+          <div class="text-right">
+            <span class="text-[10px] block text-blue-100 uppercase font-bold tracking-wider">อัตราการปฏิบัติ</span>
+            <span class="text-xl md:text-2xl font-black" id="liveScoreText">0.00% (0/15)</span>
+          </div>
+          <div class="w-10 h-10 rounded-full border-2 border-blue-400 flex items-center justify-center font-bold text-sm hidden" id="scoreIndicatorRing">
+            0/15
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-      <span class="text-xs text-slate-400 block font-semibold uppercase tracking-wider">ผ่านเกณฑ์สมบูรณ์ (100%)</span>
-      <div class="flex items-baseline space-x-1.5 mt-2">
-        <span id="repFullComplianceCount" class="text-4xl font-black text-blue-600">0</span>
-        <span class="text-sm text-blue-500 font-bold">ครั้ง</span>
-      </div>
-      <span id="repFullCompliancePct" class="text-[10px] text-slate-400 block mt-2">0% ของการประเมินทั้งหมด</span>
-    </div>
-    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-      <span class="text-xs text-slate-400 block font-semibold uppercase tracking-wider">จุดที่ต้องปรับปรุงเร่งด่วน</span>
-      <span id="repCriticalImprovement" class="text-xs sm:text-sm font-bold text-yellow-600 mt-2 leading-snug">ไม่มีข้อมูล</span>
-      <span class="text-[10px] text-slate-400 block mt-2">รายการที่อัตราการปฏิบัติต่ำที่สุด</span>
-    </div>
-  </div>
 
-  <!-- MAIN CHARTS ROW -->
-  <div class="grid grid-cols-1 gap-6">
-    
-    <!-- Chart 1: Comparison Bar Chart -->
-    <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-      <div class="pb-3 mb-4 border-b border-slate-100 flex justify-between items-center">
-        <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center space-x-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
-          <span>เปรียบเทียบ ปฏิบัติ/ไม่ปฏิบัติ รายข้อ (%)</span>
-        </h3>
-        <span class="text-[10px] bg-slate-100 px-2.5 py-1 rounded-full font-bold text-slate-500">เกณฑ์ 15 ข้อ</span>
+      <!-- Checklist Items -->
+      <div class="space-y-4" id="bundleForm">
+        <!-- Javascript will generate items here dynamically -->
       </div>
-      <div class="relative min-h-[450px] w-full flex items-center justify-center">
-        <canvas id="comparisonChartCanvas"></canvas>
-        <div id="chart1EmptyState" class="absolute inset-0 bg-white flex flex-col items-center justify-center text-slate-400 space-y-2 hidden">
-          <i data-lucide="bar-chart-2" class="w-12 h-12 text-slate-300"></i>
-          <p class="text-xs font-semibold">ไม่พบข้อมูลประเมินตามตัวกรองช่วงเวลาดังกล่าว</p>
+
+      <!-- Remarks Input Card -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+        <label class="block text-sm font-semibold text-slate-700 mb-2">ข้อเสนอแนะเพิ่มเติม / หมายเหตุ</label>
+        <textarea id="evalRemarks" rows="3" placeholder="ระบุสิ่งที่พบเห็นเพิ่มเติม เช่น รายละเอียดอุปสรรค, ข้อเสนอแนะอื่นๆ..." class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"></textarea>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row justify-end items-center gap-4 pt-4">
+        <button onclick="resetCurrentForm()" class="w-full sm:w-auto px-6 py-3 border border-slate-200 hover:border-slate-300 text-slate-600 rounded-xl font-semibold hover:bg-slate-100 transition-all flex items-center justify-center space-x-2">
+          <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+          <span>ล้างข้อมูล</span>
+        </button>
+        <button onclick="submitAssessment()" class="w-full sm:w-auto px-10 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/25 hover:shadow-blue-700/30 transition-all flex items-center justify-center space-x-2">
+          <i data-lucide="save" class="w-5 h-5"></i>
+          <span>บันทึกและส่งข้อมูล</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- TAB 2: HISTORY VIEW -->
+    <div id="tab-history-content" class="tab-content hidden space-y-6">
+      
+      <!-- Statistics Widget inside History -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+          <div class="p-3 bg-yellow-50 text-yellow-600 rounded-xl">
+            <i data-lucide="cloud-off" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <span class="text-xs text-slate-500 block">รอการส่งขึ้น Google Sheets</span>
+            <span id="unsyncedCountTitle" class="text-2xl font-bold text-yellow-600">0 รายการ</span>
+          </div>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+          <div class="p-3 bg-blue-50 text-blue-600 rounded-xl">
+            <i data-lucide="cloud-check" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <span class="text-xs text-slate-500 block">ซิงค์สำเร็จแล้ว</span>
+            <span id="syncedCountTitle" class="text-2xl font-bold text-blue-600">0 รายการ</span>
+          </div>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+          <button onclick="syncAllRecords()" id="btnSyncAll" class="w-full h-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
+            <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+            <span>ซิงค์ขึ้น Google Sheets ทั้งหมด</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- History Table/List -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+        <div class="flex justify-between items-center pb-4 mb-4 border-b border-slate-100">
+          <h2 class="font-bold text-slate-800 text-lg flex items-center space-x-2">
+            <span>รายการประเมินจาก Google Sheets</span>
+            <span class="text-xs font-normal text-slate-400">(Google Sheets)</span>
+          </h2>
+          <button onclick="confirmClearHistory()" class="text-xs text-yellow-600 hover:text-yellow-800 font-semibold flex items-center space-x-1">
+            <i data-lucide="trash-2" class="w-4 h-4"></i>
+            <span>ล้างประวัติทั้งหมด</span>
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse min-w-[700px]">
+            <thead>
+              <tr class="border-b border-slate-200 text-slate-400 text-xs font-semibold uppercase tracking-wider bg-slate-50">
+                <th class="py-3 px-4 w-24">วันที่ประเมิน</th>
+                <th class="py-3 px-4 text-center">ผลลัพธ์รายข้อ (1-15)</th>
+                <th class="py-3 px-4 text-center w-28">คะแนน</th>
+                <th class="py-3 px-4 text-center w-28">สถานะซิงค์</th>
+                <th class="py-3 px-4 text-center w-20">จัดการ</th>
+              </tr>
+            </thead>
+            <tbody id="historyListBody" class="divide-y divide-slate-100 text-sm text-slate-600">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty State -->
+        <div id="historyEmptyState" class="hidden flex flex-col items-center justify-center py-12 text-slate-400 space-y-3">
+          <i data-lucide="inbox" class="w-16 h-16 text-slate-300"></i>
+          <span class="text-base font-medium">ยังไม่มีข้อมูลการประเมินใน Google Sheets</span>
+          <button onclick="switchTab('form')" class="px-4 py-2 bg-blue-50 text-blue-700 font-bold rounded-xl text-sm hover:bg-blue-100 transition-all">ประเมินผู้ป่วยรายใหม่</button>
         </div>
       </div>
     </div>
 
-    <!-- Chart 2: Top Non-Compliance (Compact HTML List) -->
-    <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-      <div class="pb-3 mb-4 border-b border-slate-100 flex justify-between items-center">
-        <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center space-x-2">
-          <svg class="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
-          <span>สรุปรายการที่ "ไม่ปฏิบัติ" (เรียงจาก % มากไปน้อย)</span>
-        </h3>
-      </div>
-      <!-- Changed to CSS Columns for top-to-bottom, then left-to-right flow -->
-      <div id="nonComplianceListContainer" class="columns-1 lg:columns-2 gap-3 w-full">
-        <!-- Dynamic list goes here -->
-      </div>
-      <div id="chart2EmptyState" class="bg-blue-50/50 rounded-xl p-8 flex flex-col items-center justify-center text-blue-600 space-y-2 hidden border border-blue-100 mt-2">
-        <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <p class="text-sm font-bold mt-2">ยอดเยี่ยม! ไม่มีหัวข้อที่ไม่ปฏิบัติในช่วงเวลานี้</p>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Compliance by Item Detailed Breakdown -->
-  <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-    <h2 class="font-bold text-slate-800 text-lg mb-4 flex items-center space-x-2">
-      <span>ตารางรายละเอียดอัตราการปฏิบัติตาม Checklist (15 ข้อ)</span>
-    </h2>
-    
-    <!-- Changed to CSS Columns for top-to-bottom, then left-to-right flow -->
-    <div class="columns-1 lg:columns-2 gap-3 w-full" id="itemBreakdownContainer">
-      <!-- Dynamically populated breakdown elements -->
-    </div>
-  </div>
-
-</div>
-
-<!-- TAB 4: SETTINGS VIEW -->
-<div id="tab-settings-content" class="tab-content hidden space-y-6">
-  
-  <!-- API Setting Card -->
- <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-
-  <div class="flex items-center space-x-2 pb-4 mb-4 border-b border-slate-100">
-    <h2 class="font-semibold text-slate-800 text-lg">ตั้งค่าการซิงค์ข้อมูล Google Sheets</h2>
-  </div>
-
-  <div class="space-y-4">
-
-<div class="p-4 bg-sky-50 border border-sky-100 rounded-2xl flex items-start gap-3">
-    <i data-lucide="info" class="w-5 h-5 text-sky-600 mt-0.5 flex-shrink-0"></i>
-    <div class="text-xs text-sky-800 leading-relaxed w-full">
-        <div class="flex justify-between items-center mb-2">
-            <p class="font-extrabold">สเปรดชีตเป้าหมายหลัก:</p>
-            <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full text-[10px] font-bold uppercase">Sync Enabled</span>
+    <!-- TAB 3: REPORTS & DASHBOARD VIEW -->
+    <div id="tab-reports-content" class="tab-content hidden space-y-6">
+      
+      <!-- Dashboard Top Controls -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+        <div>
+          <h2 class="font-bold text-slate-800 text-lg flex items-center space-x-2">
+            <span class="w-3 h-6 bg-blue-600 rounded"></span>
+            <span>Dashboard สรุปผลการประเมินการเจาะเลือดเพาะเชื้อ</span>
+          </h2>
+          <p class="text-xs text-slate-500" id="dashboardLastUpdated">ดึงข้อมูลจาก Google Sheets อัตโนมัติ</p>
         </div>
-        <a href="https://docs.google.com/spreadsheets/d/11Pe7e1NayNfEnc3Wb4YPjN1dDIChFCUnEd7x0Ieef80/edit?gid=0#gid=0" 
-           target="_blank" class="font-bold underline text-blue-600 hover:text-blue-800 flex items-center gap-1">
-           Blood Culture Collection Checklist - Google ชีต (คลิกเพื่อเปิด) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-        </a>
-        <p class="mt-2 text-[11px] opacity-80">
-            ข้อมูลจะถูกบันทึกลงในแท็บ <code class="bg-sky-100 px-1 rounded font-bold">"BloodCulture"</code> อัตโนมัติ (15 รายการ)
-        </p>
+        <div class="flex items-center space-x-2 w-full sm:w-auto">
+          <button onclick="fetchAndRenderReports()" id="btnRefreshDashboard" class="flex-1 sm:flex-initial px-4 py-2 text-xs font-bold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl transition-all flex items-center justify-center space-x-1">
+            <i id="refreshIcon" data-lucide="refresh-cw" class="w-4 h-4"></i>
+            <span>รีเฟรชข้อมูล</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- TIME-PERIOD FILTER PANEL -->
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <span class="text-sm font-bold text-slate-700 flex items-center space-x-1.5">
+            <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+            <span>กรองการแสดงผลตามช่วงเวลา:</span>
+          </span>
+          <div class="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-xl">
+            <button onclick="setFilterType('all')" id="filter-btn-all" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm">ทั้งหมด</button>
+            <button onclick="setFilterType('month')" id="filter-btn-month" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-800">รายเดือน</button>
+            <button onclick="setFilterType('year')" id="filter-btn-year" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-800">รายปี</button>
+            <button onclick="setFilterType('range')" id="filter-btn-range" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-800">ช่วงวันที่</button>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-3 border-t border-slate-100 hidden" id="filterInputsContainer">
+          <!-- Month -->
+          <div id="filter-input-month" class="filter-input-sub hidden">
+            <label class="block text-xs font-semibold text-slate-500 mb-1">เลือกเดือนที่ต้องการประเมิน</label>
+            <input type="month" id="filterMonthVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm">
+          </div>
+          <!-- Year -->
+          <div id="filter-input-year" class="filter-input-sub hidden">
+            <label class="block text-xs font-semibold text-slate-500 mb-1">เลือกปีงบประมาณ</label>
+            <select id="filterYearVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm"></select>
+          </div>
+          <!-- Custom Range -->
+          <div id="filter-input-range" class="filter-input-sub hidden md:col-span-2 flex items-center space-x-2">
+            <div class="flex-1">
+              <label class="block text-xs font-semibold text-slate-500 mb-1">ตั้งแต่วันที่</label>
+              <input type="date" id="filterStartVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm">
+            </div>
+            <span class="pt-5 text-slate-400 font-bold text-xs">ถึง</span>
+            <div class="flex-1">
+              <label class="block text-xs font-semibold text-slate-500 mb-1">สิ้นสุดวันที่</label>
+              <input type="date" id="filterEndVal" onchange="renderReports()" class="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Stats Overview Card -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <span class="text-xs text-slate-400 block font-semibold uppercase tracking-wider">ประเมินสะสมในช่วงนี้</span>
+          <div class="flex items-baseline space-x-1.5 mt-2">
+            <span id="repTotalEvaluations" class="text-4xl font-black text-slate-800">0</span>
+            <span class="text-sm text-slate-500 font-bold">ครั้ง</span>
+          </div>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <span class="text-xs text-slate-400 block font-semibold uppercase tracking-wider">ผ่านเกณฑ์สมบูรณ์ (100%)</span>
+          <div class="flex items-baseline space-x-1.5 mt-2">
+            <span id="repFullComplianceCount" class="text-4xl font-black text-blue-600">0</span>
+            <span class="text-sm text-blue-500 font-bold">ครั้ง</span>
+          </div>
+          <span id="repFullCompliancePct" class="text-[10px] text-slate-400 block mt-2">0% ของการประเมินทั้งหมด</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <span class="text-xs text-slate-400 block font-semibold uppercase tracking-wider">จุดที่ต้องปรับปรุงเร่งด่วน</span>
+          <span id="repCriticalImprovement" class="text-xs sm:text-sm font-bold text-yellow-600 mt-2 leading-snug">ไม่มีข้อมูล</span>
+          <span class="text-[10px] text-slate-400 block mt-2">รายการที่อัตราการปฏิบัติต่ำที่สุด</span>
+        </div>
+      </div>
+
+      <!-- MAIN CHARTS ROW -->
+      <div class="grid grid-cols-1 gap-6">
+        
+        <!-- Chart 1: Comparison Bar Chart -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+          <div class="pb-3 mb-4 border-b border-slate-100 flex justify-between items-center">
+            <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
+              <span>เปรียบเทียบ ปฏิบัติ/ไม่ปฏิบัติ รายข้อ (%)</span>
+            </h3>
+            <span class="text-[10px] bg-slate-100 px-2.5 py-1 rounded-full font-bold text-slate-500">เกณฑ์ 15 ข้อ</span>
+          </div>
+          <div class="relative min-h-[450px] w-full flex items-center justify-center">
+            <canvas id="comparisonChartCanvas"></canvas>
+            <div id="chart1EmptyState" class="absolute inset-0 bg-white flex flex-col items-center justify-center text-slate-400 space-y-2 hidden">
+              <i data-lucide="bar-chart-2" class="w-12 h-12 text-slate-300"></i>
+              <p class="text-xs font-semibold">ไม่พบข้อมูลประเมินตามตัวกรองช่วงเวลาดังกล่าว</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart 2: Top Non-Compliance (Compact HTML List) -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+          <div class="pb-3 mb-4 border-b border-slate-100 flex justify-between items-center">
+            <h3 class="font-bold text-slate-800 text-sm md:text-base flex items-center space-x-2">
+              <svg class="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
+              <span>สรุปรายการที่ "ไม่ปฏิบัติ" (เรียงจาก % มากไปน้อย)</span>
+            </h3>
+          </div>
+          <!-- Changed to CSS Columns for top-to-bottom, then left-to-right flow -->
+          <div id="nonComplianceListContainer" class="columns-1 lg:columns-2 gap-3 w-full">
+            <!-- Dynamic list goes here -->
+          </div>
+          <div id="chart2EmptyState" class="bg-blue-50/50 rounded-xl p-8 flex flex-col items-center justify-center text-blue-600 space-y-2 hidden border border-blue-100 mt-2">
+            <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p class="text-sm font-bold mt-2">ยอดเยี่ยม! ไม่มีหัวข้อที่ไม่ปฏิบัติในช่วงเวลานี้</p>
+          </div>
+        </div>
+
+        <!-- Chart 3: Department Comparison -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+          <div class="pb-3 mb-4 border-b border-slate-100 flex flex-wrap gap-2 justify-between items-center">
+            <h3 class="font-bold text-slate-800 text-sm md:text-base">เปรียบเทียบอัตราการปฏิบัติตามหน่วยงาน (%)</h3>
+            <span class="text-[10px] bg-slate-100 px-2.5 py-1 rounded-full font-bold text-slate-500">สีเข้ม = ปฏิบัติ · สีอ่อน = ไม่ปฏิบัติ</span>
+          </div>
+          <div id="deptLegend" class="flex flex-wrap gap-2 mb-3"></div>
+          <div id="deptChartWrap" class="relative w-full" style="height:300px;"><canvas id="deptChartCanvas"></canvas></div>
+          <div id="deptEmptyState" class="hidden text-center py-10 text-slate-400 text-sm">ไม่พบข้อมูลตามตัวกรองช่วงเวลาดังกล่าว</div>
+          <div class="overflow-x-auto mt-5">
+            <table class="w-full text-left text-sm min-w-[520px]">
+              <thead>
+                <tr class="border-b border-slate-200 text-slate-400 text-xs font-semibold bg-slate-50">
+                  <th class="py-2.5 px-3 w-12 text-center">อันดับ</th>
+                  <th class="py-2.5 px-3">หน่วยงาน</th>
+                  <th class="py-2.5 px-3 text-center">ประเมิน (ครั้ง)</th>
+                  <th class="py-2.5 px-3 text-center">ผ่าน 100% (ครั้ง)</th>
+                  <th class="py-2.5 px-3 w-56">อัตราการปฏิบัติ</th>
+                </tr>
+              </thead>
+              <tbody id="deptTableBody" class="divide-y divide-slate-100 text-slate-600"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Chart 4: Department x Item -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+          <div class="pb-3 mb-4 border-b border-slate-100 flex flex-wrap gap-2 justify-between items-center">
+            <h3 class="font-bold text-slate-800 text-sm md:text-base">เปรียบเทียบแต่ละหน่วยงาน รายข้อ (%ปฏิบัติ)</h3>
+            <span class="text-[10px] bg-slate-100 px-2.5 py-1 rounded-full font-bold text-slate-500">แตะแท่งเพื่อดูรายละเอียด</span>
+          </div>
+          <div class="overflow-x-auto" id="deptItemOuter">
+            <div id="deptItemWrap" class="relative" style="height:420px; min-width:900px;"><canvas id="deptItemChartCanvas"></canvas></div>
+          </div>
+          <div id="deptItemEmpty" class="hidden text-center py-10 text-slate-400 text-sm">ไม่พบข้อมูลตามตัวกรองช่วงเวลาดังกล่าว</div>
+        </div>
+
+      </div>
+
+      <!-- Compliance by Item Detailed Breakdown -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+        <h2 class="font-bold text-slate-800 text-lg mb-4 flex items-center space-x-2">
+          <span>ตารางรายละเอียดอัตราการปฏิบัติตาม Checklist (15 ข้อ)</span>
+        </h2>
+        
+        <!-- Changed to CSS Columns for top-to-bottom, then left-to-right flow -->
+        <div class="columns-1 lg:columns-2 gap-3 w-full" id="itemBreakdownContainer">
+          <!-- Dynamically populated breakdown elements -->
+        </div>
+      </div>
+
     </div>
-</div>
 
-<div>
-  <label class="block text-sm font-medium text-slate-700 mb-1">Google Apps Script Web App URL</label>
-  <input type="text" id="apiEndpointUrl" placeholder="https://script.google.com/macros/s/.../exec" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm font-mono text-slate-600">
-</div>
+    <!-- TAB 4: SETTINGS VIEW -->
+    <div id="tab-settings-content" class="tab-content hidden space-y-6">
+      
+      <!-- API Setting Card -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
 
-<div class="flex flex-col sm:flex-row gap-2 pt-2">
-  <button onclick="saveSettings()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-xl shadow-md transition-all text-sm">
-    บันทึกการตั้งค่า
-  </button>
-  <button onclick="testApiConnection()" class="border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold py-2.5 px-6 rounded-xl transition-all text-sm flex items-center justify-center space-x-1">
-    <span>ทดสอบการเชื่อมต่อ API</span>
-  </button>
-</div>
+        <div class="flex items-center space-x-2 pb-4 mb-4 border-b border-slate-100">
+          <h2 class="font-semibold text-slate-800 text-lg">ตั้งค่าการซิงค์ข้อมูล Google Sheets</h2>
+        </div>
 
-  </div>
-</div>
+        <div class="space-y-4">
 
-<!-- Instructions Card (ซ่อนไว้ด้วยคลาส hidden) -->
+          <div class="p-4 bg-sky-50 border border-sky-100 rounded-2xl flex items-start gap-3">
+            <i data-lucide="info" class="w-5 h-5 text-sky-600 mt-0.5 flex-shrink-0"></i>
+            <div class="text-xs text-sky-800 leading-relaxed w-full">
+                <div class="flex justify-between items-center mb-2">
+                    <p class="font-extrabold">สเปรดชีตเป้าหมายหลัก:</p>
+                    <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full text-[10px] font-bold uppercase">Sync Enabled</span>
+                </div>
+                <a href="https://docs.google.com/spreadsheets/d/11Pe7e1NayNfEnc3Wb4YPjN1dDIChFCUnEd7x0Ieef80/edit?gid=0#gid=0" 
+                  target="_blank" class="font-bold underline text-blue-600 hover:text-blue-800 flex items-center gap-1">
+                    Blood Culture Collection Checklist - Google ชีต (คลิกเพื่อเปิด) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+                <p class="mt-2 text-[11px] opacity-80">
+                    ข้อมูลจะถูกบันทึกลงในแท็บ <code class="bg-sky-100 px-1 rounded font-bold">"BloodCulture"</code> อัตโนมัติ (15 รายการ)
+                </p>
+            </div>
+          </div>
 
-<div class="hidden bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-  <h2 class="font-semibold text-slate-800 text-lg pb-4 mb-4 border-b border-slate-100">
-    <span>วิธีการเริ่มใช้งานร่วมกับ Google Sheets (ภายใน 3 นาที)</span>
-  </h2>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Google Apps Script Web App URL</label>
+            <input type="text" id="apiEndpointUrl" placeholder="https://script.google.com/macros/s/.../exec" class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm font-mono text-slate-600">
+          </div>
 
-    <div class="space-y-4 text-sm text-slate-600">
-      <ol class="list-decimal pl-5 space-y-3">
-        <li>เปิดลิงก์ Google Sheet ที่กำหนด: <a href="https://docs.google.com/spreadsheets/d/1yOPzmyd7ExMELRpwltyPu7onH5dCwpjZUPs5IP2JqQ4/edit?gid=0#gid=0" target="_blank" class="text-sky-600 hover:underline font-medium">Blood Culture Collection Checklist - Google ชีต</a></li>
-        <li>ไปที่เมนู <strong>ส่วนขยาย (Extensions)</strong> &gt; เลือก <strong>Apps Script</strong></li>
-        <li>ลบโค้ดเริ่มต้นออก แล้วคัดลอกโค้ดจากไฟล์ <code>รหัส.gs</code> ไปวาง</li>
-        <li>คลิกปุ่ม <strong>บันทึกโครงการ (Save Project)</strong> (ไอคอนแผ่นดิสก์)</li>
-        <li>คลิกปุ่ม <strong>การใช้งาน (Deploy)</strong> ด้านบนขวา &gt; เลือก <strong>การจัดการการทำงานที่จัดเตรียมไว้ใหม่ (New Deployment)</strong></li>
-        <li>เลือกประเภทการปรับใช้เป็น <strong>เว็บแอป (Web App)</strong></li>
-        <li>ตั้งค่าการตั้งค่าต่อไปนี้:
-          <ul class="list-disc pl-5 mt-1 space-y-1">
-            <li><strong>เรียกใช้ในฐานะ (Execute as):</strong> "ฉัน (Your Email)"</li>
-            <li><strong>ผู้มีสิทธิ์เข้าถึง (Who has access):</strong> "ทุกคน (Anyone)" <span class="text-xs text-yellow-500 font-semibold">(จำเป็นสำหรับการรับส่งข้อมูล)</span></li>
-          </ul>
-        </li>
-        <li>คลิก <strong>ปรับใช้ (Deploy)</strong> และให้สิทธิ์การเข้าถึงข้อมูล (Authorize Access) เมื่อมีป็อปอัปถาม</li>
-        <li>คัดลอก <strong>URL เว็บแอป (Web App URL)</strong> ที่ได้รับ มาวางในส่วน "ตั้งค่าการซิงค์ข้อมูล" ด้านบน และกดบันทึก</li>
-      </ol>
+          <div class="flex flex-col sm:flex-row gap-2 pt-2">
+            <button onclick="saveSettings()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-xl shadow-md transition-all text-sm">
+              บันทึกการตั้งค่า
+            </button>
+            <button onclick="testApiConnection()" class="border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold py-2.5 px-6 rounded-xl transition-all text-sm flex items-center justify-center space-x-1">
+              <span>ทดสอบการเชื่อมต่อ API</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Instructions Card (ซ่อนไว้ด้วยคลาส hidden) -->
+      <div class="hidden bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+        <h2 class="font-semibold text-slate-800 text-lg pb-4 mb-4 border-b border-slate-100">
+          <span>วิธีการเริ่มใช้งานร่วมกับ Google Sheets (ภายใน 3 นาที)</span>
+        </h2>
+
+        <div class="space-y-4 text-sm text-slate-600">
+          <ol class="list-decimal pl-5 space-y-3">
+            <li>เปิดลิงก์ Google Sheet ที่กำหนด: <a href="https://docs.google.com/spreadsheets/d/1yOPzmyd7ExMELRpwltyPu7onH5dCwpjZUPs5IP2JqQ4/edit?gid=0#gid=0" target="_blank" class="text-sky-600 hover:underline font-medium">Blood Culture Collection Checklist - Google ชีต</a></li>
+            <li>ไปที่เมนู <strong>ส่วนขยาย (Extensions)</strong> &gt; เลือก <strong>Apps Script</strong></li>
+            <li>ลบโค้ดเริ่มต้นออก แล้วคัดลอกโค้ดจากไฟล์ <code>รหัส.gs</code> ไปวาง</li>
+            <li>คลิกปุ่ม <strong>บันทึกโครงการ (Save Project)</strong> (ไอคอนแผ่นดิสก์)</li>
+            <li>คลิกปุ่ม <strong>การใช้งาน (Deploy)</strong> ด้านบนขวา &gt; เลือก <strong>การจัดการการทำงานที่จัดเตรียมไว้ใหม่ (New Deployment)</strong></li>
+            <li>เลือกประเภทการปรับใช้เป็น <strong>เว็บแอป (Web App)</strong></li>
+            <li>ตั้งค่าการตั้งค่าต่อไปนี้:
+              <ul class="list-disc pl-5 mt-1 space-y-1">
+                <li><strong>เรียกใช้ในฐานะ (Execute as):</strong> "ฉัน (Your Email)"</li>
+                <li><strong>ผู้มีสิทธิ์เข้าถึง (Who has access):</strong> "ทุกคน (Anyone)" <span class="text-xs text-yellow-500 font-semibold">(จำเป็นสำหรับการรับส่งข้อมูล)</span></li>
+              </ul>
+            </li>
+            <li>คลิก <strong>ปรับใช้ (Deploy)</strong> และให้สิทธิ์การเข้าถึงข้อมูล (Authorize Access) เมื่อมีป็อปอัปถาม</li>
+            <li>คัดลอก <strong>URL เว็บแอป (Web App URL)</strong> ที่ได้รับ มาวางในส่วน "ตั้งค่าการซิงค์ข้อมูล" ด้านบน และกดบันทึก</li>
+          </ol>
+        </div>
+      </div>
+
     </div>
-  </div>
-
-</div>
 
   </main>
 
@@ -486,7 +517,6 @@
   </footer>
 
   <!-- MODERN NOTIFICATION MODAL -->
-
   <div id="customModal" class="fixed inset-0 bg-slate-900/60 flex items-center justify-center p-4 z-50 hidden transition-all duration-300">
     <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modalCard">
       <div class="flex flex-col items-center text-center space-y-4">
@@ -494,18 +524,16 @@
         <div id="modalIconError" class="hidden p-3 bg-yellow-100 text-yellow-600 rounded-full"><i data-lucide="x-circle" class="w-10 h-10"></i></div>
         <div id="modalIconInfo" class="hidden p-3 bg-blue-100 text-blue-600 rounded-full"><i data-lucide="info" class="w-10 h-10"></i></div>
 
-    <div class="space-y-1">
-      <h3 class="text-lg font-bold text-slate-800" id="modalTitle">หัวข้อ</h3>
-      <p class="text-sm text-slate-500" id="modalMessage">รายละเอียด...</p>
+        <div class="space-y-1">
+          <h3 class="text-lg font-bold text-slate-800" id="modalTitle">หัวข้อ</h3>
+          <p class="text-sm text-slate-500" id="modalMessage">รายละเอียด...</p>
+        </div>
+        <button onclick="closeModal()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl text-sm transition-all focus:outline-none">ตกลง</button>
+      </div>
     </div>
-    <button onclick="closeModal()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl text-sm transition-all focus:outline-none">ตกลง</button>
-  </div>
-</div>
-
   </div>
 
   <!-- MODERN CONFIRMATION MODAL -->
-
   <div id="customConfirmModal" class="fixed inset-0 bg-slate-900/60 flex items-center justify-center p-4 z-50 hidden transition-all duration-300">
     <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="confirmModalCard">
       <div class="flex flex-col items-center text-center space-y-4">
@@ -523,7 +551,6 @@
   </div>
 
   <!-- JAVASCRIPT LOGIC -->
-
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
@@ -561,6 +588,8 @@
     };
 
     let comparisonChartInstance = null;
+    let deptChartInstance = null;
+    let deptItemChartInstance = null;
     let currentFilterType = 'all';
     let currentRecord = { id: '', date: '', department: '', patientName: '', practitioner: '', evaluator: '', evalTime: '', items: {...defaultItems}, complianceRate: 0, remarks: '', synced: false, timestamp: null };
     let activeConfirmCallback = null;
@@ -662,7 +691,7 @@
             if (!isNaN(d)) dateVal = d.toISOString().slice(0, 10);
           }
 
-          let rate = parseFloat(row[TOTAL_ITEMS + 7]) || 0; // BloodCulture: col 23 (0-based 22)
+          let rate = parseFloat(row[TOTAL_ITEMS + 7]) || 0; 
           if (rate > 0 && rate <= 1) rate = Number((rate * 100).toFixed(2));
           else rate = Number(rate.toFixed(2));
 
@@ -673,7 +702,7 @@
 
           const itemsParsed = {};
           for(let j=1; j<=TOTAL_ITEMS; j++) {
-            itemsParsed[j] = getItem(row[j+6]); // BloodCulture item columns 8 to 22
+            itemsParsed[j] = getItem(row[j+6]);
           }
 
           sheetRecords.push({
@@ -687,7 +716,7 @@
             evalTime: String(row[6] || ''),
             items: itemsParsed,
             complianceRate: rate,
-            remarks: String(row[TOTAL_ITEMS + 8] || ''), // BloodCulture remarks
+            remarks: String(row[TOTAL_ITEMS + 8] || ''),
             synced: true
           });
         }
@@ -836,32 +865,34 @@
       .then(() => showModal("เชื่อมต่อสำเร็จ", "ระบบสามารถติดต่อ Google Sheet ได้", "success"))
       .catch((err) => showModal("ล้มเหลว", "เกิดข้อผิดพลาด: " + err, "error"));
     }
-function toggleDepartmentOther() {
-  const sel = document.getElementById('department').value;
-  const other = document.getElementById('departmentOther');
-  if (sel === 'อื่นๆ') {
-    other.classList.remove('hidden');
-    other.focus();
-  } else {
-    other.classList.add('hidden');
-    other.value = '';
-  }
-}
 
-function getDepartmentValue() {
-  const sel = document.getElementById('department').value;
-  if (sel === 'อื่นๆ') {
-    return document.getElementById('departmentOther').value.trim();
-  }
-  return sel;
-}
+    function toggleDepartmentOther() {
+      const sel = document.getElementById('department').value;
+      const other = document.getElementById('departmentOther');
+      if (sel === 'อื่นๆ') {
+        other.classList.remove('hidden');
+        other.focus();
+      } else {
+        other.classList.add('hidden');
+        other.value = '';
+      }
+    }
+
+    function getDepartmentValue() {
+      const sel = document.getElementById('department').value;
+      if (sel === 'อื่นๆ') {
+        return document.getElementById('departmentOther').value.trim();
+      }
+      return sel;
+    }
+
     function submitAssessment() {
       const dateVal = document.getElementById('evalDate').value;
       const remarksVal = document.getElementById('evalRemarks').value.trim();
       if (!dateVal) return showModal("ข้อมูลไม่ครบ", "กรุณาระบุวันที่ประเมิน", "error");
       if (document.getElementById('department').value === 'อื่นๆ' && !document.getElementById('departmentOther').value.trim()) {
-  return showModal("ข้อมูลไม่ครบ", "กรุณาระบุชื่อหน่วยงาน (อื่นๆ)", "error");
-}
+        return showModal("ข้อมูลไม่ครบ", "กรุณาระบุชื่อหน่วยงาน (อื่นๆ)", "error");
+      }
 
       const newRecord = {
         id: 'BLOODCULTURE_' + Date.now() + '_' + Math.floor(Math.random()*1000),
@@ -893,7 +924,7 @@ function getDepartmentValue() {
       document.getElementById('evalRemarks').value = '';
       ['department','patientName','practitioner','evaluator','evalTime'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
       document.getElementById('departmentOther').value = '';
-document.getElementById('departmentOther').classList.add('hidden');
+      document.getElementById('departmentOther').classList.add('hidden');
       currentRecord.items = {...defaultItems};
       currentRecord.complianceRate = 0;
       
@@ -922,7 +953,6 @@ document.getElementById('departmentOther').classList.add('hidden');
         complianceRate: record.complianceRate,
         remarks: record.remarks || ""
       };
-      // Dynamically add items 1 to 15
       for(let i=1; i<=TOTAL_ITEMS; i++) payload['item'+i] = record.items[i] || "";
 
       fetch(db.apiUrl, {
@@ -1013,10 +1043,7 @@ document.getElementById('departmentOther').classList.add('hidden');
             <td class="py-3 px-4 font-semibold">${thDate}<div class="text-[10px] text-slate-400 font-normal">${r.department || ""}</div><div class="text-[10px] text-slate-500 font-normal">${r.patientName || ""}</div></td>
             <td class="py-3 px-4"><div class="flex flex-wrap max-w-[140px] mx-auto justify-center">${boxes}</div></td>
            <td class="py-3 px-4 text-center">
-  <span class="inline-flex flex-col items-center justify-center
-               min-w-[90px] px-3 py-1.5
-               rounded-full text-xs font-bold border
-               leading-tight whitespace-nowrap ${color}">
+  <span class="inline-flex flex-col items-center justify-center min-w-[90px] px-3 py-1.5 rounded-full text-xs font-bold border leading-tight whitespace-nowrap ${color}">
     <span>${Number(r.complianceRate).toFixed(2)}%</span>
     <span>(${totalYes}/${TOTAL_ITEMS})</span>
   </span>
@@ -1068,105 +1095,111 @@ document.getElementById('departmentOther').classList.add('hidden');
       }
       return recs;
     }
-let deptChartInstance = null, deptItemChartInstance = null;
-const DEPT_COLORS = { 'OPD':'#2563EB','W4':'#16A34A','W5':'#9333EA','LR':'#EC4899','ER':'#EA580C','ไม่ระบุ':'#64748B' };
-const DEPT_FALLBACK = ['#0D9488','#CA8A04','#DC2626','#0891B2','#7C3AED','#65A30D','#BE185D','#4F46E5'];
-const deptExtra = {};
-function deptColor(n){ if(DEPT_COLORS[n]) return DEPT_COLORS[n];
-  if(!deptExtra[n]) deptExtra[n] = DEPT_FALLBACK[Object.keys(deptExtra).length % DEPT_FALLBACK.length];
-  return deptExtra[n]; }
-function lighten(hex, a=0.6){ const n=parseInt(hex.slice(1),16), m=c=>Math.round(c+(255-c)*a);
-  return `rgb(${m(n>>16)},${m((n>>8)&255)},${m(n&255)})`; }
-function escHtml(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
-function renderDepartmentComparison(records) {
-  const map = {};
-  records.forEach(r => {
-    const name = (r.department||'').trim() || 'ไม่ระบุ';
-    if(!map[name]){ map[name]={evals:0,yes:0,no:0,full:0,items:{}};
-      for(let i=1;i<=TOTAL_ITEMS;i++) map[name].items[i]={yes:0,no:0}; }
-    const d = map[name]; d.evals++;
-    for(let i=1;i<=TOTAL_ITEMS;i++){
-      if(r.items[i]==='ปฏิบัติ'){ d.yes++; d.items[i].yes++; }
-      else if(r.items[i]==='ไม่ปฏิบัติ'){ d.no++; d.items[i].no++; }
+    // Department Chart Helpers
+    const DEPT_COLORS = { 'OPD':'#2563EB','W4':'#16A34A','W5':'#9333EA','LR':'#EC4899','ER':'#EA580C','ไม่ระบุ':'#64748B' };
+    const DEPT_FALLBACK = ['#0D9488','#CA8A04','#DC2626','#0891B2','#7C3AED','#65A30D','#BE185D','#4F46E5'];
+    const deptExtra = {};
+    function deptColor(n){ 
+      if(DEPT_COLORS[n]) return DEPT_COLORS[n];
+      if(!deptExtra[n]) deptExtra[n] = DEPT_FALLBACK[Object.keys(deptExtra).length % DEPT_FALLBACK.length];
+      return deptExtra[n]; 
     }
-    if(Number(r.complianceRate)===100) d.full++;
-  });
-  const rows = Object.entries(map).map(([name,d])=>{
-    const ans=d.yes+d.no, pYes=ans?Number((d.yes/ans*100).toFixed(2)):0;
-    return {name,...d,answered:ans,pYes,pNo:ans?Number((100-pYes).toFixed(2)):0,color:deptColor(name)};
-  }).sort((a,b)=>b.pYes-a.pYes||b.evals-a.evals);
+    function lighten(hex, a=0.6){ 
+      const n=parseInt(hex.slice(1),16), m=c=>Math.round(c+(255-c)*a);
+      return `rgb(${m(n>>16)},${m((n>>8)&255)},${m(n&255)})`; 
+    }
+    function escHtml(s){ 
+      return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); 
+    }
 
-  const wrap=document.getElementById('deptChartWrap'), empty=document.getElementById('deptEmptyState'),
-        tbody=document.getElementById('deptTableBody'), legend=document.getElementById('deptLegend'),
-        outer=document.getElementById('deptItemOuter'), empty2=document.getElementById('deptItemEmpty');
-  if(deptChartInstance){deptChartInstance.destroy();deptChartInstance=null;}
-  if(deptItemChartInstance){deptItemChartInstance.destroy();deptItemChartInstance=null;}
+    function renderDepartmentComparison(records) {
+      const map = {};
+      records.forEach(r => {
+        const name = (r.department||'').trim() || 'ไม่ระบุ';
+        if(!map[name]){ map[name]={evals:0,yes:0,no:0,full:0,items:{}};
+          for(let i=1;i<=TOTAL_ITEMS;i++) map[name].items[i]={yes:0,no:0}; }
+        const d = map[name]; d.evals++;
+        for(let i=1;i<=TOTAL_ITEMS;i++){
+          if(r.items[i]==='ปฏิบัติ'){ d.yes++; d.items[i].yes++; }
+          else if(r.items[i]==='ไม่ปฏิบัติ'){ d.no++; d.items[i].no++; }
+        }
+        if(Number(r.complianceRate)===100) d.full++;
+      });
+      const rows = Object.entries(map).map(([name,d])=>{
+        const ans=d.yes+d.no, pYes=ans?Number((d.yes/ans*100).toFixed(2)):0;
+        return {name,...d,answered:ans,pYes,pNo:ans?Number((100-pYes).toFixed(2)):0,color:deptColor(name)};
+      }).sort((a,b)=>b.pYes-a.pYes||b.evals-a.evals);
 
-  if(!rows.length){
-    wrap.classList.add('hidden'); empty.classList.remove('hidden');
-    outer.classList.add('hidden'); empty2.classList.remove('hidden');
-    tbody.innerHTML=''; legend.innerHTML=''; return;
-  }
-  wrap.classList.remove('hidden'); empty.classList.add('hidden');
-  outer.classList.remove('hidden'); empty2.classList.add('hidden');
+      const wrap=document.getElementById('deptChartWrap'), empty=document.getElementById('deptEmptyState'),
+            tbody=document.getElementById('deptTableBody'), legend=document.getElementById('deptLegend'),
+            outer=document.getElementById('deptItemOuter'), empty2=document.getElementById('deptItemEmpty');
+            
+      if(deptChartInstance){deptChartInstance.destroy();deptChartInstance=null;}
+      if(deptItemChartInstance){deptItemChartInstance.destroy();deptItemChartInstance=null;}
 
-  legend.innerHTML = rows.map(r=>`<span class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 bg-slate-50 border border-slate-200 rounded-full px-2.5 py-1"><span class="w-3 h-3 rounded-full" style="background:${r.color}"></span>${escHtml(r.name)}</span>`).join('');
+      if(!rows.length){
+        wrap.classList.add('hidden'); empty.classList.remove('hidden');
+        outer.classList.add('hidden'); empty2.classList.remove('hidden');
+        tbody.innerHTML=''; legend.innerHTML=''; return;
+      }
+      wrap.classList.remove('hidden'); empty.classList.add('hidden');
+      outer.classList.remove('hidden'); empty2.classList.add('hidden');
 
-  // กราฟที่ 1: ปฏิบัติ = สีหน่วยงาน, ไม่ปฏิบัติ = สีหน่วยงานแบบอ่อน
-  wrap.style.height = (rows.length*48+70)+'px';
-  deptChartInstance = new Chart(document.getElementById('deptChartCanvas').getContext('2d'), {
-    type:'bar', plugins:[ChartDataLabels],
-    data:{ labels: rows.map(r=>r.name), datasets:[
-      {label:'ปฏิบัติ (%)', data:rows.map(r=>r.pYes), backgroundColor:rows.map(r=>r.color), borderRadius:4},
-      {label:'ไม่ปฏิบัติ (%)', data:rows.map(r=>r.pNo), backgroundColor:rows.map(r=>lighten(r.color,0.6)), borderRadius:4}
-    ]},
-    options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      scales:{ x:{stacked:true,min:0,max:100,ticks:{font:{family:'Prompt',size:10},callback:v=>v+'%'}},
-               y:{stacked:true,ticks:{font:{family:'Prompt',size:12,weight:'bold'}}} },
-      plugins:{ legend:{display:false},
-        datalabels:{ display:c=>c.dataset.data[c.dataIndex]>=8,
-          color:c=>c.datasetIndex===0?'#fff':'#334155', font:{family:'Prompt',size:11,weight:'bold'},
-          formatter:(v,c)=>{const r=rows[c.dataIndex];return `${Number(v).toFixed(2)}% (${c.datasetIndex===0?r.yes:r.no})`;} },
-        tooltip:{ callbacks:{
-          label:c=>{const r=rows[c.dataIndex];return ` ${c.dataset.label}: ${Number(c.raw).toFixed(2)}% (${c.datasetIndex===0?r.yes:r.no}/${r.answered} ข้อ)`;},
-          footer:it=>`ประเมิน ${rows[it[0].dataIndex].evals} ครั้ง` } } } }
-  });
+      legend.innerHTML = rows.map(r=>`<span class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 bg-slate-50 border border-slate-200 rounded-full px-2.5 py-1"><span class="w-3 h-3 rounded-full" style="background:${r.color}"></span>${escHtml(r.name)}</span>`).join('');
 
-  tbody.innerHTML = rows.map((r,i)=>`
-    <tr class="hover:bg-slate-50">
-      <td class="py-2.5 px-3 text-center font-bold text-slate-500">${i+1}</td>
-      <td class="py-2.5 px-3 font-semibold text-slate-800"><span class="inline-block w-3 h-3 rounded-full mr-2 align-middle" style="background:${r.color}"></span>${escHtml(r.name)}</td>
-      <td class="py-2.5 px-3 text-center">${r.evals}</td>
-      <td class="py-2.5 px-3 text-center">${r.full}</td>
-      <td class="py-2.5 px-3"><div class="flex items-center gap-2">
-        <div class="flex-1 h-2 rounded-full overflow-hidden flex" style="background:${lighten(r.color,0.6)}"><div class="h-full" style="width:${r.pYes}%;background:${r.color}"></div></div>
-        <span class="text-xs font-bold text-slate-700 w-16 text-right">${r.pYes.toFixed(2)}%</span></div></td>
-    </tr>`).join('');
+      wrap.style.height = (rows.length*48+70)+'px';
+      deptChartInstance = new Chart(document.getElementById('deptChartCanvas').getContext('2d'), {
+        type:'bar', plugins:[ChartDataLabels],
+        data:{ labels: rows.map(r=>r.name), datasets:[
+          {label:'ปฏิบัติ (%)', data:rows.map(r=>r.pYes), backgroundColor:rows.map(r=>r.color), borderRadius:4},
+          {label:'ไม่ปฏิบัติ (%)', data:rows.map(r=>r.pNo), backgroundColor:rows.map(r=>lighten(r.color,0.6)), borderRadius:4}
+        ]},
+        options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
+          scales:{ x:{stacked:true,min:0,max:100,ticks:{font:{family:'Prompt',size:10},callback:v=>v+'%'}},
+                   y:{stacked:true,ticks:{font:{family:'Prompt',size:12,weight:'bold'}}} },
+          plugins:{ legend:{display:false},
+            datalabels:{ display:c=>c.dataset.data[c.dataIndex]>=8,
+              color:c=>c.datasetIndex===0?'#fff':'#334155', font:{family:'Prompt',size:11,weight:'bold'},
+              formatter:(v,c)=>{const r=rows[c.dataIndex];return `${Number(v).toFixed(2)}% (${c.datasetIndex===0?r.yes:r.no})`;} },
+            tooltip:{ callbacks:{
+              label:c=>{const r=rows[c.dataIndex];return ` ${c.dataset.label}: ${Number(c.raw).toFixed(2)}% (${c.datasetIndex===0?r.yes:r.no}/${r.answered} ข้อ)`;},
+              footer:it=>`ประเมิน ${rows[it[0].dataIndex].evals} ครั้ง` } } } }
+      });
 
-  // กราฟที่ 2: รายข้อ x หน่วยงาน
-  const labels = Array.from({length:TOTAL_ITEMS},(_,i)=>`ข้อ ${i+1}`);
-  const datasets = rows.map(r=>({
-    label:r.name, backgroundColor:r.color, borderRadius:3,
-    data: labels.map((_,k)=>{const it=r.items[k+1],t=it.yes+it.no;return t>0?Number((it.yes/t*100).toFixed(2)):null;}),
-    frac: labels.map((_,k)=>{const it=r.items[k+1];return `${it.yes}/${it.yes+it.no}`;})
-  }));
-  deptItemChartInstance = new Chart(document.getElementById('deptItemChartCanvas').getContext('2d'), {
-    type:'bar', data:{labels,datasets},
-    options:{ responsive:true, maintainAspectRatio:false,
-      scales:{ y:{min:0,max:100,ticks:{font:{family:'Prompt',size:10},callback:v=>v+'%'}}, x:{ticks:{font:{family:'Prompt',size:10}}} },
-      plugins:{ legend:{position:'bottom',labels:{font:{family:'Prompt',size:12},usePointStyle:true}},
-        tooltip:{callbacks:{ title:it=>`${it[0].label}: ${checkListData[it[0].dataIndex+1]}`,
-          label:c=>` ${c.dataset.label}: ${Number(c.raw).toFixed(2)}% (${c.dataset.frac[c.dataIndex]})` }} } }
-  });
-}
-    
+      tbody.innerHTML = rows.map((r,i)=>`
+        <tr class="hover:bg-slate-50">
+          <td class="py-2.5 px-3 text-center font-bold text-slate-500">${i+1}</td>
+          <td class="py-2.5 px-3 font-semibold text-slate-800"><span class="inline-block w-3 h-3 rounded-full mr-2 align-middle" style="background:${r.color}"></span>${escHtml(r.name)}</td>
+          <td class="py-2.5 px-3 text-center">${r.evals}</td>
+          <td class="py-2.5 px-3 text-center">${r.full}</td>
+          <td class="py-2.5 px-3"><div class="flex items-center gap-2">
+            <div class="flex-1 h-2 rounded-full overflow-hidden flex" style="background:${lighten(r.color,0.6)}"><div class="h-full" style="width:${r.pYes}%;background:${r.color}"></div></div>
+            <span class="text-xs font-bold text-slate-700 w-16 text-right">${r.pYes.toFixed(2)}%</span></div></td>
+        </tr>`).join('');
+
+      const labels = Array.from({length:TOTAL_ITEMS},(_,i)=>`ข้อ ${i+1}`);
+      const datasets = rows.map(r=>({
+        label:r.name, backgroundColor:r.color, borderRadius:3,
+        data: labels.map((_,k)=>{const it=r.items[k+1],t=it.yes+it.no;return t>0?Number((it.yes/t*100).toFixed(2)):null;}),
+        frac: labels.map((_,k)=>{const it=r.items[k+1];return `${it.yes}/${it.yes+it.no}`;})
+      }));
+      deptItemChartInstance = new Chart(document.getElementById('deptItemChartCanvas').getContext('2d'), {
+        type:'bar', data:{labels,datasets},
+        options:{ responsive:true, maintainAspectRatio:false,
+          scales:{ y:{min:0,max:100,ticks:{font:{family:'Prompt',size:10},callback:v=>v+'%'}}, x:{ticks:{font:{family:'Prompt',size:10}}} },
+          plugins:{ legend:{position:'bottom',labels:{font:{family:'Prompt',size:12},usePointStyle:true}},
+            tooltip:{callbacks:{ title:it=>`${it[0].label}: ${checkListData[it[0].dataIndex+1]}`,
+              label:c=>` ${c.dataset.label}: ${Number(c.raw).toFixed(2)}% (${c.dataset.frac[c.dataIndex]})` }} } }
+      });
+    }
+
+    // Main Report Render Function
     function renderReports() {
-  const records = getFilteredRecords();
-  const total = records.length;
-  renderDepartmentComparison(records);   // <-- เพิ่มบรรทัดนี้
-  document.getElementById('repTotalEvaluations').innerText = total;
-  
+      const records = getFilteredRecords();
+      const total = records.length;
+      renderDepartmentComparison(records);
+      document.getElementById('repTotalEvaluations').innerText = total;
 
       if (total === 0) {
         document.getElementById('repFullComplianceCount').innerText = "0";
@@ -1204,7 +1237,7 @@ function renderDepartmentComparison(records) {
       let lowestRate = 101, lowestItems = [];
       let html = "", lbls=[], dYes=[], dNo=[], fYes=[], fNo=[];
       
-      let ncDataArr = []; // Array for non-compliance chart data
+      let ncDataArr = []; 
       const tempDiv = document.createElement("div");
 
       for(let i=1; i<=TOTAL_ITEMS; i++) {
@@ -1218,7 +1251,6 @@ function renderDepartmentComparison(records) {
         fYes.push(`${stats[i].yes}/${totalEval}`);
         fNo.push(`${stats[i].no}/${totalEval}`);
 
-        // Strip HTML from text for chart labels to prevent rendering issues
         tempDiv.innerHTML = stats[i].text;
         const cleanText = tempDiv.textContent || tempDiv.innerText || "";
 
@@ -1231,7 +1263,6 @@ function renderDepartmentComparison(records) {
           }
         }
 
-        // Collect non-compliance data
         if (stats[i].no > 0) {
            ncDataArr.push({
               item: i,
@@ -1243,7 +1274,6 @@ function renderDepartmentComparison(records) {
            });
         }
 
-        // เช็คเงื่อนไขถ้ามีการไม่ปฏิบัติ > 0 ค่อยแสดงข้อความสีแดง
         const noTextLabel = stats[i].no > 0 ? `<span class="font-bold text-yellow-500">ไม่ปฏิบัติ: ${pNo.toFixed(2)}% (${stats[i].no}/${totalEval})</span>` : ``;
 
         html += `
@@ -1276,7 +1306,6 @@ function renderDepartmentComparison(records) {
       }
       document.getElementById('itemBreakdownContainer').innerHTML = html;
 
-      // Render Chart 1: Comparison Bar Chart
       const ctx1 = document.getElementById('comparisonChartCanvas').getContext('2d');
       if(comparisonChartInstance) comparisonChartInstance.destroy();
       
@@ -1311,44 +1340,7 @@ function renderDepartmentComparison(records) {
           }
         }
       });
- </div>
-      <!-- Chart: Department Comparison -->
-<div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-  <div class="pb-3 mb-4 border-b border-slate-100 flex flex-wrap gap-2 justify-between items-center">
-    <h3 class="font-bold text-slate-800 text-sm md:text-base">เปรียบเทียบอัตราการปฏิบัติตามหน่วยงาน (%)</h3>
-    <span class="text-[10px] bg-slate-100 px-2.5 py-1 rounded-full font-bold text-slate-500">สีเข้ม = ปฏิบัติ · สีอ่อน = ไม่ปฏิบัติ</span>
-  </div>
-  <div id="deptLegend" class="flex flex-wrap gap-2 mb-3"></div>
-  <div id="deptChartWrap" class="relative w-full" style="height:300px;"><canvas id="deptChartCanvas"></canvas></div>
-  <div id="deptEmptyState" class="hidden text-center py-10 text-slate-400 text-sm">ไม่พบข้อมูลตามตัวกรองช่วงเวลาดังกล่าว</div>
-  <div class="overflow-x-auto mt-5">
-    <table class="w-full text-left text-sm min-w-[520px]">
-      <thead>
-        <tr class="border-b border-slate-200 text-slate-400 text-xs font-semibold bg-slate-50">
-          <th class="py-2.5 px-3 w-12 text-center">อันดับ</th>
-          <th class="py-2.5 px-3">หน่วยงาน</th>
-          <th class="py-2.5 px-3 text-center">ประเมิน (ครั้ง)</th>
-          <th class="py-2.5 px-3 text-center">ผ่าน 100% (ครั้ง)</th>
-          <th class="py-2.5 px-3 w-56">อัตราการปฏิบัติ</th>
-        </tr>
-      </thead>
-      <tbody id="deptTableBody" class="divide-y divide-slate-100 text-slate-600"></tbody>
-    </table>
-  </div>
-</div>
 
-<!-- Chart: Department x Item -->
-<div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-  <div class="pb-3 mb-4 border-b border-slate-100 flex flex-wrap gap-2 justify-between items-center">
-    <h3 class="font-bold text-slate-800 text-sm md:text-base">เปรียบเทียบแต่ละหน่วยงาน รายข้อ (%ปฏิบัติ)</h3>
-    <span class="text-[10px] bg-slate-100 px-2.5 py-1 rounded-full font-bold text-slate-500">แตะแท่งเพื่อดูรายละเอียด</span>
-  </div>
-  <div class="overflow-x-auto" id="deptItemOuter">
-    <div id="deptItemWrap" class="relative" style="height:420px; min-width:900px;"><canvas id="deptItemChartCanvas"></canvas></div>
-  </div>
-  <div id="deptItemEmpty" class="hidden text-center py-10 text-slate-400 text-sm">ไม่พบข้อมูลตามตัวกรองช่วงเวลาดังกล่าว</div>
-</div>
-      // Render Chart 2: Top Non-Compliance (HTML List format for better readability)
       const listContainer = document.getElementById('nonComplianceListContainer');
       const emptyState2 = document.getElementById('chart2EmptyState');
       
@@ -1359,14 +1351,12 @@ function renderDepartmentComparison(records) {
         } else {
             emptyState2.classList.add('hidden');
 
-            // Sort descending by percentage (pct) of non-compliance, then by count, then by item number
             ncDataArr.sort((a, b) => b.pct - a.pct || b.noCount - a.noCount || a.item - b.item);
 
             let listHtml = '';
             ncDataArr.forEach((d, index) => {
                 const rank = index + 1;
                 
-                // เปลี่ยนสีตัวเลขลำดับให้แตกต่างกัน
                 let rankBadge = "";
                 if (rank === 1) rankBadge = "bg-yellow-500 text-white shadow-md border-yellow-600";
                 else if (rank === 2) rankBadge = "bg-slate-400 text-white shadow-sm border-slate-500";
@@ -1399,6 +1389,5 @@ function renderDepartmentComparison(records) {
     }
 
   </script>
-
 </body>
 </html>
