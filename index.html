@@ -1311,7 +1311,8 @@ function renderDepartmentComparison(records) {
           }
         }
       });
-<!-- Chart: Department Comparison -->
+ </div>
+      <!-- Chart: Department Comparison -->
 <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
   <div class="pb-3 mb-4 border-b border-slate-100 flex flex-wrap gap-2 justify-between items-center">
     <h3 class="font-bold text-slate-800 text-sm md:text-base">เปรียบเทียบอัตราการปฏิบัติตามหน่วยงาน (%)</h3>
@@ -1347,7 +1348,6 @@ function renderDepartmentComparison(records) {
   </div>
   <div id="deptItemEmpty" class="hidden text-center py-10 text-slate-400 text-sm">ไม่พบข้อมูลตามตัวกรองช่วงเวลาดังกล่าว</div>
 </div>
-      
       // Render Chart 2: Top Non-Compliance (HTML List format for better readability)
       const listContainer = document.getElementById('nonComplianceListContainer');
       const emptyState2 = document.getElementById('chart2EmptyState');
