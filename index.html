@@ -874,6 +874,8 @@ function getDepartmentValue() {
     function resetCurrentForm() {
       document.getElementById('evalRemarks').value = '';
       ['department','patientName','practitioner','evaluator','evalTime'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+      document.getElementById('departmentOther').value = '';
+document.getElementById('departmentOther').classList.add('hidden');
       currentRecord.items = {...defaultItems};
       currentRecord.complianceRate = 0;
       
